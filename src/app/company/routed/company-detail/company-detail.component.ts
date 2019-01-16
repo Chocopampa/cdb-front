@@ -12,10 +12,10 @@ export class CompanyDetailComponent implements OnInit {
   company: Company;
 
   constructor() {
-    console.log(this.company);
   }
 
   ngOnInit() {
+    console.log(this.company);
   }
 
 }
