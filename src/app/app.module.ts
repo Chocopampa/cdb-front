@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CompanyModule } from './company/company.module';
+import { CustomMaterialModule } from './custom-material/custom-material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -10,7 +13,10 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CompanyModule,
+    CustomMaterialModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
