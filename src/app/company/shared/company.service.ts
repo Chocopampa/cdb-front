@@ -15,4 +15,8 @@ export class CompanyService {
   getAllCompanies(): Observable<Company[]> {
     return this._httpClient.get<Company[]>(this.SERVER_URL);
   }
+
+  getCompany(id: string): Observable<Company> {
+    return this._httpClient.get<Company>(`${this.SERVER_URL}/${id}`);
+  }
 }

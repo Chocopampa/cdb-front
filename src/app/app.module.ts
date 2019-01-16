@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { CompanyModule } from './company/company.module';
 import { CustomMaterialModule } from './custom-material/custom-material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './shared/components/header/header.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
