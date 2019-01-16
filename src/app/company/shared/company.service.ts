@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class CompanyService {
 
-  SERVER_URL = '10.0.1.200:8080/webapp/Company';
+  SERVER_URL = 'http://10.0.1.200:8080/webapp/Company';
 
   constructor(private _httpClient: HttpClient) { }
 
