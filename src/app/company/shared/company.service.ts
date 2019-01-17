@@ -27,4 +27,8 @@ export class CompanyService {
   putCompany(company: Company, id: string): Observable<Company> {
     return this._httpClient.put<Company>(`${this.SERVER_URL}/update/${id}`, company);
   }
+
+  deleteCompany(id: number): Observable<Company> {
+    return this._httpClient.delete<Company>(`${this.SERVER_URL}/${id}`);
+  }
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Company } from '../../shared/company.model';
+import { CompanyService } from '../../shared/company.service';
 
 @Component({
   selector: 'app-company-detail',
@@ -11,11 +12,23 @@ export class CompanyDetailComponent implements OnInit {
   @Input()
   company: Company;
 
-  constructor() {
+  @Output()
+  delete: EventEmitter<Company> = new EventEmitter();
+
+  constructor(private _companyService: CompanyService) {
   }
 
   ngOnInit() {
-    console.log(this.company);
+  }
+
+  deleteCompany(id: number) {
+    this._companyService
+      .deleteCompany(id)
+      .subscribe(() => this.delete.emit(this.company));
+  }
+
+  suppress() {
+    this.delete.emit(this.company);
   }
 
 }

@@ -3,9 +3,8 @@
     <mat-card-title>{{ company.name }}</mat-card-title>
   </mat-card-header>
   <mat-card-actions>
-    <button mat-raised-button color="primary"
-    [routerLink]="['/companies', company.id]"
-    >Details</button>
+    <button mat-raised-button color="primary" [routerLink]="['/companies', company.id]">Details</button>
+    <button mat-raised-button color="primary" (click)="deleteCompany(company.id)">Delete</button>
     <button mat-raised-button color="primary" [routerLink]="['/companies','update', company.id]" routerLinkActive="router-link-active"
       *ngIf="!showDescription">Update</button>
   </mat-card-actions>

@@ -1,3 +1,5 @@
 <div class="d-flex">
-  <app-company-detail *ngFor="let company of companies" [company]="company"></app-company-detail>
+  <div *ngFor="let company of companies">
+  <app-company-detail [company]="company" (delete)="suppress($event)"></app-company-detail>
+  </div>
 </div>
