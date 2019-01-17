@@ -19,4 +19,8 @@ export class CompanyListComponent implements OnInit {
     this._companyService.getAllCompanies().subscribe(companies => this.companies = companies);
   }
 
+  suppress(company: Company) {
+    this.companies.splice(this.companies.indexOf(company), 1);
+  }
+
 }
