@@ -7,9 +7,10 @@ import { RouterModule } from '@angular/router';
 import { CompanyOverviewComponent } from './routed/company-overview/company-overview.component';
 import { CompanyCreateComponent } from './routed/company-create/company-create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CompanyUpdateComponent } from './routed/company-update/company-update.component';
 
 @NgModule({
-  declarations: [CompanyListComponent, CompanyDetailComponent, CompanyOverviewComponent, CompanyCreateComponent],
+  declarations: [CompanyListComponent, CompanyDetailComponent, CompanyOverviewComponent, CompanyCreateComponent, CompanyUpdateComponent],
   imports: [CommonModule, CustomMaterialModule, RouterModule,
     FormsModule,
     ReactiveFormsModule],

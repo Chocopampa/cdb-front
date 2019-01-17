@@ -23,4 +23,8 @@ export class CompanyService {
   postCompany(company: Company): Observable<Company> {
     return this._httpClient.post<Company>(`${this.SERVER_URL}/create`, company);
   }
+
+  putCompany(company: Company, id: string): Observable<Company> {
+    return this._httpClient.put<Company>(`${this.SERVER_URL}/update/${id}`, company);
+  }
 }
