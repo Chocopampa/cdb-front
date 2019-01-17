@@ -23,4 +23,8 @@ export class CompanyService {
   postCompany(company: Company): Observable<Company> {
     return this._httpClient.post<Company>(`${this.SERVER_URL}/create`, company);
   }
+
+  deleteCompany(id: number): Observable<Company> {
+    return this._httpClient.delete<Company>(`${this.SERVER_URL}/${id}`);
+  }
 }
