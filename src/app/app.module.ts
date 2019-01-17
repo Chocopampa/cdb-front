@@ -8,6 +8,7 @@ import { CustomMaterialModule } from './custom-material/custom-material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CompanyModule,
     CustomMaterialModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
