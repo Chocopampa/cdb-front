@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class CompanyService {
 
-  SERVER_URL = 'http://10.0.1.200:8080/webapp/Company';
+  SERVER_URL = 'http://localhost:8080/webapp/Company';
 
   constructor(private _httpClient: HttpClient) { }
 
@@ -18,5 +18,9 @@ export class CompanyService {
 
   getCompany(id: string): Observable<Company> {
     return this._httpClient.get<Company>(`${this.SERVER_URL}/${id}`);
+  }
+
+  postCompany(company: Company): Observable<Company> {
+    return this._httpClient.post<Company>(`${this.SERVER_URL}/create`, company);
   }
 }

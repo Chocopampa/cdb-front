@@ -7,6 +7,7 @@ import { CompanyModule } from './company/company.module';
 import { CustomMaterialModule } from './custom-material/custom-material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
     AppRoutingModule,
     CompanyModule,
     CustomMaterialModule,
+    BrowserAnimationsModule,
     HttpClientModule
   ],
   providers: [],
