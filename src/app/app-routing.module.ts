@@ -4,9 +4,14 @@ import { CompanyListComponent } from './company/routed/company-list/company-list
 import { CompanyOverviewComponent } from './company/routed/company-overview/company-overview.component';
 import { CompanyCreateComponent } from './company/routed/company-create/company-create.component';
 import { CompanyUpdateComponent } from './company/routed/company-update/company-update.component';
+import { DashboardContentComponent } from './dashboard/dashboard-content/dashboard-content.component';
 import { ComputerListComponent } from './computer/routed/computer-list/computer-list.component';
 
 const routes: Routes = [
+  {
+    path: 'dashboard',
+    component: DashboardContentComponent
+  },
   {
     path: 'companies',
     component: CompanyListComponent
@@ -29,7 +34,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'computers'
+    redirectTo: 'dashboard'
   }
 ];
 
