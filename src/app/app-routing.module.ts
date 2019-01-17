@@ -5,6 +5,7 @@ import { CompanyOverviewComponent } from './company/routed/company-overview/comp
 import { CompanyCreateComponent } from './company/routed/company-create/company-create.component';
 import { CompanyUpdateComponent } from './company/routed/company-update/company-update.component';
 import { DashboardContentComponent } from './dashboard/dashboard-content/dashboard-content.component';
+import { ComputerListComponent } from './computer/routed/computer-list/computer-list.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'companies/:id',
     component: CompanyOverviewComponent
+  },
+  {
+    path: 'computers',
+    component: ComputerListComponent
   },
   {
     path: '**',

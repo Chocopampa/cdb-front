@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { ComputerModule } from './computer/computer.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     BrowserModule,
     AppRoutingModule,
     CompanyModule,
+    ComputerModule,
     CustomMaterialModule,
     BrowserAnimationsModule,
     HttpClientModule,
