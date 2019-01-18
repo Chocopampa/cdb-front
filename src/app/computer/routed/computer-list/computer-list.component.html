@@ -1,3 +1,8 @@
-<div *ngFor="let computer of computers">
-  <app-computer-detail [computer]="computer" ></app-computer-detail>
+<div class="d-flex">
+  <div *ngFor="let computer of computers">
+    <app-computer-detail
+      [computer]="computer"
+      (delete)="suppress($event)"
+    ></app-computer-detail>
+  </div>
 </div>

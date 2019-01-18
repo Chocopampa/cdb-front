@@ -19,4 +19,8 @@ export class ComputerListComponent implements OnInit {
     this._computerService.getAllComputers().subscribe(computers => this.computers = computers);
   }
 
+  suppress(computer: Computer) {
+    this.computers.splice(this.computers.indexOf(computer), 1);
+  }
+
 }
