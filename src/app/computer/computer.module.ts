@@ -4,10 +4,11 @@ import { ComputerListComponent } from './routed/computer-list/computer-list.comp
 import { ComputerDetailComponent } from './routed/computer-detail/computer-detail.component';
 import { CustomMaterialModule } from '../custom-material/custom-material.module';
 import { ComputerOverviewComponent } from './routed/computer-overview/computer-overview.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [ComputerListComponent, ComputerDetailComponent, ComputerOverviewComponent],
-  imports: [CommonModule, CustomMaterialModule],
+  imports: [CommonModule, CustomMaterialModule, RouterModule],
   exports: [ComputerListComponent]
 })
 export class ComputerModule {}
