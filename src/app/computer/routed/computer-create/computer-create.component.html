@@ -1,0 +1,46 @@
+<div class="example-container">
+  <p>
+    <mat-form-field>
+      <input matInput placeholder="Computer Name" [(ngModel)]="computer.name" />
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Introduced Date"
+        [(ngModel)]="computer.introduced"
+      />
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Discontinued Date"
+        [(ngModel)]="computer.discontinued"
+      />
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Company  ID"
+        [(ngModel)]="computer.companyId"
+      />
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="postComputer()">
+        Create
+      </button>
+    </mat-card-actions>
+  </p>
+  <p>
+    <button mat-raised-button color="primary" (click)="showComputer()">
+      Show Recipe In Console
+    </button>
+  </p>
+</div>
