@@ -18,12 +18,6 @@ export class CompanyCreateComponent implements OnInit {
   }
 
   postCompany() {
-    this.handlePostCompany();
     this._companyService.postCompany(this.company).subscribe();
   }
-
-  handlePostCompany() {
-    this.company.id = null;
-  }
-
 }
