@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Company } from './company.model';
 import { Observable } from 'rxjs';
 
@@ -7,13 +7,29 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CompanyService {
-
   SERVER_URL = 'http://localhost:8080/webapp/Company';
 
-  constructor(private _httpClient: HttpClient) { }
+  constructor(private _httpClient: HttpClient) {}
 
   getAllCompanies(): Observable<Company[]> {
     return this._httpClient.get<Company[]>(this.SERVER_URL);
+  }
+
+  getCompaniesSpecified(
+    order_by: string,
+    type_ascend: string,
+    search: string,
+    limit: string,
+    offset: string
+  ): Observable<Company[]> {
+    return this._httpClient.get<Company[]>(`${this.SERVER_URL}`, {
+      params: new HttpParams()
+        .set('order', order_by)
+        .set('type', type_ascend)
+        .set('search', search)
+        .set('limit', limit)
+        .set('offset', offset)
+    });
   }
 
   getCompany(id: string): Observable<Company> {
@@ -25,7 +41,10 @@ export class CompanyService {
   }
 
   putCompany(company: Company, id: string): Observable<Company> {
-    return this._httpClient.put<Company>(`${this.SERVER_URL}/update/${id}`, company);
+    return this._httpClient.put<Company>(
+      `${this.SERVER_URL}/update/${id}`,
+      company
+    );
   }
 
   deleteCompany(id: number): Observable<Company> {
