@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Computer } from '../../shared/computer.model';
+import { ComputerService } from '../../shared/computer.service';
 
 @Component({
   selector: 'app-computer-detail',
@@ -7,13 +8,23 @@ import { Computer } from '../../shared/computer.model';
   styleUrls: ['./computer-detail.component.scss']
 })
 export class ComputerDetailComponent implements OnInit {
-
   @Input()
   computer: Computer;
 
-  constructor() { }
+  @Output()
+  delete: EventEmitter<Computer> = new EventEmitter();
 
-  ngOnInit() {
+  constructor(private _computerService: ComputerService) {}
+
+  ngOnInit() {}
+
+  deleteCompany(id: number) {
+    this._computerService
+      .deleteComputer(id)
+      .subscribe(() => this.delete.emit(this.computer));
   }
 
+  suppress() {
+    this.delete.emit(this.computer);
+  }
 }
