@@ -2,9 +2,21 @@
   <mat-card-header>
     <mat-card-title>{{ computer.name }}</mat-card-title>
   </mat-card-header>
-  <mat-card-actions>
-    <button mat-raised-button color="primary">Details</button>
-    <button mat-raised-button color="primary">Delete</button>
+  <mat-card-actions
+    ><button
+      mat-raised-button
+      color="primary"
+      [routerLink]="['/computers', computer.id]"
+    >
+      Details
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="deleteCompany(computer.id)"
+    >
+      Delete
+    </button>
     <button
       mat-raised-button
       color="primary"

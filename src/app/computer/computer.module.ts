@@ -7,13 +7,14 @@ import { ComputerOverviewComponent } from './routed/computer-overview/computer-o
 import { ComputerUpdateComponent } from './routed/computer-update/computer-update.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ComputerCreateComponent } from './routed/computer-create/computer-create.component';
 
 @NgModule({
   declarations: [
     ComputerListComponent,
     ComputerDetailComponent,
     ComputerOverviewComponent,
-    ComputerUpdateComponent
+    ComputerUpdateComponent, ComputerCreateComponent
   ],
   imports: [
     CommonModule,
