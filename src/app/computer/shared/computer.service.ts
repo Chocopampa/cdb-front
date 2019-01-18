@@ -22,8 +22,8 @@ export class ComputerService {
     return this._httpClient.post<Computer>(`${this.SERVER_URL}/create`, computer);
   }
 
-  updateComputer(computer: Computer, id: string): Observable<Computer> {
-    return this._httpClient.put<Computer>(`${this.SERVER_URL}/update/${id}`, computer);
+  updateComputer(computer: Computer): Observable<Computer> {
+    return this._httpClient.put<Computer>(`${this.SERVER_URL}/update/${computer.id}`, computer);
   }
 
   deleteComputer(id: number): Observable<Computer> {
