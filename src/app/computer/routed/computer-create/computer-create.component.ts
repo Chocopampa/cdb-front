@@ -19,8 +19,4 @@ export class ComputerCreateComponent implements OnInit {
   postComputer() {
     this._computerService.createComputer(this.computer).subscribe();
   }
-
-  showComputer() {
-    console.log(this.computer);
-  }
 }
