@@ -9,6 +9,7 @@ import { ComputerListComponent } from './computer/routed/computer-list/computer-
 import { ComputerUpdateComponent } from './computer/routed/computer-update/computer-update.component';
 import { ComputerOverviewComponent } from './computer/routed/computer-overview/computer-overview.component';
 import { ComputerCreateComponent } from './computer/routed/computer-create/computer-create.component';
+import { UserRegistrationComponent } from './user/routed/user-registration/user-registration.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'computers/:id',
     component: ComputerOverviewComponent
+  },
+  {
+    path: 'registration',
+    component: UserRegistrationComponent
   },
   {
     path: '**',
