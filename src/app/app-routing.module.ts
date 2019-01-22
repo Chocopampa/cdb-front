@@ -10,6 +10,7 @@ import { ComputerUpdateComponent } from './computer/routed/computer-update/compu
 import { ComputerOverviewComponent } from './computer/routed/computer-overview/computer-overview.component';
 import { ComputerCreateComponent } from './computer/routed/computer-create/computer-create.component';
 import { UserRegistrationComponent } from './user/routed/user-registration/user-registration.component';
+import { UserLoginComponent } from './user/routed/user-login/user-login.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: 'registration',
     component: UserRegistrationComponent
+  },
+  {
+    path: 'login',
+    component: UserLoginComponent
   },
   {
     path: '**',
