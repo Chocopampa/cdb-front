@@ -72,10 +72,10 @@ export class CompanyListComponent implements OnInit {
 
   suppress() {
     for (const c of this.selection.selected) {
-      this._companyService.deleteCompany(c.id).subscribe();
       this.companies.splice(this.companies.indexOf(c), 1);
+      this._companyService.deleteCompany(c.id).subscribe(() =>
+        this.loadCompanyList());
     }
-    this.loadCompanyList();
   }
 
   isAllSelected() {
