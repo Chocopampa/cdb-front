@@ -67,6 +67,9 @@ export class CompanyListComponent implements OnInit {
         this.companies = companies;
         this.dataSource = new MatTableDataSource<Company>(this.companies);
         this.selection.clear();
+        this._companyService.getCompanyCount().subscribe(nb => {
+          this.nb_companies = nb;
+        });
       });
   }
 
