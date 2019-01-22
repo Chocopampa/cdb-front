@@ -36,6 +36,10 @@ export class CompanyService {
     return this._httpClient.get<Company>(`${this.SERVER_URL}/${id}`);
   }
 
+  getCompanyCount(): Observable<number> {
+    return this._httpClient.get<number>(`${this.SERVER_URL}/count`);
+  }
+
   postCompany(company: Company): Observable<Company> {
     return this._httpClient.post<Company>(`${this.SERVER_URL}/create`, company);
   }

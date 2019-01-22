@@ -1,20 +1,3 @@
-<!-- <div class="d-flex">
-  <div *ngFor="let company of companies">
-    <app-company-detail
-      [company]="company"
-      (delete)="suppress($event)"
-    ></app-company-detail>
-  </div>
-</div> -->
-
-<mat-form-field>
-  <input
-    matInput
-    (keyup)="applyFilter($event.target.value)"
-    placeholder="Filter"
-  />
-</mat-form-field>
-
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="select">
     <th mat-header-cell *matHeaderCellDef>
@@ -35,9 +18,18 @@
   </ng-container>
 
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <th mat-header-cell *matHeaderCellDef (click)="orderBy('name')">Name</th>
     <div *ngFor="let company of companies">
       <td mat-cell *matCellDef="let company">{{ company.name }}</td>
+    </div>
+  </ng-container>
+
+  <ng-container matColumnDef="suppress">
+    <th mat-header-cell *matHeaderCellDef>
+      <button mat-raised-button color="primary" (click)="suppress()">Delete selection</button>
+    </th>
+    <div *ngFor="let company of companies">
+      <td mat-cell *matCellDef=""></td>
     </div>
   </ng-container>
 
@@ -48,3 +40,9 @@
     (click)="selection.toggle(row)"
   ></tr>
 </table>
+
+<mat-paginator
+  [length]="nb_companies"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="pageEvent = $event; changePage()"
+></mat-paginator>
