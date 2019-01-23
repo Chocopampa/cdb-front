@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Computer } from './computer.model';
 import { UserService } from 'src/app/user/shared/user.service';
 import { Observable } from 'rxjs';
@@ -20,6 +20,33 @@ export class ComputerService {
       headers: new HttpHeaders({
         authorization: this._userService.getToken()
       })
+    });
+  }
+
+  getComputersSpecified(
+    order_by: string,
+    type_ascend: string,
+    search: string,
+    limit: string,
+    offset: string
+  ): Observable<Computer[]> {
+    return this._httpClient.get<Computer[]>(`${this.SERVER_URL}`, {
+      params: new HttpParams()
+        .set('order', order_by)
+        .set('type', type_ascend)
+        .set('search', search)
+        .set('limit', limit)
+        .set('offset', offset)
+    });
+  }
+
+  getComputerCount(): Observable<number> {
+    return this._httpClient.get<number>(`${this.SERVER_URL}/count`);
+  }
+
+  getComputerSearchCount(search: string): Observable<number> {
+    return this._httpClient.get<number>(`${this.SERVER_URL}/searchCount`, {
+      params: new HttpParams().set('search', search)
     });
   }
 
