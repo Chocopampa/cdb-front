@@ -49,7 +49,7 @@ export class ComputerListComponent implements OnInit {
     private _fb: FormBuilder,
     private _computerService: ComputerService,
     private _route: ActivatedRoute,
-    private _userService: UserService,
+    public userService: UserService,
     private _router: Router
   ) {
     this.order_by = this._route.snapshot.queryParamMap.get('order');
@@ -61,9 +61,15 @@ export class ComputerListComponent implements OnInit {
 
   ngOnInit() {
     this.loadComputerList();
-    this._computerService.getComputerCount().subscribe(nb => {
-      this.nb_computers = nb;
-    });
+    this._computerService.getComputerCount().subscribe(
+      nb => {
+        this.nb_computers = nb;
+      },
+      () => {
+        this.userService.logout();
+        this._router.navigate(['/login']);
+      }
+    );
     this.selection = new SelectionModel<Computer>(true, []);
     this.computerSearchForm = this._fb.group({
       name: ['']
@@ -87,7 +93,7 @@ export class ComputerListComponent implements OnInit {
           this.setPaginatorTotal();
         },
         () => {
-          this._userService.logout();
+          this.userService.logout();
           this._router.navigate(['/login']);
         }
       );
@@ -96,9 +102,13 @@ export class ComputerListComponent implements OnInit {
   suppress(computer: Computer) {
     for (const c of this.selection.selected) {
       this.computers.splice(this.computers.indexOf(c), 1);
-      this._computerService
-        .deleteComputer(c.id)
-        .subscribe(() => this.loadComputerList());
+      this._computerService.deleteComputer(c.id).subscribe(
+        () => this.loadComputerList(),
+        () => {
+          this.userService.logout();
+          this._router.navigate(['/login']);
+        }
+      );
     }
   }
 
@@ -158,15 +168,21 @@ export class ComputerListComponent implements OnInit {
 
   setPaginatorTotal() {
     if (this.search !== null) {
-      this._computerService
-        .getComputerSearchCount(this.search)
-        .subscribe(nb => {
-          this.nb_computers = nb;
-        });
+      this._computerService.getComputerSearchCount(this.search).subscribe(
+        nb => (this.nb_computers = nb),
+        () => {
+          this.userService.logout();
+          this._router.navigate(['/login']);
+        }
+      );
     } else {
-      this._computerService.getComputerCount().subscribe(nb => {
-        this.nb_computers = nb;
-      });
+      this._computerService.getComputerCount().subscribe(
+        nb => (this.nb_computers = nb),
+        () => {
+          this.userService.logout();
+          this._router.navigate(['/login']);
+        }
+      );
     }
   }
 }

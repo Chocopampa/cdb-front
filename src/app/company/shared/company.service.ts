@@ -15,10 +15,6 @@ export class CompanyService {
     private _userService: UserService
   ) {}
 
-  getAllCompanies(): Observable<Company[]> {
-    return this._httpClient.get<Company[]>(this.SERVER_URL);
-  }
-
   getCompaniesSpecified(
     order_by: string,
     type_ascend: string,

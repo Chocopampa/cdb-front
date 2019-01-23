@@ -14,106 +14,116 @@
   (page)="pageEvent = $event; changePage()"
 ></mat-paginator>
 
-<div class="table-container">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <ng-container matColumnDef="select">
-      <th mat-header-cell *matHeaderCellDef>
-        <mat-checkbox
-          (change)="$event ? masterToggle() : null"
-          [checked]="selection.hasValue() && isAllSelected()"
-          [indeterminate]="selection.hasValue() && !isAllSelected()"
-        ></mat-checkbox>
-      </th>
-      <td mat-cell *matCellDef="let row" class="table_cell">
-        <mat-checkbox
-          (click)="$event.stopPropagation()"
-          (change)="$event ? selection.toggle(row) : null"
-          [checked]="selection.isSelected(row)"
-        >
-        </mat-checkbox>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox
+        *ngIf="userService.isAdmin()"
+        (change)="$event ? masterToggle() : null"
+        [checked]="selection.hasValue() && isAllSelected()"
+        [indeterminate]="selection.hasValue() && !isAllSelected()"
+      ></mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row" class="table_cell">
+      <mat-checkbox
+        *ngIf="userService.isAdmin()"
+        (click)="$event.stopPropagation()"
+        (change)="$event ? selection.toggle(row) : null"
+        [checked]="selection.isSelected(row)"
+      >
+      </mat-checkbox>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      (click)="orderBy('name')"
+      class="table_head"
+    >
+      Name
+    </th>
+    <div *ngFor="let computer of computers">
+      <td
+        mat-cell
+        *matCellDef="let computer"
+        class="table_cell"
+        [routerLink]="['/computers', 'update', computer.id]"
+      >
+        {{ computer.name }}
       </td>
-    </ng-container>
+    </div>
+  </ng-container>
 
-    <ng-container matColumnDef="name">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        (click)="orderBy('name')"
-        class="table_head"
+  <ng-container matColumnDef="introduced">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      (click)="orderBy('introduced')"
+      class="table_head"
+    >
+      Introduced Date
+    </th>
+    <div *ngFor="let computer of computers">
+      <td mat-cell *matCellDef="let computer" class="table_cell">
+        {{ computer.introduced }}
+      </td>
+    </div>
+  </ng-container>
+
+  <ng-container matColumnDef="discontinued">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      (click)="orderBy('discontinued')"
+      class="table_head"
+    >
+      Discontinued Date
+    </th>
+    <div *ngFor="let computer of computers">
+      <td mat-cell *matCellDef="let computer" class="table_cell">
+        {{ computer.discontinued }}
+      </td>
+    </div>
+  </ng-container>
+
+  <ng-container matColumnDef="company_name">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      (click)="orderBy('company')"
+      class="table_head"
+    >
+      Company Name
+    </th>
+    <div *ngFor="let computer of computers">
+      <td mat-cell *matCellDef="let computer" class="table_cell">
+        {{ computer.companyName }}
+      </td>
+    </div>
+  </ng-container>
+
+  <ng-container matColumnDef="suppress">
+    <th mat-header-cell *matHeaderCellDef>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="suppress()"
+        *ngIf="userService.isAdmin()"
       >
-        Name
-      </th>
-      <div *ngFor="let computer of computers">
-        <td mat-cell *matCellDef="let computer" class="table_cell" [routerLink]="['/computers','update', computer.id]">
-          {{ computer.name }}
-        </td>
-      </div>
-    </ng-container>
+        Delete selection
+      </button>
+    </th>
+    <div *ngFor="let computer of computers">
+      <td mat-cell *matCellDef=""></td>
+    </div>
+  </ng-container>
 
-    <ng-container matColumnDef="introduced">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        (click)="orderBy('introduced')"
-        class="table_head"
-      >
-        Introduced Date
-      </th>
-      <div *ngFor="let computer of computers">
-        <td mat-cell *matCellDef="let computer" class="table_cell">
-          {{ computer.introduced }}
-        </td>
-      </div>
-    </ng-container>
-
-    <ng-container matColumnDef="discontinued">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        (click)="orderBy('discontinued')"
-        class="table_head"
-      >
-        Discontinued Date
-      </th>
-      <div *ngFor="let computer of computers">
-        <td mat-cell *matCellDef="let computer" class="table_cell">
-          {{ computer.discontinued }}
-        </td>
-      </div>
-    </ng-container>
-
-    <ng-container matColumnDef="company_name">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        (click)="orderBy('company')"
-        class="table_head"
-      >
-        Company Name
-      </th>
-      <div *ngFor="let computer of computers">
-        <td mat-cell *matCellDef="let computer" class="table_cell">
-          {{ computer.companyName }}
-        </td>
-      </div>
-    </ng-container>
-
-    <ng-container matColumnDef="suppress">
-      <th mat-header-cell *matHeaderCellDef>
-        <button mat-raised-button color="primary" (click)="suppress()">
-          Delete selection
-        </button>
-      </th>
-      <div *ngFor="let computer of computers">
-        <td mat-cell *matCellDef=""></td>
-      </div>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="columnsNames"></tr>
-    <tr
-      mat-row
-      *matRowDef="let row; columns: columnsNames"
-      (click)="selection.toggle(row)"
-    ></tr>
-  </table>
-</div>
+  <tr mat-header-row *matHeaderRowDef="columnsNames"></tr>
+  <tr
+    mat-row
+    *matRowDef="let row; columns: columnsNames"
+    (click)="selection.toggle(row)"
+  ></tr>
+</table>
