@@ -128,19 +128,19 @@ export class ComputerListComponent implements OnInit {
   }
 
   changePage() {
-    let l = +this.limit;
-    let o = +this.offset;
-    if (o === 0) {
-      o = this.paginator.pageSize;
+    let limit = +this.limit;
+    let offset = +this.offset;
+    if (offset === 0) {
+      offset = this.paginator.pageSize;
     }
     if (this.pageEvent.pageIndex) {
-      l = o * this.paginator._pageIndex;
-      this.limit = l.toString();
+      limit = offset * this.paginator._pageIndex;
+      this.limit = limit.toString();
     } else {
       if (this.pageEvent.pageSize) {
-        o = this.paginator.pageSize;
+        offset = this.paginator.pageSize;
         this.limit = '0';
-        this.offset = o.toString();
+        this.offset = offset.toString();
       }
     }
     this.loadComputerList();
