@@ -6,7 +6,6 @@ import { CompanyUpdateComponent } from './company/routed/company-update/company-
 import { DashboardContentComponent } from './dashboard/dashboard-content/dashboard-content.component';
 import { ComputerListComponent } from './computer/routed/computer-list/computer-list.component';
 import { ComputerUpdateComponent } from './computer/routed/computer-update/computer-update.component';
-import { ComputerOverviewComponent } from './computer/routed/computer-overview/computer-overview.component';
 import { ComputerCreateComponent } from './computer/routed/computer-create/computer-create.component';
 import { UserRegistrationComponent } from './user/routed/user-registration/user-registration.component';
 import { UserLoginComponent } from './user/routed/user-login/user-login.component';
@@ -39,10 +38,6 @@ const routes: Routes = [
   {
     path: 'computers/create',
     component: ComputerCreateComponent
-  },
-  {
-    path: 'computers/:id',
-    component: ComputerOverviewComponent
   },
   {
     path: 'registration',

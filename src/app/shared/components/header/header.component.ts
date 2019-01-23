@@ -9,14 +9,13 @@ import { UserService } from 'src/app/user/shared/user.service';
 export class HeaderComponent implements OnInit {
 
   constructor(
-    private _userService: UserService,
+    public userService: UserService,
   ) { }
 
   ngOnInit() {
   }
 
   logout() {
-    this._userService.logout();
+    this.userService.logout();
   }
-
 }

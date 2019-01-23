@@ -15,14 +15,6 @@ export class ComputerService {
     private _userService: UserService
   ) {}
 
-  getAllComputers(): Observable<Computer[]> {
-    return this._httpClient.get<Computer[]>(`${this.SERVER_URL}`, {
-      headers: new HttpHeaders({
-        authorization: this._userService.getToken()
-      })
-    });
-  }
-
   getComputersSpecified(
     order_by: string,
     type_ascend: string,
@@ -31,6 +23,9 @@ export class ComputerService {
     offset: string
   ): Observable<Computer[]> {
     return this._httpClient.get<Computer[]>(`${this.SERVER_URL}`, {
+      headers: new HttpHeaders({
+        authorization: this._userService.getToken()
+      }),
       params: new HttpParams()
         .set('order', order_by)
         .set('type', type_ascend)
@@ -41,11 +36,18 @@ export class ComputerService {
   }
 
   getComputerCount(): Observable<number> {
-    return this._httpClient.get<number>(`${this.SERVER_URL}/count`);
+    return this._httpClient.get<number>(`${this.SERVER_URL}/count`, {
+      headers: new HttpHeaders({
+        authorization: this._userService.getToken()
+      })
+    });
   }
 
   getComputerSearchCount(search: string): Observable<number> {
     return this._httpClient.get<number>(`${this.SERVER_URL}/searchCount`, {
+      headers: new HttpHeaders({
+        authorization: this._userService.getToken()
+      }),
       params: new HttpParams().set('search', search)
     });
   }
