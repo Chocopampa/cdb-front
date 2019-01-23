@@ -20,7 +20,6 @@ export class ComputerListComponent implements OnInit {
 
   pageEvent: PageEvent;
   pageSizeOptions: number[] = [10, 50, 100];
-  defaultPageSize = 10;
 
   columnsNames: string[] = [
     'select',
@@ -93,7 +92,7 @@ export class ComputerListComponent implements OnInit {
       );
   }
 
-  suppress(computer: Computer) {
+  suppress() {
     for (const c of this.selection.selected) {
       this.computers.splice(this.computers.indexOf(c), 1);
       this._computerService

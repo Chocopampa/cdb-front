@@ -6,6 +6,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { UserService } from 'src/app/user/shared/user.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-company-list',
@@ -20,6 +21,9 @@ export class CompanyListComponent implements OnInit {
   pageSizeOptions: number[] = [10, 50, 100];
 
   columnsNames: string[] = ['select', 'name', 'suppress'];
+
+  companySearchForm: FormGroup;
+
   companies: Company[];
   dataSource: MatTableDataSource<Company>;
   selection: SelectionModel<Company>;
@@ -33,6 +37,7 @@ export class CompanyListComponent implements OnInit {
   nb_companies: number;
 
   constructor(
+    private _fb: FormBuilder,
     private _companyService: CompanyService,
     private _route: ActivatedRoute,
     private _router: Router,
@@ -57,6 +62,7 @@ export class CompanyListComponent implements OnInit {
       }
     );
     this.selection = new SelectionModel<Company>(true, []);
+    this.companySearchForm = this._fb.group({ name: [''] });
   }
 
   loadCompanyList() {
@@ -73,9 +79,7 @@ export class CompanyListComponent implements OnInit {
           this.companies = companies;
           this.dataSource = new MatTableDataSource<Company>(this.companies);
           this.selection.clear();
-          this._companyService.getCompanyCount().subscribe(nb => {
-            this.nb_companies = nb;
-          });
+          this.setPaginatorTotal();
         },
         () => {
           this._userService.logout();
@@ -128,6 +132,9 @@ export class CompanyListComponent implements OnInit {
   changePage() {
     let l = +this.limit;
     let o = +this.offset;
+    if (o === 0) {
+      o = this.paginator.pageSize;
+    }
     if (this.pageEvent.pageIndex) {
       l = o * this.paginator._pageIndex;
       this.limit = l.toString();
@@ -139,5 +146,26 @@ export class CompanyListComponent implements OnInit {
       }
     }
     this.loadCompanyList();
+  }
+
+  searchCompanies() {
+    this.search = this.companySearchForm.get('name').value;
+    if (this.search === '') {
+      this.search = null;
+    }
+    this.limit = '0';
+    this.loadCompanyList();
+  }
+
+  setPaginatorTotal() {
+    if (this.search !== null) {
+      this._companyService.getCompanySearchCount(this.search).subscribe(nb => {
+        this.nb_companies = nb;
+      });
+    } else {
+      this._companyService.getCompanyCount().subscribe(nb => {
+        this.nb_companies = nb;
+      });
+    }
   }
 }
