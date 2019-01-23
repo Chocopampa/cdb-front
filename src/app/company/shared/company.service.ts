@@ -51,6 +51,12 @@ export class CompanyService {
     });
   }
 
+  getCompanySearchCount(search: string): Observable<number> {
+    return this._httpClient.get<number>(`${this.SERVER_URL}/searchCount`, {
+      params: new HttpParams().set('search', search)
+    });
+  }
+
   postCompany(company: Company): Observable<Company> {
     return this._httpClient.post<Company>(
       `${this.SERVER_URL}/create`,

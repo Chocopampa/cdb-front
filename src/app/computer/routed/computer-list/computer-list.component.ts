@@ -20,7 +20,6 @@ export class ComputerListComponent implements OnInit {
 
   pageEvent: PageEvent;
   pageSizeOptions: number[] = [10, 50, 100];
-  defaultPageSize = 10;
 
   columnsNames: string[] = [
     'select',
@@ -99,7 +98,7 @@ export class ComputerListComponent implements OnInit {
       );
   }
 
-  suppress(computer: Computer) {
+  suppress() {
     for (const c of this.selection.selected) {
       this.computers.splice(this.computers.indexOf(c), 1);
       this._computerService.deleteComputer(c.id).subscribe(
@@ -139,19 +138,19 @@ export class ComputerListComponent implements OnInit {
   }
 
   changePage() {
-    let l = +this.limit;
-    let o = +this.offset;
-    if (o === 0) {
-      o = this.paginator.pageSize;
+    let limit = +this.limit;
+    let offset = +this.offset;
+    if (offset === 0) {
+      offset = this.paginator.pageSize;
     }
     if (this.pageEvent.pageIndex) {
-      l = o * this.paginator._pageIndex;
-      this.limit = l.toString();
+      limit = offset * this.paginator._pageIndex;
+      this.limit = limit.toString();
     } else {
       if (this.pageEvent.pageSize) {
-        o = this.paginator.pageSize;
+        offset = this.paginator.pageSize;
         this.limit = '0';
-        this.offset = o.toString();
+        this.offset = offset.toString();
       }
     }
     this.loadComputerList();
