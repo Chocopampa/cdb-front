@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Computer } from './computer.model';
+import { UserService } from 'src/app/user/shared/user.service';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,10 +9,18 @@ import { Observable } from 'rxjs';
 })
 export class ComputerService {
   SERVER_URL = 'http://localhost:8080/webapp/Computer';
-  constructor(private _httpClient: HttpClient) {}
+
+  constructor(
+    private _httpClient: HttpClient,
+    private _userService: UserService
+  ) {}
 
   getAllComputers(): Observable<Computer[]> {
-    return this._httpClient.get<Computer[]>(`${this.SERVER_URL}`);
+    return this._httpClient.get<Computer[]>(`${this.SERVER_URL}`, {
+      headers: new HttpHeaders({
+        authorization: this._userService.getToken()
+      })
+    });
   }
 
   getComputersSpecified(
@@ -42,24 +51,44 @@ export class ComputerService {
   }
 
   getComputer(id: string): Observable<Computer> {
-    return this._httpClient.get<Computer>(`${this.SERVER_URL}/${id}`);
+    return this._httpClient.get<Computer>(`${this.SERVER_URL}/${id}`, {
+      headers: new HttpHeaders({
+        authorization: this._userService.getToken()
+      })
+    });
   }
 
   createComputer(computer: Computer): Observable<Computer> {
     return this._httpClient.post<Computer>(
       `${this.SERVER_URL}/create`,
-      computer
+      computer,
+      {
+        headers: new HttpHeaders({
+          authorization: this._userService.getToken()
+        })
+      }
     );
   }
 
   updateComputer(computer: Computer): Observable<Computer> {
     return this._httpClient.put<Computer>(
       `${this.SERVER_URL}/update/${computer.id}`,
-      computer
+      computer,
+      {
+        headers: new HttpHeaders({
+          authorization: this._userService.getToken()
+        })
+      }
     );
   }
 
   deleteComputer(id: number): Observable<Computer> {
-    return this._httpClient.delete<Computer>(`${this.SERVER_URL}/${id}`);
+    return this._httpClient.delete<Computer>(`${this.SERVER_URL}/${id}`, {
+      headers: new HttpHeaders({
+        authorization: this._userService.getToken()
+      })
+    });
   }
+
+
 }

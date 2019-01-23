@@ -1,14 +1,11 @@
-import {
-  Component,
-  OnInit,
-  ViewChild
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CompanyService } from '../../shared/company.service';
 import { Company } from '../../shared/company.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { UserService } from 'src/app/user/shared/user.service';
 
 @Component({
   selector: 'app-company-list',
@@ -37,7 +34,9 @@ export class CompanyListComponent implements OnInit {
 
   constructor(
     private _companyService: CompanyService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _userService: UserService
   ) {
     this.order_by = this._route.snapshot.queryParamMap.get('order');
     this.type_ascend = this._route.snapshot.queryParamMap.get('type');
@@ -48,9 +47,15 @@ export class CompanyListComponent implements OnInit {
 
   ngOnInit() {
     this.loadCompanyList();
-    this._companyService.getCompanyCount().subscribe(nb => {
-      this.nb_companies = nb;
-    });
+    this._companyService.getCompanyCount().subscribe(
+      nb => {
+        this.nb_companies = nb;
+      },
+      () => {
+        this._userService.logout();
+        this._router.navigate(['/login']);
+      }
+    );
     this.selection = new SelectionModel<Company>(true, []);
   }
 
@@ -63,21 +68,34 @@ export class CompanyListComponent implements OnInit {
         this.limit,
         this.offset
       )
-      .subscribe(companies => {
-        this.companies = companies;
-        this.dataSource = new MatTableDataSource<Company>(this.companies);
-        this.selection.clear();
-        this._companyService.getCompanyCount().subscribe(nb => {
-          this.nb_companies = nb;
-        });
-      });
+      .subscribe(
+        companies => {
+          this.companies = companies;
+          this.dataSource = new MatTableDataSource<Company>(this.companies);
+          this.selection.clear();
+          this._companyService.getCompanyCount().subscribe(nb => {
+            this.nb_companies = nb;
+          });
+        },
+        () => {
+          this._userService.logout();
+          this._router.navigate(['/login']);
+        }
+      );
   }
 
   suppress() {
     for (const c of this.selection.selected) {
       this.companies.splice(this.companies.indexOf(c), 1);
-      this._companyService.deleteCompany(c.id).subscribe(() =>
-        this.loadCompanyList());
+      this._companyService.deleteCompany(c.id).subscribe(
+        () => {
+          this.loadCompanyList();
+        },
+        () => {
+          this._userService.logout();
+          this._router.navigate(['/login']);
+        }
+      );
     }
   }
 

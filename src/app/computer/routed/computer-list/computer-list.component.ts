@@ -6,6 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/user/shared/user.service';
 
 @Component({
   selector: 'app-computer-list',
@@ -46,7 +48,9 @@ export class ComputerListComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _computerService: ComputerService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _userService: UserService,
+    private _router: Router
   ) {
     this.order_by = this._route.snapshot.queryParamMap.get('order');
     this.type_ascend = this._route.snapshot.queryParamMap.get('type');
@@ -75,12 +79,18 @@ export class ComputerListComponent implements OnInit {
         this.limit,
         this.offset
       )
-      .subscribe(computers => {
-        this.computers = computers;
-        this.dataSource = new MatTableDataSource<Computer>(this.computers);
-        this.selection.clear();
-        this.setPaginatorTotal();
-      });
+      .subscribe(
+        computers => {
+          this.computers = computers;
+          this.dataSource = new MatTableDataSource<Computer>(this.computers);
+          this.selection.clear();
+          this.setPaginatorTotal();
+        },
+        () => {
+          this._userService.logout();
+          this._router.navigate(['/login']);
+        }
+      );
   }
 
   suppress(computer: Computer) {
@@ -148,9 +158,11 @@ export class ComputerListComponent implements OnInit {
 
   setPaginatorTotal() {
     if (this.search !== null) {
-      this._computerService.getComputerSearchCount(this.search).subscribe(nb => {
-        this.nb_computers = nb;
-      });
+      this._computerService
+        .getComputerSearchCount(this.search)
+        .subscribe(nb => {
+          this.nb_computers = nb;
+        });
     } else {
       this._computerService.getComputerCount().subscribe(nb => {
         this.nb_computers = nb;
