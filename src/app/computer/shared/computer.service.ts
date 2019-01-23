@@ -35,6 +35,12 @@ export class ComputerService {
     return this._httpClient.get<number>(`${this.SERVER_URL}/count`);
   }
 
+  getComputerSearchCount(search: string): Observable<number> {
+    return this._httpClient.get<number>(`${this.SERVER_URL}/searchCount`, {
+      params: new HttpParams().set('search', search)
+    });
+  }
+
   getComputer(id: string): Observable<Computer> {
     return this._httpClient.get<Computer>(`${this.SERVER_URL}/${id}`);
   }

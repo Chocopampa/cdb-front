@@ -5,6 +5,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-computer-list',
@@ -17,8 +18,18 @@ export class ComputerListComponent implements OnInit {
 
   pageEvent: PageEvent;
   pageSizeOptions: number[] = [10, 50, 100];
+  defaultPageSize = 10;
 
-  columnsNames: string[] = ['select', 'name', 'introduced', 'discontinued', 'company_name', 'suppress'];
+  columnsNames: string[] = [
+    'select',
+    'name',
+    'introduced',
+    'discontinued',
+    'company_name',
+    'suppress'
+  ];
+
+  computerSearchForm: FormGroup;
 
   computers: Computer[];
   dataSource: MatTableDataSource<Computer>;
@@ -33,6 +44,7 @@ export class ComputerListComponent implements OnInit {
   nb_computers: number;
 
   constructor(
+    private _fb: FormBuilder,
     private _computerService: ComputerService,
     private _route: ActivatedRoute
   ) {
@@ -49,6 +61,9 @@ export class ComputerListComponent implements OnInit {
       this.nb_computers = nb;
     });
     this.selection = new SelectionModel<Computer>(true, []);
+    this.computerSearchForm = this._fb.group({
+      name: ['']
+    });
   }
 
   loadComputerList() {
@@ -64,9 +79,7 @@ export class ComputerListComponent implements OnInit {
         this.computers = computers;
         this.dataSource = new MatTableDataSource<Computer>(this.computers);
         this.selection.clear();
-        this._computerService.getComputerCount().subscribe(nb => {
-          this.nb_computers = nb;
-        });
+        this.setPaginatorTotal();
       });
   }
 
@@ -108,6 +121,9 @@ export class ComputerListComponent implements OnInit {
   changePage() {
     let l = +this.limit;
     let o = +this.offset;
+    if (o === 0) {
+      o = this.paginator.pageSize;
+    }
     if (this.pageEvent.pageIndex) {
       l = o * this.paginator._pageIndex;
       this.limit = l.toString();
@@ -119,5 +135,26 @@ export class ComputerListComponent implements OnInit {
       }
     }
     this.loadComputerList();
+  }
+
+  searchComputers() {
+    this.search = this.computerSearchForm.get('name').value;
+    if (this.search === '') {
+      this.search = null;
+    }
+    this.limit = '0';
+    this.loadComputerList();
+  }
+
+  setPaginatorTotal() {
+    if (this.search !== null) {
+      this._computerService.getComputerSearchCount(this.search).subscribe(nb => {
+        this.nb_computers = nb;
+      });
+    } else {
+      this._computerService.getComputerCount().subscribe(nb => {
+        this.nb_computers = nb;
+      });
+    }
   }
 }
