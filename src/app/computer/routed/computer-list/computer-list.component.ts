@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Computer } from '../../shared/computer.model';
 import { ComputerService } from '../../shared/computer.service';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/user/shared/user.service';
 
 @Component({
   selector: 'app-computer-list',
@@ -12,11 +14,17 @@ export class ComputerListComponent implements OnInit {
   computers: Computer[];
 
   constructor(
-    private _computerService: ComputerService
+    private _computerService: ComputerService,
+    private _userService: UserService,
+    private _router: Router
     ) { }
 
   ngOnInit() {
-    this._computerService.getAllComputers().subscribe(computers => this.computers = computers);
+    this._computerService.getAllComputers().subscribe(computers => this.computers = computers,
+      () => {
+        this._userService.logout();
+        this._router.navigate(['/login']);
+      });
   }
 
   suppress(computer: Computer) {

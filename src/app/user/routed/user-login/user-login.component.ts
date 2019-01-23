@@ -40,7 +40,7 @@ export class UserLoginComponent implements OnInit {
         const jwt = resp.headers.get('authorization');
         this._userService.saveToken(jwt);
         this._router.navigate(['/']);
-      }, err => {
+      }, () => {
         this.mode = true;
       });
   }

@@ -3,5 +3,6 @@
   <a mat-button color="basic" [routerLink]="['/companies','create']">Create company</a>
   <a mat-button color="basic" [routerLink]="['/computers','create']">Create computer</a>
   <a mat-button color="basic" [routerLink]="['/registration']">Registration</a>
-  <a mat-button color="basic" [routerLink]="['/login']">Login</a>
+  <a mat-button color="basic" (click)="logout()" [routerLink]="['/login']">Login</a>
+  <a mat-button color="basic" (click)="logout()" [routerLink]="['/']">Logout</a>
 </mat-toolbar>

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Company } from './company.model';
 import { Observable } from 'rxjs';
+import { UserService } from 'src/app/user/shared/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,10 @@ import { Observable } from 'rxjs';
 export class CompanyService {
   SERVER_URL = 'http://localhost:8080/webapp/Company';
 
-  constructor(private _httpClient: HttpClient) {}
+  constructor(
+    private _httpClient: HttpClient,
+    private _userService: UserService
+  ) {}
 
   getAllCompanies(): Observable<Company[]> {
     return this._httpClient.get<Company[]>(this.SERVER_URL);
@@ -23,6 +27,9 @@ export class CompanyService {
     offset: string
   ): Observable<Company[]> {
     return this._httpClient.get<Company[]>(`${this.SERVER_URL}`, {
+      headers: new HttpHeaders({
+        authorization: this._userService.getToken()
+      }),
       params: new HttpParams()
         .set('order', order_by)
         .set('type', type_ascend)
@@ -33,25 +40,50 @@ export class CompanyService {
   }
 
   getCompany(id: string): Observable<Company> {
-    return this._httpClient.get<Company>(`${this.SERVER_URL}/${id}`);
+    return this._httpClient.get<Company>(`${this.SERVER_URL}/${id}`, {
+      headers: new HttpHeaders({
+        authorization: this._userService.getToken()
+      })
+    });
   }
 
   getCompanyCount(): Observable<number> {
-    return this._httpClient.get<number>(`${this.SERVER_URL}/count`);
+    return this._httpClient.get<number>(`${this.SERVER_URL}/count`, {
+      headers: new HttpHeaders({
+        authorization: this._userService.getToken()
+      })
+    });
   }
 
   postCompany(company: Company): Observable<Company> {
-    return this._httpClient.post<Company>(`${this.SERVER_URL}/create`, company);
+    return this._httpClient.post<Company>(
+      `${this.SERVER_URL}/create`,
+      company,
+      {
+        headers: new HttpHeaders({
+          authorization: this._userService.getToken()
+        })
+      }
+    );
   }
 
   putCompany(company: Company, id: string): Observable<Company> {
     return this._httpClient.put<Company>(
       `${this.SERVER_URL}/update/${id}`,
-      company
+      company,
+      {
+        headers: new HttpHeaders({
+          authorization: this._userService.getToken()
+        })
+      }
     );
   }
 
   deleteCompany(id: number): Observable<Company> {
-    return this._httpClient.delete<Company>(`${this.SERVER_URL}/${id}`);
+    return this._httpClient.delete<Company>(`${this.SERVER_URL}/${id}`, {
+      headers: new HttpHeaders({
+        authorization: this._userService.getToken()
+      })
+    });
   }
 }

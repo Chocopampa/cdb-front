@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
   SERVER_URL = 'http://localhost:8080/webapp';
-  jwtToken = null;
 
   constructor(
     private _httpClient: HttpClient
@@ -22,11 +21,15 @@ export class UserService {
     return this._httpClient.post<any>(`${this.SERVER_URL}/login`, user, {observe: 'response'});
   }
 
-  saveToken(jwt: string) {
-    localStorage.setItem('jwt', jwt);
+  logout() {
+    localStorage.removeItem('jwt');
   }
 
-  loadToken() {
-    this.jwtToken = localStorage.getItem('jwt');
+  getToken() {
+    return localStorage.getItem('jwt');
+  }
+
+  saveToken(jwt: string) {
+    localStorage.setItem('jwt', jwt);
   }
 }
