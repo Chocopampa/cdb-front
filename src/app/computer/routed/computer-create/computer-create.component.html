@@ -1,41 +1,64 @@
-<div class="example-container">
-  <p>
-    <mat-form-field>
-      <input matInput placeholder="Computer Name" [(ngModel)]="computer.name" />
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field>
-      <input
-        matInput
-        placeholder="Introduced Date"
-        [(ngModel)]="computer.introduced"
-      />
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field>
-      <input
-        matInput
-        placeholder="Discontinued Date"
-        [(ngModel)]="computer.discontinued"
-      />
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field>
-      <input
-        matInput
-        placeholder="Company  ID"
-        [(ngModel)]="computer.companyId"
-      />
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="postComputer()">
-        Create
-      </button>
-    </mat-card-actions>
-  </p>
+<header class="docs-header-background">
+  <div class="header-section">
+    <div class="header-headline"><h1 class="mat-h1">Create Computer</h1></div>
+  </div>
+</header>
+
+<div class="form-section">
+  <div class="myform-row">
+    <form
+      class="example-container"
+      [formGroup]="createComputerForm"
+      (submit)="postComputer()"
+    >
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Computer Name"
+          formControlName="computerName"
+        />
+        <mat-error
+          *ngFor="let validation of account_validation_messages.computerName"
+        >
+          <mat-error
+            class="error-message"
+            *ngIf="
+              createComputerForm
+                .get('computerName')
+                .hasError(validation.type) &&
+              (createComputerForm.get('computerName').dirty ||
+                createComputerForm.get('computerName').touched)
+            "
+            >{{ validation.message }}</mat-error
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="pickerIntro" placeholder="Introduced date" formControlName="introduced" />
+        <mat-datepicker-toggle matSuffix [for]="pickerIntro"></mat-datepicker-toggle>
+        <mat-datepicker #pickerIntro></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="pickerDiscon" placeholder="Discontinued date" formControlName="discontinued" />
+        <mat-datepicker-toggle matSuffix [for]="pickerDiscon"></mat-datepicker-toggle>
+        <mat-datepicker #pickerDiscon></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Company  ID" formControlName="companyId" />
+      </mat-form-field>
+      <mat-card-actions>
+        <div class="button-onright">
+          <button
+            class="submit-btn"
+            color="primary"
+            mat-raised-button
+            type="submit"
+            [disabled]="!createComputerForm.valid"
+          >
+            Create Computer
+          </button>
+        </div>
+      </mat-card-actions>
+    </form>
+  </div>
 </div>

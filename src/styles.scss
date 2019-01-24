@@ -2,3 +2,41 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.button-onright {
+  text-align: right;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.myform-row {
+  width: 30%;
+}
+
+.docs-header-background {
+  background: rgb(63, 81, 181);
+}
+
+.header-section {
+  text-align: center;
+  padding-top: 8%;
+  padding-bottom: 5%;
+}
+
+.header-headline {
+  color: white;
+}
+
+.form-section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-top: 5%;
+}
+
+.error-card {
+  border: 2px solid #d93025;
+  color: #d93025;
+  margin-bottom: 2%;
+}

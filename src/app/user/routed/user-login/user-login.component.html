@@ -1,7 +1,14 @@
-<h1 class="mat-h1">
-  Authentification
-  <h1>
-    <mat-card *ngIf="mode">This User is a wrong user</mat-card>
+<header class="docs-header-background">
+  <div class="header-section">
+    <div class="header-headline"><h1 class="mat-h1">Authentication</h1></div>
+  </div>
+</header>
+
+<div class="form-section">
+  <div class="myform-row">
+    <mat-card class="error-card" *ngIf="mode"
+      >Incorrect password or username</mat-card
+    >
     <form
       class="example-container"
       [formGroup]="loginForm"
@@ -14,6 +21,19 @@
           type="text"
           formControlName="username"
         />
+        <mat-error
+          *ngFor="let validation of account_validation_messages.username"
+        >
+          <mat-error
+            class="error-message"
+            *ngIf="
+              loginForm.get('username').hasError(validation.type) &&
+              (loginForm.get('username').dirty ||
+                loginForm.get('username').touched)
+            "
+            >{{ validation.message }}</mat-error
+          >
+        </mat-error>
       </mat-form-field>
       <mat-form-field>
         <input
@@ -25,18 +45,38 @@
         <mat-icon matSuffix (click)="hide = !hide">{{
           hide ? 'visibility_off' : 'visibility'
         }}</mat-icon>
+        <mat-error
+          *ngFor="let validation of account_validation_messages.password"
+        >
+          <mat-error
+            class="error-message"
+            *ngIf="
+              loginForm.get('password').hasError(validation.type) &&
+              (loginForm.get('password').dirty ||
+                loginForm.get('password').touched)
+            "
+            >{{ validation.message }}</mat-error
+          >
+        </mat-error>
       </mat-form-field>
-      <button
-        class="submit-btn"
-        color="primary"
-        mat-raised-button
-        type="submit"
-      >
-        Login
-      </button>
-      <button class="submit-btn" color="primary" mat-raised-button>
-        Register
-      </button>
+      <div class="button-div">
+        <div class="button-register">
+          <button [routerLink]="['/registration']" mat-flat-button>
+            Create an account
+          </button>
+        </div>
+        <div class="button-login">
+          <button
+            class="submit-btn"
+            color="primary"
+            mat-raised-button
+            type="submit"
+            [disabled]="!loginForm.valid"
+          >
+            Login
+          </button>
+        </div>
+      </div>
     </form>
-  </h1>
-</h1>
+  </div>
+</div>

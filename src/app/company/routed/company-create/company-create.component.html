@@ -1,8 +1,49 @@
-<div class="example-container">
-  <mat-form-field>
-    <input matInput placeholder="Name" [(ngModel)]="company.name"/>
-  </mat-form-field>
-  <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="postCompany()">Create</button>
-  </mat-card-actions>
+<header class="docs-header-background">
+  <div class="header-section">
+    <div class="header-headline"><h1 class="mat-h1">Create Company</h1></div>
+  </div>
+</header>
+
+<div class="form-section">
+  <div class="myform-row">
+    <form
+      class="example-container"
+      [formGroup]="createCompanyForm"
+      (submit)="postCompany()"
+    >
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Company Name"
+          formControlName="companyName"
+        />
+        <mat-error
+          *ngFor="let validation of account_validation_messages.companyName"
+        >
+          <mat-error
+            class="error-message"
+            *ngIf="
+              createCompanyForm.get('companyName').hasError(validation.type) &&
+              (createCompanyForm.get('companyName').dirty ||
+                createCompanyForm.get('companyName').touched)
+            "
+            >{{ validation.message }}</mat-error
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-card-actions>
+        <div class="button-onright">
+          <button
+            class="submit-btn"
+            color="primary"
+            mat-raised-button
+            type="submit"
+            [disabled]="!createCompanyForm.valid"
+          >
+            Create Company
+          </button>
+        </div>
+      </mat-card-actions>
+    </form>
+  </div>
 </div>
