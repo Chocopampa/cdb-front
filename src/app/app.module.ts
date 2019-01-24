@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,10 +13,7 @@ import { ComputerModule } from './computer/computer.module';
 import { UserModule } from './user/user.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent
-  ],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,7 +25,11 @@ import { UserModule } from './user/user.module';
     HttpClientModule,
     DashboardModule
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: getCurentLocale() }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
+
+export function getCurentLocale(): string {
+  return localStorage.getItem('Language') || 'en';
+}

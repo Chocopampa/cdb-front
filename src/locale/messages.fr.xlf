@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="searchButton" datatype="html">
+        <source>Search</source>
+        <target>Rechercher</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/company/routed/company-list/company-list.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/computer/routed/computer-list/computer-list.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tableColumnName" datatype="html">
+        <source>Name</source>
+        <target>Nom</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/company/routed/company-list/company-list.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/computer/routed/computer-list/computer-list.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deleteButton" datatype="html">
+        <source>
+        Delete selection
+      </source>
+        <target>Supprimer la sélection</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/company/routed/company-list/company-list.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/computer/routed/computer-list/computer-list.component.html</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tableColumnIntroduced" datatype="html">
+        <source>
+      Introduced Date
+    </source>
+        <target>Date de mise en service</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/computer/routed/computer-list/computer-list.component.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tableColumnDiscontinued" datatype="html">
+        <source>
+      Discontinued Date
+    </source>
+        <target>Date d'arrêt</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/computer/routed/computer-list/computer-list.component.html</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tableColumnCompanyName" datatype="html">
+        <source>
+      Company Name
+    </source>
+        <target>Nom de l'entreprise</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/computer/routed/computer-list/computer-list.component.html</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="companiesButton" datatype="html">
+        <source>
+    Companies
+  </source>
+        <target>Entreprises</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/dashboard/dashboard-content/dashboard-content.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="computersButton" datatype="html">
+        <source>
+    Computers
+  </source>
+        <target>Ordinateurs</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/dashboard/dashboard-content/dashboard-content.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="rootLinkTitle" datatype="html">
+        <source>CDB - Front</source>
+        <target>CDB - Front</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createCompanyButton" datatype="html">
+        <source>Create company</source>
+        <target>Créer une entreprise</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createComputerButton" datatype="html">
+        <source>Create computer</source>
+        <target>Créer un ordinateur</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="registrationButton" datatype="html">
+        <source>Registration</source>
+        <target>Inscription</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="loginButton" datatype="html">
+        <source>Login</source>
+        <target>Se connecter</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/routed/user-login/user-login.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="logoutButton" datatype="html">
+        <source>Logout</source>
+        <target>Se déconnecter</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createButton" datatype="html">
+        <source>Create</source>
+        <target>Créer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/company/routed/company-create/company-create.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/computer/routed/computer-create/computer-create.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="updateButton" datatype="html">
+        <source>
+      Update
+    </source>
+        <target>Mettre à jour</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/company/routed/company-update/company-update.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/computer/routed/computer-update/computer-update.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authenticationTitle" datatype="html">
+        <source>Authentication</source>
+        <target>Authentification</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/routed/user-login/user-login.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="wrongUserErrorMessage" datatype="html">
+        <source>This User is a wrong user</source>
+        <target>Mauvais nom d'utilisateur ou mauvais mot de passe</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/routed/user-login/user-login.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="registerButton" datatype="html">
+        <source>Register</source>
+        <target>S'enregistrer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/routed/user-login/user-login.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

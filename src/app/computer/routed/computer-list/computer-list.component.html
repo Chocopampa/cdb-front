@@ -3,7 +3,7 @@
     <input matInput placeholder="Name" formControlName="name" />
   </mat-form-field>
   <mat-card-actions>
-    <button mat-raised-button color="primary" type="submit">Search</button>
+    <button mat-raised-button i18n="@@searchButton" color="primary" type="submit">Search</button>
   </mat-card-actions>
 </form>
 
@@ -35,14 +35,7 @@
   </ng-container>
 
   <ng-container matColumnDef="name">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-      (click)="orderBy('name')"
-    >
-      Name
-    </th>
-    <th mat-header-cell *matHeaderCellDef (click)="orderBy('name')">Name</th>
+    <th mat-header-cell *matHeaderCellDef i18n="@@tableColumnName" (click)="orderBy('name')">Name</th>
     <div *ngFor="let computer of computers">
       <td
         mat-cell
@@ -55,7 +48,7 @@
   </ng-container>
 
   <ng-container matColumnDef="introduced">
-    <th mat-header-cell *matHeaderCellDef (click)="orderBy('introduced')">
+    <th mat-header-cell *matHeaderCellDef i18n="@@tableColumnIntroduced" (click)="orderBy('introduced')">
       Introduced Date
     </th>
     <div *ngFor="let computer of computers">
@@ -64,7 +57,7 @@
   </ng-container>
 
   <ng-container matColumnDef="discontinued">
-    <th mat-header-cell *matHeaderCellDef (click)="orderBy('discontinued')">
+    <th mat-header-cell *matHeaderCellDef i18n="@@tableColumnDiscontinued" (click)="orderBy('discontinued')">
       Discontinued Date
     </th>
     <div *ngFor="let computer of computers">
@@ -73,7 +66,7 @@
   </ng-container>
 
   <ng-container matColumnDef="company_name">
-    <th mat-header-cell *matHeaderCellDef (click)="orderBy('company')">
+    <th mat-header-cell *matHeaderCellDef i18n="@@tableColumnCompanyName" (click)="orderBy('company')">
       Company Name
     </th>
     <div *ngFor="let computer of computers">
@@ -83,7 +76,13 @@
 
   <ng-container matColumnDef="suppress">
     <th mat-header-cell *matHeaderCellDef>
-      <button *ngIf="userService.isAdmin()" mat-raised-button color="primary" (click)="suppress()">
+      <button
+        *ngIf="userService.isAdmin()"
+        mat-raised-button
+        color="primary"
+        (click)="suppress()"
+        i18n="@@deleteButton"
+      >
         Delete selection
       </button>
     </th>

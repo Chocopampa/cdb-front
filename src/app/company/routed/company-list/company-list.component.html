@@ -3,7 +3,7 @@
     <input matInput placeholder="Name" formControlName="name" />
   </mat-form-field>
   <mat-card-actions>
-    <button mat-raised-button color="primary" type="submit">Search</button>
+    <button mat-raised-button i18n="@@searchButton" color="primary" type="submit">Search</button>
   </mat-card-actions>
 </form>
 
@@ -33,7 +33,7 @@
   </ng-container>
 
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef (click)="orderBy('name')">Name</th>
+    <th mat-header-cell *matHeaderCellDef i18n="@@tableColumnName" (click)="orderBy('name')">Name</th>
     <div *ngFor="let company of companies">
       <td mat-cell *matCellDef="let company"
               [routerLink]="['/companies', 'update', company.id]"
@@ -43,7 +43,7 @@
 
   <ng-container matColumnDef="suppress">
     <th mat-header-cell *matHeaderCellDef>
-      <button mat-raised-button color="primary" (click)="suppress()">
+      <button mat-raised-button color="primary" i18n="@@deleteButton" (click)="suppress()">
         Delete selection
       </button>
     </th>
