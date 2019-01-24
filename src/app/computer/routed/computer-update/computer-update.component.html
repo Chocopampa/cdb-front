@@ -1,22 +1,26 @@
 <div class="example-container">
   <form [formGroup]="computerForm" (submit)="postChanges()">
     <mat-form-field>
-      <input matInput placeholder="Name" formControlName="name" />
+      <input matInput
+        i18n-placeholder="@@name" placeholder="Name" formControlName="name" />
     </mat-form-field>
     <mat-form-field>
       <input
         matInput
+        i18n-placeholder="@@introduced"
         placeholder="Introduced date"
         formControlName="introduced"
       /> </mat-form-field
     ><mat-form-field>
       <input
         matInput
+        i18n-placeholder="@@discontinued"
         placeholder="Discontinued date"
         formControlName="discontinued"
       /> </mat-form-field
     ><mat-form-field>
-      <input matInput placeholder="Company id" formControlName="id_company" />
+      <input matInput
+        i18n-placeholder="@@companyId" placeholder="Company id" formControlName="id_company" />
     </mat-form-field>
     <mat-card-actions>
       <button mat-raised-button color="primary" i18n="@@updateButton" type="submit">Update</button>

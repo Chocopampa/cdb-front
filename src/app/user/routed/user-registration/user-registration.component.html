@@ -1,6 +1,7 @@
 <form class="example-container" [formGroup]="userForm" (submit)="postUser()">
   <mat-form-field>
-    <input matInput placeholder="Username" formControlName="username" />
+    <input matInput
+    i18n-placeholder="@@username" placeholder="Username" formControlName="username" />
     <mat-error *ngFor="let validation of account_validation_messages.username">
       <mat-error
         class="error-message"
@@ -16,6 +17,7 @@
   <mat-form-field>
     <input
       matInput
+    i18n-placeholder="@@passwordEnter"
       placeholder="Enter your password"
       [type]="hide ? 'password' : 'text'"
       formControlName="password"
@@ -38,6 +40,7 @@
   <mat-form-field>
     <input
       matInput
+    i18n-placeholder="@@passwordConfirm"
       placeholder="Confirm password"
       [type]="hideConfirmPassword ? 'password' : 'text'"
       formControlName="confirmPassword"
@@ -46,7 +49,8 @@
     <mat-icon matSuffix (click)="hideConfirmPassword = !hideConfirmPassword">{{
       hideConfirmPassword ? 'visibility_off' : 'visibility'
     }}</mat-icon>
-    <mat-error *ngIf="userForm.hasError('notSame')">
+    <mat-error *ngIf="userForm.hasError('notSame')"
+    i18n="@@passwordNotMatching">
       Passwords do not match
     </mat-error>
   </mat-form-field>
@@ -57,6 +61,7 @@
     mat-raised-button
     type="submit"
     [disabled]="!userForm.valid"
+    i18n="@@submit"
   >
     Submit
   </button>

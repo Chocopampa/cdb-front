@@ -1,6 +1,7 @@
 <form [formGroup]="computerSearchForm" (submit)="searchComputers()">
   <mat-form-field>
-    <input matInput placeholder="Name" formControlName="name" />
+    <input matInput
+        i18n-placeholder="@@name" placeholder="Name" formControlName="name" />
   </mat-form-field>
   <mat-card-actions>
     <button mat-raised-button i18n="@@searchButton" color="primary" type="submit">Search</button>
@@ -35,7 +36,7 @@
   </ng-container>
 
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef i18n="@@tableColumnName" (click)="orderBy('name')">Name</th>
+    <th mat-header-cell *matHeaderCellDef i18n="@@name" (click)="orderBy('name')">Name</th>
     <div *ngFor="let computer of computers">
       <td
         mat-cell
@@ -48,7 +49,7 @@
   </ng-container>
 
   <ng-container matColumnDef="introduced">
-    <th mat-header-cell *matHeaderCellDef i18n="@@tableColumnIntroduced" (click)="orderBy('introduced')">
+    <th mat-header-cell *matHeaderCellDef i18n="@@introduced" (click)="orderBy('introduced')">
       Introduced Date
     </th>
     <div *ngFor="let computer of computers">
@@ -57,7 +58,7 @@
   </ng-container>
 
   <ng-container matColumnDef="discontinued">
-    <th mat-header-cell *matHeaderCellDef i18n="@@tableColumnDiscontinued" (click)="orderBy('discontinued')">
+    <th mat-header-cell *matHeaderCellDef i18n="@@discontinued" (click)="orderBy('discontinued')">
       Discontinued Date
     </th>
     <div *ngFor="let computer of computers">
@@ -66,7 +67,7 @@
   </ng-container>
 
   <ng-container matColumnDef="company_name">
-    <th mat-header-cell *matHeaderCellDef i18n="@@tableColumnCompanyName" (click)="orderBy('company')">
+    <th mat-header-cell *matHeaderCellDef i18n="@@companyName" (click)="orderBy('company')">
       Company Name
     </th>
     <div *ngFor="let computer of computers">
