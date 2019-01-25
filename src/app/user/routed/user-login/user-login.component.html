@@ -6,9 +6,8 @@
 
 <div class="form-section">
   <div class="myform-row">
-    <mat-card class="error-card" *ngIf="mode" i18n="@@wrongUserErrorMessage"
-      >Incorrect password or username</mat-card
-    >
+    <mat-card class="error-card error-card-visible" *ngIf="mode" i18n="@@wrongUserErrorMessage">Incorrect password or username</mat-card>
+    <mat-card class="error-card error-card-invisible" *ngIf="!mode" i18n="@@wrongUserErrorMessage">Incorrect password or username</mat-card>
     <form
       class="example-container"
       [formGroup]="loginForm"
