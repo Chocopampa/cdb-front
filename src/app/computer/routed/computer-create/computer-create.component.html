@@ -1,13 +1,15 @@
 <div class="example-container">
   <p>
     <mat-form-field>
-      <input matInput placeholder="Computer Name" [(ngModel)]="computer.name" />
+      <input matInput
+      i18n-placeholder="@@name" placeholder="Computer Name" [(ngModel)]="computer.name" />
     </mat-form-field>
   </p>
   <p>
     <mat-form-field>
       <input
         matInput
+        i18n-placeholder="@@introduced"
         placeholder="Introduced Date"
         [(ngModel)]="computer.introduced"
       />
@@ -17,6 +19,7 @@
     <mat-form-field>
       <input
         matInput
+        i18n-placeholder="@@discontinued"
         placeholder="Discontinued Date"
         [(ngModel)]="computer.discontinued"
       />
@@ -26,6 +29,7 @@
     <mat-form-field>
       <input
         matInput
+        i18n-placeholder="@@companyId"
         placeholder="Company  ID"
         [(ngModel)]="computer.companyId"
       />
@@ -33,7 +37,7 @@
   </p>
   <p>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="postComputer()">
+      <button mat-raised-button color="primary" i18n="@@createButton" (click)="postComputer()">
         Create
       </button>
     </mat-card-actions>
