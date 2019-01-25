@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ComputerModule } from './computer/computer.module';
 import { UserModule } from './user/user.module';
+import { DateAdapter } from '@angular/material/core';
+import { CustomDateAdapter } from './custom-material/CustomDateAdaptater';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -25,7 +27,13 @@ import { UserModule } from './user/user.module';
     HttpClientModule,
     DashboardModule
   ],
-  providers: [{ provide: LOCALE_ID, useValue: getCurentLocale() }],
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: CustomDateAdapter
+    },
+    { provide: LOCALE_ID, useValue: getCurentLocale() }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

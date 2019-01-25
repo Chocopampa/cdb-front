@@ -57,11 +57,12 @@ export class CompanyService {
     });
   }
 
-  postCompany(company: Company): Observable<Company> {
-    return this._httpClient.post<Company>(
+  postCompany(company: Company) {
+    return this._httpClient.post<any>(
       `${this.SERVER_URL}/create`,
       company,
       {
+        observe: 'response',
         headers: new HttpHeaders({
           authorization: this._userService.getToken()
         })

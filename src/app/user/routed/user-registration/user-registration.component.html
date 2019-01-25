@@ -1,68 +1,90 @@
-<form class="example-container" [formGroup]="userForm" (submit)="postUser()">
-  <mat-form-field>
-    <input matInput
-    i18n-placeholder="@@username" placeholder="Username" formControlName="username" />
-    <mat-error *ngFor="let validation of account_validation_messages.username">
-      <mat-error
-        class="error-message"
-        *ngIf="
-          userForm.get('username').hasError(validation.type) &&
-          (userForm.get('username').dirty || userForm.get('username').touched)
-        "
-        >{{ validation.message }}</mat-error
-      >
-    </mat-error>
-  </mat-form-field>
+<header class="docs-header-background">
+  <div class="header-section">
+    <div class="header-headline"><h1 class="mat-h1">Registration</h1></div>
+  </div>
+</header>
 
-  <mat-form-field>
-    <input
-      matInput
-    i18n-placeholder="@@passwordEnter"
-      placeholder="Enter your password"
-      [type]="hide ? 'password' : 'text'"
-      formControlName="password"
-    />
-    <mat-icon matSuffix (click)="hide = !hide">{{
-      hide ? 'visibility_off' : 'visibility'
-    }}</mat-icon>
-    <mat-error *ngFor="let validation of account_validation_messages.password">
-      <mat-error
-        class="error-message"
-        *ngIf="
-          userForm.get('password').hasError(validation.type) &&
-          (userForm.get('password').dirty || userForm.get('password').touched)
-        "
-        >{{ validation.message }}</mat-error
-      >
-    </mat-error>
-  </mat-form-field>
+<div class="form-section">
+  <div class="myform-row">
+    <form
+      class="example-container"
+      [formGroup]="userForm"
+      (submit)="postUser()"
+    >
+      <mat-form-field>
+        <input matInput i18n-placeholder="@@username" placeholder="Username" formControlName="username" />
+        <mat-error
+          *ngFor="let validation of account_validation_messages.username"
+        >
+          <mat-error
+            class="error-message"
+            *ngIf="
+              userForm.get('username').hasError(validation.type) &&
+              (userForm.get('username').dirty ||
+                userForm.get('username').touched)
+            "
+            >{{ validation.message }}</mat-error
+          >
+        </mat-error>
+      </mat-form-field>
 
-  <mat-form-field>
-    <input
-      matInput
-    i18n-placeholder="@@passwordConfirm"
-      placeholder="Confirm password"
-      [type]="hideConfirmPassword ? 'password' : 'text'"
-      formControlName="confirmPassword"
-      [errorStateMatcher]="matcher"
-    />
-    <mat-icon matSuffix (click)="hideConfirmPassword = !hideConfirmPassword">{{
-      hideConfirmPassword ? 'visibility_off' : 'visibility'
-    }}</mat-icon>
-    <mat-error *ngIf="userForm.hasError('notSame')"
-    i18n="@@passwordNotMatching">
-      Passwords do not match
-    </mat-error>
-  </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          i18n-placeholder="@@passwordEnter"
+          placeholder="Enter your password"
+          [type]="hide ? 'password' : 'text'"
+          formControlName="password"
+        />
+        <mat-icon matSuffix (click)="hide = !hide">{{
+          hide ? 'visibility_off' : 'visibility'
+        }}</mat-icon>
+        <mat-error
+          *ngFor="let validation of account_validation_messages.password"
+        >
+          <mat-error
+            class="error-message"
+            *ngIf="
+              userForm.get('password').hasError(validation.type) &&
+              (userForm.get('password').dirty ||
+                userForm.get('password').touched)
+            "
+            >{{ validation.message }}</mat-error
+          >
+        </mat-error>
+      </mat-form-field>
 
-  <button
-    class="submit-btn"
-    color="primary"
-    mat-raised-button
-    type="submit"
-    [disabled]="!userForm.valid"
-    i18n="@@submit"
-  >
-    Submit
-  </button>
-</form>
+      <mat-form-field>
+        <input
+          matInput
+          i18n-placeholder="@@passwordConfirm"
+          placeholder="Confirm password"
+          [type]="hideConfirmPassword ? 'password' : 'text'"
+          formControlName="confirmPassword"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-icon
+          matSuffix
+          (click)="hideConfirmPassword = !hideConfirmPassword"
+          >{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon
+        >
+        <mat-error *ngIf="userForm.hasError('notSame')"
+        i18n="@@passwordNotMatching">
+          Passwords do not match
+        </mat-error>
+      </mat-form-field>
+      <div class="button-onright">
+        <button
+          class="submit-btn"
+          color="primary"
+          mat-raised-button
+          type="submit"
+          i18n="@@submit"
+          [disabled]="!userForm.valid"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

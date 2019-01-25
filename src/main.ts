@@ -12,7 +12,9 @@ import { environment } from './environments/environment';
 if (environment.production) {
   enableProdMode();
 }
-
+if (localStorage.getItem('Language') === null) {
+  localStorage.setItem('Language', 'en');
+}
 declare const require;
 const translations = require(`raw-loader!./locale/messages.${localStorage.getItem(
   'Language'
