@@ -70,11 +70,12 @@ export class CompanyService {
     );
   }
 
-  putCompany(company: Company, id: string): Observable<Company> {
-    return this._httpClient.put<Company>(
+  putCompany(company: Company, id: string) {
+    return this._httpClient.put<any>(
       `${this.SERVER_URL}/update/${id}`,
       company,
       {
+        observe: 'response',
         headers: new HttpHeaders({
           authorization: this._userService.getToken()
         })

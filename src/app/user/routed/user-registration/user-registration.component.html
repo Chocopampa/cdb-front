@@ -12,19 +12,16 @@
       (submit)="postUser()"
     >
       <mat-form-field>
-        <input matInput i18n-placeholder="@@username" placeholder="Username" formControlName="username" />
+        <input
+          matInput
+          i18n-placeholder="@@username"
+          placeholder="Username"
+          formControlName="username"
+        />
         <mat-error
-          *ngFor="let validation of account_validation_messages.username"
+          *ngIf="userForm.get('username').hasError('required')"
         >
-          <mat-error
-            class="error-message"
-            *ngIf="
-              userForm.get('username').hasError(validation.type) &&
-              (userForm.get('username').dirty ||
-                userForm.get('username').touched)
-            "
-            >{{ validation.message }}</mat-error
-          >
+          User name is required
         </mat-error>
       </mat-form-field>
 
@@ -39,18 +36,11 @@
         <mat-icon matSuffix (click)="hide = !hide">{{
           hide ? 'visibility_off' : 'visibility'
         }}</mat-icon>
-        <mat-error
-          *ngFor="let validation of account_validation_messages.password"
-        >
-          <mat-error
-            class="error-message"
-            *ngIf="
-              userForm.get('password').hasError(validation.type) &&
-              (userForm.get('password').dirty ||
-                userForm.get('password').touched)
-            "
-            >{{ validation.message }}</mat-error
-          >
+        <mat-error *ngIf="userForm.get('password').hasError('required')">
+          Password is required
+        </mat-error>
+        <mat-error *ngIf="userForm.get('password').hasError('minlength')">
+          Password must be at least 8 characters long
         </mat-error>
       </mat-form-field>
 
@@ -68,8 +58,10 @@
           (click)="hideConfirmPassword = !hideConfirmPassword"
           >{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon
         >
-        <mat-error *ngIf="userForm.hasError('notSame')"
-        i18n="@@passwordNotMatching">
+        <mat-error
+          *ngIf="userForm.hasError('notSame')"
+          i18n="@@passwordNotMatching"
+        >
           Passwords do not match
         </mat-error>
       </mat-form-field>

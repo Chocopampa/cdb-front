@@ -21,17 +21,6 @@ export class UserRegistrationComponent implements OnInit {
   hideConfirmPassword = true;
   matcher: MyErrorStateMatcher;
 
-  account_validation_messages = {
-    username: [{ type: 'required', message: 'Username is required' }],
-    password: [
-      { type: 'required', message: 'Password is required' },
-      {
-        type: 'minlength',
-        message: 'Password must be at least 8 characters long'
-      }
-    ]
-  };
-
   constructor(private _userService: UserService, private _fb: FormBuilder) {}
 
   ngOnInit() {

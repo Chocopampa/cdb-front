@@ -60,11 +60,12 @@ export class ComputerService {
     });
   }
 
-  createComputer(computer: Computer): Observable<Computer> {
-    return this._httpClient.post<Computer>(
+  createComputer(computer: Computer) {
+    return this._httpClient.post<any>(
       `${this.SERVER_URL}/create`,
       computer,
       {
+        observe: 'response',
         headers: new HttpHeaders({
           authorization: this._userService.getToken()
         })
@@ -72,11 +73,12 @@ export class ComputerService {
     );
   }
 
-  updateComputer(computer: Computer): Observable<Computer> {
-    return this._httpClient.put<Computer>(
+  updateComputer(computer: Computer) {
+    return this._httpClient.put<any>(
       `${this.SERVER_URL}/update/${computer.id}`,
       computer,
       {
+        observe: 'response',
         headers: new HttpHeaders({
           authorization: this._userService.getToken()
         })

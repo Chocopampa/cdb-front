@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatIconModule,
     MatSnackBarModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule
   ],
   exports: [
     MatCardModule,
@@ -42,7 +44,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatPaginatorModule,
     MatIconModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule
   ]
 })
 export class CustomMaterialModule {}
