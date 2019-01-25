@@ -6,6 +6,9 @@
 
 <div class="form-section">
   <div class="myform-row">
+    <mat-card class="error-card" *ngIf="mode"
+      >Company not created, erreur: {{ error }} {{errorBody}}
+    </mat-card>
     <form
       class="example-container"
       [formGroup]="createCompanyForm"
@@ -19,17 +22,9 @@
           formControlName="companyName"
         />
         <mat-error
-          *ngFor="let validation of account_validation_messages.companyName"
+          *ngIf="createCompanyForm.get('companyName').hasError('required')"
         >
-          <mat-error
-            class="error-message"
-            *ngIf="
-              createCompanyForm.get('companyName').hasError(validation.type) &&
-              (createCompanyForm.get('companyName').dirty ||
-                createCompanyForm.get('companyName').touched)
-            "
-            >{{ validation.message }}</mat-error
-          >
+          Company name is required
         </mat-error>
       </mat-form-field>
       <mat-card-actions>
@@ -48,9 +43,4 @@
       </mat-card-actions>
     </form>
   </div>
-
-
-
-
-
-
+</div>

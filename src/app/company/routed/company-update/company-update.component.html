@@ -1,12 +1,42 @@
-<div class="example-container">
-  <form [formGroup]="companyForm" (submit)="updateCompany()">
-    <p>
+<header class="docs-header-background">
+  <div class="header-section">
+    <div class="header-headline"><h1 class="mat-h1">Update Company</h1></div>
+  </div>
+</header>
+
+<div class="form-section">
+  <div class="myform-row">
+    <mat-card class="error-card" *ngIf="mode"
+      >Company not updated, erreur: {{ error }} {{ errorBody }}
+    </mat-card>
+    <form
+      class="example-container"
+      [formGroup]="companyForm"
+      (submit)="updateCompany()"
+    >
       <mat-form-field>
-        <input matInput i18n-placeholder="@@name" placeholder="Company Name" formControlName="name">
+        <input
+          matInput
+          i18n-placeholder="@@name"
+          placeholder="Company Name"
+          formControlName="companyName"
+        />
+        <mat-error *ngIf="companyForm.get('companyName').hasError('required')">
+          Company name is required
+        </mat-error>
       </mat-form-field>
-    </p>
-    <button mat-raised-button color="primary" i18n="@@updateButton" type="submit">
-      Update
-    </button>
-  </form>
+      <div class="button-onright">
+        <button
+          class="submit-btn"
+          i18n="@@updateButton"
+          color="primary"
+          mat-raised-button
+          type="submit"
+          [disabled]="!companyForm.valid"
+        >
+          Update
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

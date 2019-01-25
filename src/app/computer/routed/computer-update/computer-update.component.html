@@ -1,29 +1,83 @@
-<div class="example-container">
-  <form [formGroup]="computerForm" (submit)="postChanges()">
-    <mat-form-field>
-      <input matInput
-        i18n-placeholder="@@name" placeholder="Name" formControlName="name" />
-    </mat-form-field>
-    <mat-form-field>
-      <input
-        matInput
-        i18n-placeholder="@@introduced"
-        placeholder="Introduced date"
-        formControlName="introduced"
-      /> </mat-form-field
-    ><mat-form-field>
-      <input
-        matInput
-        i18n-placeholder="@@discontinued"
-        placeholder="Discontinued date"
-        formControlName="discontinued"
-      /> </mat-form-field
-    ><mat-form-field>
-      <input matInput
-        i18n-placeholder="@@companyId" placeholder="Company id" formControlName="id_company" />
-    </mat-form-field>
-    <mat-card-actions>
-      <button mat-raised-button color="primary" i18n="@@updateButton" type="submit">Update</button>
-    </mat-card-actions>
-  </form>
+<header class="docs-header-background">
+  <div class="header-section">
+    <div class="header-headline"><h1 class="mat-h1">Update Computer</h1></div>
+  </div>
+</header>
+
+<div class="form-section">
+  <div class="myform-row">
+    <mat-card class="error-card" *ngIf="mode">
+      Computer not updated, erreur: {{erreur}} {{errorBody}}
+    </mat-card>
+    <form
+      class="example-container"
+      [formGroup]="computerForm"
+      (submit)="postChanges()">
+      <mat-form-field>
+        <input
+          matInput
+          i18n-placeholder="@@name"
+          placeholder="Name"
+          formControlName="computerName"/>
+        <mat-error *ngIf="computerForm.get('computerName').hasError('required')">
+          Computer name is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          [matDatepicker]="pickerIntro"
+          i18n-placeholder="@@introduced"
+          placeholder="Introduced date"
+          formControlName="introduced"
+          disabled
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="pickerIntro"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #pickerIntro disabled="false"></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          [matDatepicker]="pickerDiscon"
+          i18n-placeholder="@@discontinued"
+          placeholder="Discontinued date"
+          formControlName="discontinued"
+          disabled
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="pickerDiscon"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #pickerDiscon disabled="false"></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select
+          i18n-placeholder="@@companyId"
+          placeholder="Company  ID"
+          formControlName="companyId"
+        >
+          <mat-option *ngFor="let company of companyList" [value]="company.id">
+            {{ company.id }}. {{ company.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-card-actions>
+        <div class="button-onright">
+          <button
+            class="submit-btn"
+            color="primary"
+            i18n="@@updateButton"
+            mat-raised-button
+            type="submit"
+            [disabled]="!computerForm.valid"
+          >
+            Update
+          </button>
+        </div>
+      </mat-card-actions>
+    </form>
+  </div>
 </div>
