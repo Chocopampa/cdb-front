@@ -37,7 +37,7 @@
     <div *ngFor="let company of companies">
       <td mat-cell *matCellDef="let company"
               [routerLink]="['/companies', 'update', company.id]"
->{{ company.name }}</td>
+><div class="clickable">{{ company.name }}</div></td>
     </div>
   </ng-container>
 
