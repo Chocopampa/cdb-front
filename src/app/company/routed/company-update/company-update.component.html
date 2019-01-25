@@ -2,14 +2,11 @@
   <form [formGroup]="companyForm" (submit)="updateCompany()">
     <p>
       <mat-form-field>
-        <input matInput placeholder="Company Name" formControlName="name">
+        <input matInput i18n-placeholder="@@name" placeholder="Company Name" formControlName="name">
       </mat-form-field>
     </p>
-    <button mat-raised-button color="primary" type="submit">
-      Submit
-    </button>
-    <button mat-raised-button color="primary" (click)="showCompany()">
-      Show Company In Console
+    <button mat-raised-button color="primary" i18n="@@updateButton" type="submit">
+      Update
     </button>
   </form>
 </div>

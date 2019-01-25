@@ -1,12 +1,12 @@
 <div class="question">
-  <p>What do you want to display ?</p>
+  <p i18n="@@welcomeSentence">What do you want to display ?</p>
 </div>
 
 <div class="buttons">
-  <button mat-raised-button color="primary" *ngIf="userService.isAdmin()" [routerLink]="['/companies']">
+  <button mat-raised-button color="primary" i18n="@@companiesButton" *ngIf="userService.isAdmin()" [routerLink]="['/companies']">
     Companies
   </button>
-  <button mat-raised-button color="primary" [routerLink]="['/computers']">
+  <button mat-raised-button color="primary" i18n="@@computersButton" [routerLink]="['/computers']">
     Computers
   </button>
 </div>

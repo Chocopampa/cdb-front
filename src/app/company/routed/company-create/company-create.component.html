@@ -14,7 +14,8 @@
       <mat-form-field>
         <input
           matInput
-          placeholder="Company Name"
+          i18n-placeholder="@@name"
+          placeholder="Name"
           formControlName="companyName"
         />
         <mat-error
@@ -35,15 +36,21 @@
         <div class="button-onright">
           <button
             class="submit-btn"
+            i18n="@@createButton"
             color="primary"
             mat-raised-button
             type="submit"
             [disabled]="!createCompanyForm.valid"
           >
-            Create Company
+            Create
           </button>
         </div>
       </mat-card-actions>
     </form>
   </div>
-</div>
+
+
+
+
+
+

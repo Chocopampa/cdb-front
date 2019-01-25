@@ -14,6 +14,7 @@
       <mat-form-field>
         <input
           matInput
+          i18n-placeholder="@@name"
           placeholder="Computer Name"
           formControlName="computerName"
         />
@@ -34,31 +35,31 @@
         </mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput [matDatepicker]="pickerIntro" placeholder="Introduced date" formControlName="introduced" />
+        <input matInput [matDatepicker]="pickerIntro" i18n-placeholder="@@introduced" placeholder="Introduced date" formControlName="introduced" />
         <mat-datepicker-toggle matSuffix [for]="pickerIntro"></mat-datepicker-toggle>
         <mat-datepicker #pickerIntro></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
-        <input matInput [matDatepicker]="pickerDiscon" placeholder="Discontinued date" formControlName="discontinued" />
+        <input matInput [matDatepicker]="pickerDiscon" i18n-placeholder="@@discontinued" placeholder="Discontinued date" formControlName="discontinued" />
         <mat-datepicker-toggle matSuffix [for]="pickerDiscon"></mat-datepicker-toggle>
         <mat-datepicker #pickerDiscon></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Company  ID" formControlName="companyId" />
+        <input matInput placeholder="Company  ID" i18n-placeholder="@@companyId" formControlName="companyId" />
       </mat-form-field>
       <mat-card-actions>
         <div class="button-onright">
           <button
             class="submit-btn"
             color="primary"
+            i18n="@@createButton"
             mat-raised-button
             type="submit"
             [disabled]="!createComputerForm.valid"
           >
-            Create Computer
+            Create
           </button>
         </div>
       </mat-card-actions>
     </form>
   </div>
-</div>

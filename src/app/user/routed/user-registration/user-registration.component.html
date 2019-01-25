@@ -12,7 +12,7 @@
       (submit)="postUser()"
     >
       <mat-form-field>
-        <input matInput placeholder="Username" formControlName="username" />
+        <input matInput i18n-placeholder="@@username" placeholder="Username" formControlName="username" />
         <mat-error
           *ngFor="let validation of account_validation_messages.username"
         >
@@ -31,6 +31,7 @@
       <mat-form-field>
         <input
           matInput
+          i18n-placeholder="@@passwordEnter"
           placeholder="Enter your password"
           [type]="hide ? 'password' : 'text'"
           formControlName="password"
@@ -56,6 +57,7 @@
       <mat-form-field>
         <input
           matInput
+          i18n-placeholder="@@passwordConfirm"
           placeholder="Confirm password"
           [type]="hideConfirmPassword ? 'password' : 'text'"
           formControlName="confirmPassword"
@@ -66,7 +68,8 @@
           (click)="hideConfirmPassword = !hideConfirmPassword"
           >{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon
         >
-        <mat-error *ngIf="userForm.hasError('notSame')">
+        <mat-error *ngIf="userForm.hasError('notSame')"
+        i18n="@@passwordNotMatching">
           Passwords do not match
         </mat-error>
       </mat-form-field>
@@ -76,6 +79,7 @@
           color="primary"
           mat-raised-button
           type="submit"
+          i18n="@@submit"
           [disabled]="!userForm.valid"
         >
           Submit

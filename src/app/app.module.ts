@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,10 +15,7 @@ import { DateAdapter } from '@angular/material/core';
 import { CustomDateAdapter } from './custom-material/CustomDateAdaptater';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent
-  ],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -33,9 +30,14 @@ import { CustomDateAdapter } from './custom-material/CustomDateAdaptater';
   providers: [
     {
       provide: DateAdapter,
-      useClass: CustomDateAdapter,
+      useClass: CustomDateAdapter
     },
+    { provide: LOCALE_ID, useValue: getCurentLocale() }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
+
+export function getCurentLocale(): string {
+  return localStorage.getItem('Language') || 'en';
+}
