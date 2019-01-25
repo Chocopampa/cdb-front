@@ -1,0 +1,55 @@
+table {
+  width: 100%;
+}
+
+td, th {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.mat-column-select {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 1% !important;
+  width: 1% !important;
+}
+
+.mat-column-name {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 30% !important;
+  width: 30% !important;
+}
+
+.mat-column-introduced {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 10% !important;
+  width: 10% !important;
+}
+
+.mat-column-discontinued {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 10% !important;
+  width: 10% !important;
+}
+
+.mat-column-company_name {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 30% !important;
+  width: 30% !important;
+}
+
+.mat-column-suppress {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 19% !important;
+  width: 19% !important;
+}
+
+.table-container {
+  margin-top: 10px;
+  max-height: 300px;
+}

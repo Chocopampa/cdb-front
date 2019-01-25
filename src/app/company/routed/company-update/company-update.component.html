@@ -1,0 +1,15 @@
+<div class="example-container">
+  <form [formGroup]="companyForm" (submit)="updateCompany()">
+    <p>
+      <mat-form-field>
+        <input matInput placeholder="Company Name" formControlName="name">
+      </mat-form-field>
+    </p>
+    <button mat-raised-button color="primary" type="submit">
+      Submit
+    </button>
+    <button mat-raised-button color="primary" (click)="showCompany()">
+      Show Company In Console
+    </button>
+  </form>
+</div>

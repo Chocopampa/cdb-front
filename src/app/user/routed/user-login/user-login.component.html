@@ -1,0 +1,39 @@
+<body>
+  <div class="elements">
+    <h1 class="mat-h1">
+      Authentification
+      <h1>
+        <mat-card *ngIf="mode">This user is a wrong user</mat-card>
+        <form
+          class="example-container"
+          [formGroup]="loginForm"
+          (submit)="onLogin()"
+        >
+          Username
+          <mat-form-field>
+            <input
+              matInput
+              type="text"
+              formControlName="username"
+            />
+          </mat-form-field>
+          Password
+          <mat-form-field>
+            <input
+              matInput
+              [type]="hide ? 'password' : 'text'"
+              formControlName="password"
+            />
+            <mat-icon matSuffix (click)="hide = !hide">{{
+              hide ? 'visibility_off' : 'visibility'
+            }}</mat-icon>
+          </mat-form-field>
+          <div class="buttons">
+            <button class="button" style="margin-right: 5px" mat-raised-button type="submit">Login</button>
+            <button class="button" style="margin-left: 5px" mat-raised-button>Register</button>
+          </div>
+        </form>
+      </h1>
+    </h1>
+  </div>
+</body>

@@ -1,0 +1,8 @@
+<mat-toolbar class="header">
+  <span [routerLink]="['/dashboard']">CDB - Front</span>
+  <a mat-button color="basic" *ngIf="userService.isAdmin()" [routerLink]="['/companies','create']">Create company</a>
+  <a mat-button color="basic" *ngIf="userService.isAdmin()" [routerLink]="['/computers','create']">Create computer</a>
+  <a mat-button color="basic" [routerLink]="['/registration']">Registration</a>
+  <a mat-button color="basic" *ngIf="!userService.isConnected()" (click)="logout()" [routerLink]="['/login']">Login</a>
+  <a mat-button color="basic" *ngIf="userService.isConnected()" (click)="logout()" [routerLink]="['/']">Logout</a>
+</mat-toolbar>
