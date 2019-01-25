@@ -6,7 +6,7 @@
 
 <div class="form-section">
   <div class="myform-row">
-    <mat-card class="error-card" *ngIf="mode">Computer not created, erreur: {{erreur}} </mat-card>
+    <mat-card class="error-card" *ngIf="mode">Computer not created, erreur: {{erreur}} {{errorBody}} </mat-card>
     <form
       class="example-container"
       [formGroup]="createComputerForm"

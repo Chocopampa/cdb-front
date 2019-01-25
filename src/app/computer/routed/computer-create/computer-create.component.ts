@@ -9,6 +9,8 @@ import {
 } from '@angular/forms';
 import { Company } from 'src/app/company/shared/company.model';
 import { CompanyService } from 'src/app/company/shared/company.service';
+import { UserService } from 'src/app/user/shared/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-computer-create',
@@ -21,18 +23,27 @@ export class ComputerCreateComponent implements OnInit {
   companyList: Company[];
   mode: boolean;
   erreur: string;
+  errorBody: string;
 
   constructor(
     private _computerService: ComputerService,
     private _companyService: CompanyService,
-    private _fb: FormBuilder
+    private _userService: UserService,
+    private _fb: FormBuilder,
+    private _router: Router
   ) {}
 
   ngOnInit() {
     this.mode = false;
     this._companyService
       .getCompaniesSpecified(null, null, null, '0', '100')
-      .subscribe(companyList => (this.companyList = companyList));
+      .subscribe(
+        companyList => (this.companyList = companyList),
+        () => {
+          this._userService.logout();
+          this._router.navigate(['/login']);
+        }
+      );
     this.computer = new Computer();
     this.createComputerForm = this._fb.group({
       computerName: new FormControl('', Validators.required),
@@ -53,6 +64,7 @@ export class ComputerCreateComponent implements OnInit {
       () => {},
       err => {
         this.erreur = err.status;
+        this.errorBody = err.error.error;
         this.mode = true;
       }
     );

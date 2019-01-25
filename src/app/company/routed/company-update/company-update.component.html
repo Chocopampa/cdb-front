@@ -1,13 +1,13 @@
 <header class="docs-header-background">
   <div class="header-section">
-    <div class="header-headline"><h1 class="mat-h1">Create Company</h1></div>
+    <div class="header-headline"><h1 class="mat-h1">Update Company</h1></div>
   </div>
 </header>
 
 <div class="form-section">
   <div class="myform-row">
     <mat-card class="error-card" *ngIf="mode"
-      >Company not updated, erreur: {{ erreur }}
+      >Company not updated, erreur: {{ error }} {{ errorBody }}
     </mat-card>
     <form
       class="example-container"

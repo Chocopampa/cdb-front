@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ComputerService } from '../../shared/computer.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Computer } from '../../shared/computer.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Company } from 'src/app/company/shared/company.model';
 import { CompanyService } from 'src/app/company/shared/company.service';
+import { UserService } from 'src/app/user/shared/user.service';
 
 @Component({
   selector: 'app-computer-update',
@@ -16,11 +17,15 @@ export class ComputerUpdateComponent implements OnInit {
   computer: Computer;
   companyList: Company[];
   mode: boolean;
+  erreur: string;
+  errorBody: string;
 
   constructor(
     private _fb: FormBuilder,
     private _computerService: ComputerService,
     private _companyService: CompanyService,
+    private _userService: UserService,
+    private _router: Router,
     private _route: ActivatedRoute
   ) {}
 
@@ -45,7 +50,13 @@ export class ComputerUpdateComponent implements OnInit {
       });
       this._companyService
         .getCompaniesSpecified(null, null, null, '0', '100')
-        .subscribe(companyList => (this.companyList = companyList));
+        .subscribe(
+          companyList => (this.companyList = companyList),
+          () => {
+            this._userService.logout();
+            this._router.navigate(['/login']);
+          }
+        );
   }
 
   postChanges() {
@@ -56,9 +67,9 @@ export class ComputerUpdateComponent implements OnInit {
     this._computerService.updateComputer(this.computer).subscribe(
       () => {},
       err => {
-        if (err.status === 400) {
-          this.mode = true;
-        }
+        this.erreur = err.status;
+        this.errorBody = err.error.error;
+        this.mode = true;
       }
     );
   }

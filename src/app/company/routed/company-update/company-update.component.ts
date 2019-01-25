@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyService } from '../../shared/company.service';
+import { UserService } from 'src/app/user/shared/user.service';
 
 @Component({
   selector: 'app-company-update',
@@ -18,14 +19,16 @@ export class CompanyUpdateComponent implements OnInit {
   companyForm: FormGroup;
   company: Company;
   id: string;
-  erreur: string;
+  error: string;
   mode: boolean;
+  errorBody: string;
 
   constructor(
     private _route: ActivatedRoute,
     private _companyService: CompanyService,
     private _fb: FormBuilder,
-    private _router: Router
+    private _router: Router,
+    private _userService: UserService
   ) {
     this.id = this._route.snapshot.paramMap.get('id');
   }
@@ -36,10 +39,16 @@ export class CompanyUpdateComponent implements OnInit {
     this.companyForm = this._fb.group({
       companyName: new FormControl('', Validators.required)
     });
-    this._companyService.getCompany(this.id).subscribe(company => {
-      this.company = company;
-      this.companyForm.patchValue({ companyName: company.name });
-    });
+    this._companyService.getCompany(this.id).subscribe(
+      company => {
+        this.company = company;
+        this.companyForm.patchValue({ companyName: company.name });
+      },
+      () => {
+        this._userService.logout();
+        this._router.navigate(['/login']);
+      }
+    );
   }
 
   updateCompany() {
@@ -47,7 +56,8 @@ export class CompanyUpdateComponent implements OnInit {
     this._companyService.putCompany(this.company, this.id).subscribe(
       () => this._router.navigate(['/companies']),
       err => {
-        this.erreur = err.status;
+        this.error = err.status;
+        this.errorBody = err.error.error;
         this.mode = true;
       }
     );

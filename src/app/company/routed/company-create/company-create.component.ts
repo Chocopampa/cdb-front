@@ -17,8 +17,9 @@ import {
 export class CompanyCreateComponent implements OnInit {
   createCompanyForm: FormGroup;
   company: Company;
-  erreur: string;
+  error: string;
   mode: boolean;
+  errorBody: string;
 
   constructor(
     private _companyService: CompanyService,
@@ -38,7 +39,8 @@ export class CompanyCreateComponent implements OnInit {
     this._companyService.postCompany(this.company).subscribe(
       () => {},
       err => {
-        this.erreur = err.status;
+        this.error = err.status;
+        this.errorBody = err.error.error;
         this.mode = true;
       }
     );
