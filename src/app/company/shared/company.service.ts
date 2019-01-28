@@ -35,6 +35,17 @@ export class CompanyService {
     });
   }
 
+  getAllCompany(): Observable<Company[]> {
+    return this._httpClient.get<Company[]>(
+      `${this.SERVER_URL}/allCompanies`,
+      {
+        headers: new HttpHeaders({
+          authorization: this._userService.getToken()
+        })
+      }
+    );
+  }
+
   getCompany(id: string): Observable<Company> {
     return this._httpClient.get<Company>(`${this.SERVER_URL}/${id}`, {
       headers: new HttpHeaders({

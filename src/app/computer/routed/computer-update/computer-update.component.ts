@@ -49,7 +49,7 @@ export class ComputerUpdateComponent implements OnInit {
         });
       });
       this._companyService
-        .getCompaniesSpecified(null, null, null, '0', '100')
+        .getAllCompany()
         .subscribe(
           companyList => (this.companyList = companyList),
           () => {
@@ -64,13 +64,15 @@ export class ComputerUpdateComponent implements OnInit {
     this.computer.introduced = this.computerForm.get('introduced').value;
     this.computer.discontinued = this.computerForm.get('discontinued').value;
     this.computer.companyId = this.computerForm.get('companyId').value;
-    this._computerService.updateComputer(this.computer).subscribe(
-      () => {},
-      err => {
-        this.erreur = err.status;
-        this.errorBody = err.error.error;
-        this.mode = true;
-      }
-    );
+    this._computerService
+      .updateComputer(this.computer)
+      .subscribe(
+        () => this._router.navigate(['/computers']),
+        err => {
+          this.erreur = err.status;
+          this.errorBody = err.error.error;
+          this.mode = true;
+        }
+      );
   }
 }
