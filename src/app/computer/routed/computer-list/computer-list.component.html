@@ -1,3 +1,4 @@
+<div class="wrapper">
 <form [formGroup]="computerSearchForm" (submit)="searchComputers()">
   <mat-form-field>
     <input matInput
@@ -100,4 +101,4 @@
     *matRowDef="let row; columns: columnsNames"
     (click)="selection.toggle(row)"
   ></tr>
-</table>
+</table></div>

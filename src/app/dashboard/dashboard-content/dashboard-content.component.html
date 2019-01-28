@@ -1,25 +1,15 @@
 <div class="wrapper">
   <div class="elements">
     <div class="question">
-      <p i18n="@@welcomeSentence">What do you want to display ?</p>
+      <h1 i18n="@@welcomeSentence">Welcome to Computer DataBase!</h1>
     </div>
 
     <div class="buttons">
-      <button
-        class="button button1"
-        i18n="@@computersButton"
-        mat-button
-        [routerLink]="['/computers']"
-      >
-        <mat-icon>computer</mat-icon>
+      <button class="button button1" mat-button [routerLink]="['/computers']" i18n="@@computersButton">
+        computer
       </button>
-      <button
-        class="button button2"
-        i18n="@@companiesButton"
-        mat-button
-        [routerLink]="['/companies']"
-      >
-        <mat-icon>business</mat-icon>
+      <button class="button button2" mat-button [routerLink]="['/companies']" i18n="@@companiesButton">
+       companies
       </button>
     </div>
   </div>

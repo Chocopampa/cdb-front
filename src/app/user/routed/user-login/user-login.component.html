@@ -21,7 +21,7 @@
           type="text"
           formControlName="username"
         />
-        <mat-error *ngIf="loginForm.get('username').hasError('required')">
+        <mat-error *ngIf="loginForm.get('username').hasError('required')" i18n="@@userNameRequired">
           User name is required
         </mat-error>
       </mat-form-field>
@@ -36,7 +36,7 @@
         <mat-icon matSuffix (click)="hide = !hide">{{
           hide ? 'visibility_off' : 'visibility'
         }}</mat-icon>
-        <mat-error *ngIf="loginForm.get('password').hasError('required')">
+        <mat-error *ngIf="loginForm.get('password').hasError('required')" i18n="@@passwordRequired">
           Password is required
         </mat-error>
       </mat-form-field>
