@@ -1,6 +1,8 @@
 <header class="docs-header-background">
   <div class="header-section">
-    <div class="header-headline"><h1 class="mat-h1" i18n="@@authenticationTitle">Authentication</h1></div>
+    <div class="header-headline">
+      <h1 class="mat-h1" i18n="@@authenticationTitle">Authentication</h1>
+    </div>
   </div>
 </header>
 
@@ -16,6 +18,7 @@
     >
       <mat-form-field>
         <input
+          class="input"
           matInput
           i18n-placeholder="@@username"
           placeholder="Username"
@@ -38,6 +41,7 @@
       </mat-form-field>
       <mat-form-field>
         <input
+          class="input"
           matInput
           i18n-placeholder="@@password"
           placeholder="Password"
@@ -63,7 +67,11 @@
       </mat-form-field>
       <div class="button-div">
         <div class="button-register">
-          <button i18n="@@registerButton" [routerLink]="['/registration']" mat-flat-button>
+          <button
+            i18n="@@registerButton"
+            [routerLink]="['/registration']"
+            mat-flat-button
+          >
             Register
           </button>
         </div>
