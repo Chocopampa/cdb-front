@@ -1,12 +1,12 @@
 <header class="docs-header-background">
   <div class="header-section">
-    <div class="header-headline"><h1 class="mat-h1">Update Company</h1></div>
+    <div class="header-headline"><h1 class="mat-h1" i18n="@@companyUpdate">Update Company</h1></div>
   </div>
 </header>
 
 <div class="form-section">
   <div class="myform-row">
-    <mat-card class="error-card" *ngIf="mode"
+    <mat-card class="error-card" *ngIf="mode" i18n="@@companyNotUpdated"
       >Company not updated, erreur: {{ error }} {{ errorBody }}
     </mat-card>
     <form
@@ -21,7 +21,7 @@
           placeholder="Company Name"
           formControlName="companyName"
         />
-        <mat-error *ngIf="companyForm.get('companyName').hasError('required')">
+        <mat-error *ngIf="companyForm.get('companyName').hasError('required')" i18n="@@companyNameRequired">
           Company name is required
         </mat-error>
       </mat-form-field>
