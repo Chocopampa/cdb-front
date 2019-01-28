@@ -17,11 +17,11 @@
     </button>
 </form>
 
-<mat-paginator
-  [length]="nb_companies"
-  [pageSizeOptions]="pageSizeOptions"
-  (page)="pageEvent = $event; changePage()"
-></mat-paginator>
+  <mat-paginator
+    [length]="nb_companies"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="pageEvent = $event; changePage()"
+  ></mat-paginator>
 
 <div class="overflow">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
