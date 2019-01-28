@@ -8,9 +8,8 @@
 
 <div class="form-section">
   <div class="myform-row">
-    <mat-card class="error-card" *ngIf="mode" i18n="@@wrongUserErrorMessage"
-      >Incorrect password or username</mat-card
-    >
+    <mat-card class="error-card error-card-visible" *ngIf="mode" i18n="@@wrongUserErrorMessage">Incorrect password or username</mat-card>
+    <mat-card class="error-card error-card-invisible" *ngIf="!mode" i18n="@@wrongUserErrorMessage">Incorrect password or username</mat-card>
     <form
       class="example-container"
       [formGroup]="loginForm"
@@ -25,18 +24,8 @@
           type="text"
           formControlName="username"
         />
-        <mat-error
-          *ngFor="let validation of account_validation_messages.username"
-        >
-          <mat-error
-            class="error-message"
-            *ngIf="
-              loginForm.get('username').hasError(validation.type) &&
-              (loginForm.get('username').dirty ||
-                loginForm.get('username').touched)
-            "
-            >{{ validation.message }}</mat-error
-          >
+        <mat-error *ngIf="loginForm.get('username').hasError('required')">
+          User name is required
         </mat-error>
       </mat-form-field>
       <mat-form-field>
@@ -51,27 +40,13 @@
         <mat-icon matSuffix (click)="hide = !hide">{{
           hide ? 'visibility_off' : 'visibility'
         }}</mat-icon>
-        <mat-error
-          *ngFor="let validation of account_validation_messages.password"
-        >
-          <mat-error
-            class="error-message"
-            *ngIf="
-              loginForm.get('password').hasError(validation.type) &&
-              (loginForm.get('password').dirty ||
-                loginForm.get('password').touched)
-            "
-            >{{ validation.message }}</mat-error
-          >
+        <mat-error *ngIf="loginForm.get('password').hasError('required')">
+          Password is required
         </mat-error>
       </mat-form-field>
       <div class="button-div">
         <div class="button-register">
-          <button
-            i18n="@@registerButton"
-            [routerLink]="['/registration']"
-            mat-flat-button
-          >
+          <button i18n="@@registerButton" type="button" [routerLink]="['/registration']" mat-flat-button>
             Register
           </button>
         </div>

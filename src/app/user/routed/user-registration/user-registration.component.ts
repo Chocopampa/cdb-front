@@ -8,6 +8,7 @@ import {
   FormControl
 } from '@angular/forms';
 import { MyErrorStateMatcher } from '../../shared/myErrorStateMatcher.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-registration',
@@ -20,19 +21,15 @@ export class UserRegistrationComponent implements OnInit {
   hide = true;
   hideConfirmPassword = true;
   matcher: MyErrorStateMatcher;
+  mode: boolean;
+  erreur: string;
+  errorBody: string;
 
-  account_validation_messages = {
-    username: [{ type: 'required', message: 'Username is required' }],
-    password: [
-      { type: 'required', message: 'Password is required' },
-      {
-        type: 'minlength',
-        message: 'Password must be at least 8 characters long'
-      }
-    ]
-  };
-
-  constructor(private _userService: UserService, private _fb: FormBuilder) {}
+  constructor(
+    private _userService: UserService,
+    private _fb: FormBuilder,
+    private _router: Router
+  ) {}
 
   ngOnInit() {
     this.user = new User();
@@ -57,7 +54,14 @@ export class UserRegistrationComponent implements OnInit {
     this.user.roleId = '2';
     this.user.username = this.userForm.get('username').value;
     this.user.password = this.userForm.get('password').value;
-    this._userService.postUser(this.user).subscribe();
+    this._userService.postUser(this.user).subscribe(
+      () => this._router.navigate(['/dashboard']),
+      err => {
+        this.erreur = err.status;
+        this.errorBody = err.error.error;
+        this.mode = true;
+      }
+    );
   }
 
   checkPasswords(group: FormGroup) {

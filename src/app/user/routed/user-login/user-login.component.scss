@@ -22,6 +22,14 @@
   text-align: right;
 }
 
+.error-card-visible {
+  visibility: visible;
+}
+
+.error-card-invisible {
+  visibility: hidden;
+}
+
 h1 {
   font-size: 4.2rem;
   line-height: 110%;

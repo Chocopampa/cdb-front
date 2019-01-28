@@ -6,6 +6,7 @@
 
 <div class="form-section">
   <div class="myform-row">
+    <mat-card class="error-card" *ngIf="mode">Computer not created, error: {{erreur}} {{errorBody}} </mat-card>
     <form
       class="example-container"
       [formGroup]="createComputerForm"
@@ -18,34 +19,46 @@
           placeholder="Computer Name"
           formControlName="computerName"
         />
-        <mat-error
-          *ngFor="let validation of account_validation_messages.computerName"
-        >
-          <mat-error
-            class="error-message"
-            *ngIf="
-              createComputerForm
-                .get('computerName')
-                .hasError(validation.type) &&
-              (createComputerForm.get('computerName').dirty ||
-                createComputerForm.get('computerName').touched)
-            "
-            >{{ validation.message }}</mat-error
-          >
+        <mat-error *ngIf="createComputerForm.get('computerName').hasError('required')">
+          Computer name is required
         </mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput [matDatepicker]="pickerIntro" i18n-placeholder="@@introduced" placeholder="Introduced date" formControlName="introduced" />
-        <mat-datepicker-toggle matSuffix [for]="pickerIntro"></mat-datepicker-toggle>
-        <mat-datepicker #pickerIntro></mat-datepicker>
+        <input
+          matInput
+          [matDatepicker]="pickerIntro"
+          i18n-placeholder="@@introduced"
+          placeholder="Introduced date"
+          formControlName="introduced"
+          disabled
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="pickerIntro"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #pickerIntro disabled="false"></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
-        <input matInput [matDatepicker]="pickerDiscon" i18n-placeholder="@@discontinued" placeholder="Discontinued date" formControlName="discontinued" />
-        <mat-datepicker-toggle matSuffix [for]="pickerDiscon"></mat-datepicker-toggle>
-        <mat-datepicker #pickerDiscon></mat-datepicker>
+        <input
+          matInput
+          [matDatepicker]="pickerDiscon"
+          i18n-placeholder="@@discontinued"
+          placeholder="Discontinued date"
+          formControlName="discontinued"
+          disabled
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="pickerDiscon"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #pickerDiscon disabled="false"></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Company  ID" i18n-placeholder="@@companyId" formControlName="companyId" />
+        <mat-select i18n-placeholder="@@companyId" placeholder="Company  ID" formControlName="companyId">
+          <mat-option *ngFor="let company of companyList" [value]="company.id">
+            {{ company.id }}. {{company.name}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
       <mat-card-actions>
         <div class="button-onright">
@@ -63,3 +76,4 @@
       </mat-card-actions>
     </form>
   </div>
+</div>
