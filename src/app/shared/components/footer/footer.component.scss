@@ -1,8 +1,10 @@
 .footer {
   height: 8%;
-  background: linear-gradient(to right, #20216d 0%, #b8d7e0 100%);
+  background: linear-gradient(to bottom, #0d0d20 0%, #4b4ba5 100%);
   color: white;
   font-family: 'Courier New', Courier, monospace;
+  position: absolute;
+  bottom: 0;
 }
 
 a {

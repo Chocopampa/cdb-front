@@ -1,32 +1,22 @@
-body {
-  height: 92%;
-  font-size: 25px;
-  font-family: 'Courier New', Courier, monospace;
-}
-
-div.elements {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-div.buttons {
-  display: inline;
-  flex-direction: row;
-}
-
 .button {
     border: 2px solid rgb(79, 109, 207);
 }
 
-.example-container {
-  font-size: 15px;
-  margin-top: 20px;
+.button-div {
   display: flex;
-  flex-direction: column;
+  margin-top: 2%;
 }
 
-.example-container > * {
-  width: 100%;
+.button-register {
+  width: 50%;
+}
+
+.button-login {
+  width: 50%;
+  text-align: right;
+}
+h1 {
+  font-size: 4.2rem;
+  line-height: 110%;
+  margin: 2.8rem 0 1.68rem 0;
 }

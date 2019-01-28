@@ -1,0 +1,28 @@
+.mat-elevation {
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.flex-spacer {
+  flex-grow: 1;
+}
+img {
+  width: 1%;
+  height: 20%;
+  margin: 0.5%;
+}
+
+span,
+img {
+  cursor: pointer;
+}
+
+.header {
+  height: 8%;
+  background: linear-gradient(to top, #0d0d20 0%, #4b4ba5 100%);
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+}

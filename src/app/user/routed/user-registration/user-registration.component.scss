@@ -1,21 +1,5 @@
-body {
-  height: 92%;
-  font-size: 25px;
-  font-family: 'Courier New', Courier, monospace;
-}
-
-.elements {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.example-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.example-container > * {
-  width: 50%;
+h1 {
+  font-size: 4.2rem;
+  line-height: 110%;
+  margin: 2.8rem 0 1.68rem 0;
 }

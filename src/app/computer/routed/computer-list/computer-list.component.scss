@@ -48,3 +48,7 @@ td, th {
   flex: 0 0 19% !important;
   width: 19% !important;
 }
+
+.clickable, th {
+  cursor: pointer;
+}

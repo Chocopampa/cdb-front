@@ -1,7 +1,18 @@
-body {
-  height: 84%;
+.body {
   font-size: 25px;
   font-family: 'Courier New', Courier, monospace;
+  color: white;
+}
+
+div.wrapper {
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 92%;
+  background-size:100% 100%;
+  background-image: url(../../../assets/images/material2.png);
+  background-repeat: no-repeat;
 }
 
 .elements {
@@ -9,6 +20,7 @@ body {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: white;
 }
 
 .buttons {
@@ -20,5 +32,11 @@ body {
 }
 
 .button {
+  color: white;
   border: 2px solid rgb(79, 109, 207);
+}
+
+.button:hover {
+  color: black;
+  background-color: white;
 }

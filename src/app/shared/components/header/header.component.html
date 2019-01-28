@@ -1,0 +1,61 @@
+<div class="mat-elevation">
+  <mat-toolbar class="header" color="primary">
+    <span [routerLink]="['/dashboard']" i18n="@@rootLinkTitle"
+      >CDB - Front</span
+    >
+    <img
+      src="https://lipis.github.io/flag-icon-css/flags/4x3/fr.svg"
+      alt="France Flag"
+      (click)="changeLang('fr')"
+      *ngIf="flagToDisplay === 'en'"
+    />
+    <img
+      src="https://lipis.github.io/flag-icon-css/flags/4x3/gb.svg"
+      alt="United Kingdom Flag"
+      (click)="changeLang('en')"
+      *ngIf="flagToDisplay === 'fr'"
+    />
+    <a
+      mat-button
+      color="basic"
+      i18n="@@registrationButton"
+      [routerLink]="['/registration']"
+      >Registration</a
+    >
+    <a
+      mat-button
+      color="basic"
+      *ngIf="userService.isAdmin()"
+      i18n="@@createCompanyButton"
+      [routerLink]="['/companies', 'create']"
+      >Create company</a
+    >
+    <a
+      mat-button
+      color="basic"
+      *ngIf="userService.isAdmin()"
+      i18n="@@createComputerButton"
+      [routerLink]="['/computers', 'create']"
+      >Create computer</a
+    >
+    <div class="flex-spacer"></div>
+    <a
+      mat-button
+      color="basic"
+      *ngIf="!userService.isConnected()"
+      i18n="@@loginButton"
+      (click)="logout()"
+      [routerLink]="['/login']"
+      >Login</a
+    >
+    <a
+      mat-button
+      color="basic"
+      *ngIf="userService.isConnected()"
+      i18n="@@logoutButton"
+      (click)="logout()"
+      [routerLink]="['/']"
+      >Logout</a
+    >
+  </mat-toolbar>
+</div>

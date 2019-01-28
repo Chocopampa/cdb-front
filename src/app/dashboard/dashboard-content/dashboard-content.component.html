@@ -1,24 +1,28 @@
-<header
-  ng-include="'../../shared/components/header/header.component.html'"
-></header>
-<body>
+<div class="wrapper">
   <div class="elements">
-    <div class="question"><p>What do you want to display ?</p></div>
+    <div class="question">
+      <p i18n="@@welcomeSentence">What do you want to display ?</p>
+    </div>
 
     <div class="buttons">
-      <button class="button" style="margin-right: 5px;" mat-button [routerLink]="['/computers']">
+      <button
+        class="button"
+        i18n="@@computersButton"
+        style="margin-right: 5px;"
+        mat-button
+        [routerLink]="['/computers']"
+      >
         <mat-icon>computer</mat-icon>
-        Computers
       </button>
       <button
-        class="button" style="margin-left: 5px;"
+        class="button"
+        i18n="@@companiesButton"
+        style="margin-left: 5px;"
         mat-button
-        *ngIf="userService.isAdmin()"
         [routerLink]="['/companies']"
       >
         <mat-icon>business</mat-icon>
-        Companies
       </button>
     </div>
   </div>
-</body>
+</div>
