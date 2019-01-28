@@ -13,8 +13,14 @@ export class UserService {
 
   constructor(private _httpClient: HttpClient) {}
 
-  postUser(user: User): Observable<User> {
-    return this._httpClient.post<User>(`${this.SERVER_URL}/registration`, user);
+  postUser(user: User) {
+    return this._httpClient.post<any>(
+      `${this.SERVER_URL}/registration`,
+      user,
+      {
+        observe: 'response'
+      }
+    );
   }
 
   login(user: User) {

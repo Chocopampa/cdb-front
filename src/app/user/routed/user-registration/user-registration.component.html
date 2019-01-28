@@ -6,6 +6,9 @@
 
 <div class="form-section">
   <div class="myform-row">
+    <mat-card class="error-card" *ngIf="mode">
+      User not created, error: {{ erreur }} {{ errorBody }}
+    </mat-card>
     <form
       class="example-container"
       [formGroup]="userForm"
@@ -18,9 +21,7 @@
           placeholder="Username"
           formControlName="username"
         />
-        <mat-error
-          *ngIf="userForm.get('username').hasError('required')"
-        >
+        <mat-error *ngIf="userForm.get('username').hasError('required')">
           User name is required
         </mat-error>
       </mat-form-field>

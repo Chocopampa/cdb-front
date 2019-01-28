@@ -36,14 +36,11 @@ export class ComputerCreateComponent implements OnInit {
   ngOnInit() {
     this.mode = false;
     this._companyService
-      .getCompaniesSpecified(null, null, null, '0', '100')
-      .subscribe(
-        companyList => (this.companyList = companyList),
-        () => {
-          this._userService.logout();
-          this._router.navigate(['/login']);
-        }
-      );
+    .getAllCompany()
+    .subscribe(companyList => (this.companyList = companyList), () => {
+        this._userService.logout();
+        this._router.navigate(['/login']);
+      });
     this.computer = new Computer();
     this.createComputerForm = this._fb.group({
       computerName: new FormControl('', Validators.required),
