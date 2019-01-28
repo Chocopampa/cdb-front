@@ -85,12 +85,14 @@ export class CompanyListComponent implements OnInit {
           this.dataSource = new MatTableDataSource<Company>(this.companies);
           this.selection.clear();
           this.setPaginatorTotal();
-          for (const c of this.companies) {
-            this.loadComputerNumber(c.id).subscribe(nb => c.computers_number = nb,
+          for (const company of this.companies) {
+            this.loadComputerNumber(company.id).subscribe(
+              nb => (company.computers_number = nb),
               () => {
                 this._userService.logout();
                 this._router.navigate(['/login']);
-              });
+              }
+            );
           }
         },
         () => {
@@ -101,8 +103,7 @@ export class CompanyListComponent implements OnInit {
   }
 
   loadComputerNumber(id: number): Observable<number> {
-    return this._computerService
-      .getComputerCountFromCompany(id);
+    return this._computerService.getComputerCountFromCompany(id);
   }
 
   suppress() {
