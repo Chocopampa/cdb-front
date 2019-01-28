@@ -43,6 +43,18 @@ export class ComputerService {
     });
   }
 
+  getComputerCountFromCompany(id: number): Observable<number> {
+    return this._httpClient.get<number>(
+      `${this.SERVER_URL}/countFromCompany`,
+      {
+        headers: new HttpHeaders({
+          authorization: this._userService.getToken()
+        }),
+        params: new HttpParams().set('id', `${id}`)
+      }
+    );
+  }
+
   getComputerSearchCount(search: string): Observable<number> {
     return this._httpClient.get<number>(`${this.SERVER_URL}/searchCount`, {
       headers: new HttpHeaders({
@@ -91,6 +103,4 @@ export class ComputerService {
       })
     });
   }
-
-
 }

@@ -7,6 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { UserService } from 'src/app/user/shared/user.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { ComputerService } from 'src/app/computer/shared/computer.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-company-list',
@@ -20,11 +22,13 @@ export class CompanyListComponent implements OnInit {
   pageEvent: PageEvent;
   pageSizeOptions: number[] = [10, 50, 100];
 
-  columnsNames: string[] = ['select', 'name', 'suppress'];
+  columnsNames: string[] = ['select', 'name', 'computers', 'suppress'];
 
   companySearchForm: FormGroup;
 
   companies: Company[];
+  compNumber: number[];
+  computers_linked: number[];
   dataSource: MatTableDataSource<Company>;
   selection: SelectionModel<Company>;
 
@@ -39,6 +43,7 @@ export class CompanyListComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _companyService: CompanyService,
+    private _computerService: ComputerService,
     private _route: ActivatedRoute,
     private _router: Router,
     private _userService: UserService
@@ -80,12 +85,24 @@ export class CompanyListComponent implements OnInit {
           this.dataSource = new MatTableDataSource<Company>(this.companies);
           this.selection.clear();
           this.setPaginatorTotal();
+          for (const c of this.companies) {
+            this.loadComputerNumber(c.id).subscribe(nb => c.computers_number = nb,
+              () => {
+                this._userService.logout();
+                this._router.navigate(['/login']);
+              });
+          }
         },
         () => {
           this._userService.logout();
           this._router.navigate(['/login']);
         }
       );
+  }
+
+  loadComputerNumber(id: number): Observable<number> {
+    return this._computerService
+      .getComputerCountFromCompany(id);
   }
 
   suppress() {
