@@ -1,7 +1,3 @@
-table {
-  width: 100%;
-}
-
 td, th {
   text-align: center !important;
   vertical-align: middle !important;
@@ -49,12 +45,15 @@ td, th {
   width: 19% !important;
 }
 
-.table-container {
-  margin-top: 10px;
-  max-height: 300px;
-}
-
 .clickable, th {
   cursor: pointer;
 }
 
+.overflow {
+  height: 75%;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
