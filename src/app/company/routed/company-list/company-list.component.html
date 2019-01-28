@@ -1,9 +1,21 @@
 <form [formGroup]="companySearchForm" (submit)="searchCompanies()">
   <mat-form-field>
-    <input matInput i18n-placeholder="@@name" placeholder="Name" formControlName="name" />
+    <input
+      matInput
+      i18n-placeholder="@@name"
+      placeholder="Name"
+      formControlName="name"
+    />
   </mat-form-field>
   <mat-card-actions>
-    <button mat-raised-button i18n="@@searchButton" color="primary" type="submit">Search</button>
+    <button
+      mat-raised-button
+      i18n="@@searchButton"
+      color="primary"
+      type="submit"
+    >
+      Search
+    </button>
   </mat-card-actions>
 </form>
 
@@ -13,58 +25,78 @@
   (page)="pageEvent = $event; changePage()"
 ></mat-paginator>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <ng-container matColumnDef="select">
-    <th mat-header-cell *matHeaderCellDef>
-      <mat-checkbox
-        (change)="$event ? masterToggle() : null"
-        [checked]="selection.hasValue() && isAllSelected()"
-        [indeterminate]="selection.hasValue() && !isAllSelected()"
-      ></mat-checkbox>
-    </th>
-    <td mat-cell *matCellDef="let row">
-      <mat-checkbox
-        (click)="$event.stopPropagation()"
-        (change)="$event ? selection.toggle(row) : null"
-        [checked]="selection.isSelected(row)"
-      >
-      </mat-checkbox>
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef i18n="@@name" (click)="orderBy('name')">Name</th>
-    <div *ngFor="let company of companies">
-      <td mat-cell *matCellDef="let company"
-              [routerLink]="['/companies', 'update', company.id]"
-><div class="clickable">{{ company.name }}</div></td>
-    </div>
-  </ng-container>
-
-  <ng-container matColumnDef="computers">
-    <th mat-header-cell *matHeaderCellDef i18n="@@computerNumber">Computer Number</th>
-    <div *ngFor="let company of companies">
-      <td mat-cell *matCellDef="let company">
-        {{ company.computers_number }}
+<div class="overflow">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox
+          (change)="$event ? masterToggle() : null"
+          [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()"
+        ></mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox
+          (click)="$event.stopPropagation()"
+          (change)="$event ? selection.toggle(row) : null"
+          [checked]="selection.isSelected(row)"
+        >
+        </mat-checkbox>
       </td>
-    </div>
-  </ng-container>
+    </ng-container>
 
-  <ng-container matColumnDef="suppress">
-    <th mat-header-cell *matHeaderCellDef>
-      <button mat-raised-button color="primary" i18n="@@deleteButton" (click)="suppress()">
-        Delete selection
-      </button>
-    </th>
-    <div *ngFor="let company of companies">
-      <td mat-cell *matCellDef=""></td>
-    </div>
-  </ng-container>
+    <ng-container matColumnDef="name">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        i18n="@@name"
+        (click)="orderBy('name')"
+      >
+        Name
+      </th>
+      <div *ngFor="let company of companies">
+        <td
+          mat-cell
+          *matCellDef="let company"
+          [routerLink]="['/companies', 'update', company.id]"
+        >
+          <div class="clickable">{{ company.name }}</div>
+        </td>
+      </div>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="columnsNames"></tr>
-  <tr
-    mat-row
-    *matRowDef="let row; columns: columnsNames"
-    (click)="selection.toggle(row)"
-  ></tr>
-</table>
+    <ng-container matColumnDef="computers">
+      <th mat-header-cell *matHeaderCellDef i18n="@@computerNumber">
+        Computer Number
+      </th>
+      <div *ngFor="let company of companies">
+        <td mat-cell *matCellDef="let company">
+          {{ company.computers_number }}
+        </td>
+      </div>
+    </ng-container>
+
+    <ng-container matColumnDef="suppress">
+      <th mat-header-cell *matHeaderCellDef>
+        <button
+          mat-raised-button
+          color="primary"
+          i18n="@@deleteButton"
+          (click)="suppress()"
+        >
+          Delete selection
+        </button>
+      </th>
+      <div *ngFor="let company of companies">
+        <td mat-cell *matCellDef=""></td>
+      </div>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsNames; sticky: true"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: columnsNames"
+      (click)="selection.toggle(row)"
+    ></tr>
+  </table>
+</div>
