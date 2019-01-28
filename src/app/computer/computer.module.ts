@@ -10,7 +10,8 @@ import { ComputerCreateComponent } from './routed/computer-create/computer-creat
 @NgModule({
   declarations: [
     ComputerListComponent,
-    ComputerUpdateComponent, ComputerCreateComponent
+    ComputerUpdateComponent,
+    ComputerCreateComponent
   ],
   imports: [
     CommonModule,

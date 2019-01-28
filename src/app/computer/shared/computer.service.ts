@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ComputerService {
-  SERVER_URL = 'http://localhost:8080/webapp/Computer';
+  SERVER_URL = 'http://10.0.1.200:8080/webapp/Computer';
 
   constructor(
     private _httpClient: HttpClient,

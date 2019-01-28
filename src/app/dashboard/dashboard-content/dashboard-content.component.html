@@ -1,12 +1,26 @@
-<div class="question">
-  <p i18n="@@welcomeSentence">What do you want to display ?</p>
-</div>
+<div class="wrapper">
+  <div class="elements">
+    <div class="question">
+      <p i18n="@@welcomeSentence">What do you want to display ?</p>
+    </div>
 
-<div class="buttons">
-  <button mat-raised-button color="primary" i18n="@@companiesButton" *ngIf="userService.isAdmin()" [routerLink]="['/companies']">
-    Companies
-  </button>
-  <button mat-raised-button color="primary" i18n="@@computersButton" [routerLink]="['/computers']">
-    Computers
-  </button>
+    <div class="buttons">
+      <button
+        class="button button1"
+        i18n="@@computersButton"
+        mat-button
+        [routerLink]="['/computers']"
+      >
+        <mat-icon>computer</mat-icon>
+      </button>
+      <button
+        class="button button2"
+        i18n="@@companiesButton"
+        mat-button
+        [routerLink]="['/companies']"
+      >
+        <mat-icon>business</mat-icon>
+      </button>
+    </div>
+  </div>
 </div>

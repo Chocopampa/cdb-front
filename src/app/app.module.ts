@@ -11,11 +11,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ComputerModule } from './computer/computer.module';
 import { UserModule } from './user/user.module';
+import { FooterComponent } from './shared/components/footer/footer.component';
 import { DateAdapter } from '@angular/material/core';
 import { CustomDateAdapter } from './custom-material/CustomDateAdaptater';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

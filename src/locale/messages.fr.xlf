@@ -159,16 +159,16 @@
         </context-group>
       </trans-unit>
       <trans-unit id="createCompanyButton" datatype="html">
-        <source>Create company</source>
-        <target>Créer une entreprise</target>
+        <source>Add a company</source>
+        <target>Ajouter une entreprise</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
           <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="createComputerButton" datatype="html">
-        <source>Create computer</source>
-        <target>Créer un ordinateur</target>
+        <source>Add a computer</source>
+        <target>Ajouter un ordinateur</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
           <context context-type="linenumber">30</context>
@@ -176,7 +176,7 @@
       </trans-unit>
       <trans-unit id="registrationButton" datatype="html">
         <source>Registration</source>
-        <target>S'inscrire</target>
+        <target>Inscription</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
           <context context-type="linenumber">37</context>
@@ -184,7 +184,7 @@
       </trans-unit>
       <trans-unit id="loginButton" datatype="html">
         <source>Login</source>
-        <target>Se connecter</target>
+        <target>Connexion</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
           <context context-type="linenumber">46</context>
@@ -251,8 +251,8 @@
         </context-group>
       </trans-unit>
       <trans-unit id="wrongUserErrorMessage" datatype="html">
-        <source>This User is a wrong user</source>
-        <target>Mauvais nom d'utilisateur ou mauvais mot de passe</target>
+        <source>This user is a wrong user</source>
+        <target>Nom d'utilisateur incorrect</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/routed/user-login/user-login.component.html</context>
           <context context-type="linenumber">2</context>
@@ -276,7 +276,7 @@
       </trans-unit>
       <trans-unit id="registerButton" datatype="html">
         <source>Register</source>
-        <target>S'enregistrer</target>
+        <target>S'inscrire</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/routed/user-login/user-login.component.html</context>
           <context context-type="linenumber">28</context>
@@ -284,7 +284,7 @@
       </trans-unit>
       <trans-unit id="passwordEnter" datatype="html">
         <source>Enter your password</source>
-        <target>Entrer votre mot de passe</target>
+        <target>Entrez votre mot de passe</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/routed/user-registration/user-registration.component.html</context>
           <context context-type="linenumber">21</context>
@@ -292,7 +292,7 @@
       </trans-unit>
       <trans-unit id="passwordConfirm" datatype="html">
         <source>Confirm password</source>
-        <target>Confirmer mot de passe</target>
+        <target>Confirmez votre mot de passe</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/routed/user-registration/user-registration.component.html</context>
           <context context-type="linenumber">44</context>
@@ -303,7 +303,7 @@
       Passwords do not match
     </source>
         <target>
-      Les mots de passe ne sont pas les mêmes
+      Les mots de passe ne correspondent pas
     </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/routed/user-registration/user-registration.component.html</context>
@@ -315,7 +315,7 @@
     Submit
   </source>
         <target>
-    Soumettre
+    Valider
   </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/routed/user-registration/user-registration.component.html</context>

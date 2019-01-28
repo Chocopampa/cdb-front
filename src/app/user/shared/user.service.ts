@@ -8,7 +8,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class UserService {
-  SERVER_URL = 'http://localhost:8080/webapp';
+  SERVER_URL = 'http://10.0.1.200:8080/webapp';
   role: string;
 
   constructor(private _httpClient: HttpClient) {}
