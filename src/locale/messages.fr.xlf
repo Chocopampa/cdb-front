@@ -15,27 +15,27 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-list/computer-list.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">5</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-list/computer-list.component.html</context>
-          <context context-type="linenumber">39</context>
+          <context context-type="linenumber">40</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/company/routed/company-create/company-create.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">21</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/company/routed/company-update/company-update.component.html</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="linenumber">21</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-update/computer-update.component.html</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="linenumber">20</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-create/computer-create.component.html</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="searchButton" datatype="html">
@@ -47,7 +47,15 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-list/computer-list.component.html</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="computerNumber" datatype="html">
+        <source>Computer Number</source>
+        <target>Nombre d'ordinateurs</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/company/routed/company-list/company-list.component.html</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="deleteButton" datatype="html">
@@ -59,11 +67,11 @@
       </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/company/routed/company-list/company-list.component.html</context>
-          <context context-type="linenumber">46</context>
+          <context context-type="linenumber">55</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-list/computer-list.component.html</context>
-          <context context-type="linenumber">86</context>
+          <context context-type="linenumber">89</context>
         </context-group>
       </trans-unit>
       <trans-unit id="introduced" datatype="html">
@@ -75,15 +83,15 @@
     </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-list/computer-list.component.html</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">55</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-update/computer-update.component.html</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">31</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-create/computer-create.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="discontinued" datatype="html">
@@ -95,15 +103,15 @@
     </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-list/computer-list.component.html</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="linenumber">64</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-update/computer-update.component.html</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">46</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-create/computer-create.component.html</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">46</context>
         </context-group>
       </trans-unit>
       <trans-unit id="companyName" datatype="html">
@@ -115,39 +123,31 @@
     </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-list/computer-list.component.html</context>
-          <context context-type="linenumber">70</context>
+          <context context-type="linenumber">73</context>
         </context-group>
       </trans-unit>
       <trans-unit id="welcomeSentence" datatype="html">
-        <source>What do you want to display ?</source>
-        <target>What do you want to display ?</target>
+        <source>Welcome to Computer DataBase!</source>
+        <target>Bienvenue dans Computer DataBase!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard-content/dashboard-content.component.html</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="companiesButton" datatype="html">
-        <source>
-    Companies
-  </source>
-        <target>
-    Entreprises
-  </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/dashboard/dashboard-content/dashboard-content.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="computersButton" datatype="html">
-        <source>
-    Computers
-  </source>
-        <target>
-    Ordinateurs
-  </target>
+        <source>computer</source>
+        <target>Ordinateurs</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard-content/dashboard-content.component.html</context>
           <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="companiesButton" datatype="html">
+        <source>companies</source>
+        <target>Entreprises</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/dashboard/dashboard-content/dashboard-content.component.html</context>
+          <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="rootLinkTitle" datatype="html">
@@ -155,131 +155,239 @@
         <target>CDB - Front</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="createCompanyButton" datatype="html">
-        <source>Add a company</source>
-        <target>Ajouter une entreprise</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
-          <context context-type="linenumber">22</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="createComputerButton" datatype="html">
-        <source>Add a computer</source>
-        <target>Ajouter un ordinateur</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
-          <context context-type="linenumber">30</context>
+          <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="registrationButton" datatype="html">
         <source>Registration</source>
-        <target>Inscription</target>
+        <target>S'enregistrer</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createCompanyButton" datatype="html">
+        <source>Create company</source>
+        <target>Créer l'entreprise</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createComputerButton" datatype="html">
+        <source>Create computer</source>
+        <target>Créer l'ordinateur</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
+          <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
       <trans-unit id="loginButton" datatype="html">
         <source>Login</source>
-        <target>Connexion</target>
+        <target>Se connecter</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
-          <context context-type="linenumber">46</context>
+          <context context-type="linenumber">49</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/routed/user-login/user-login.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">57</context>
         </context-group>
       </trans-unit>
       <trans-unit id="logoutButton" datatype="html">
         <source>Logout</source>
-        <target>Déconnexion</target>
+        <target>Se déconnecter</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
-          <context context-type="linenumber">55</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createCompany" datatype="html">
+        <source>Create Company</source>
+        <target>Créer une entreprise</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/company/routed/company-create/company-create.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="companyNotCreated" datatype="html">
+        <source>Company not created, erreur: <x id="INTERPOLATION" equiv-text="{{ error }}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/>
+        </source>
+        <target>Entreprise non créée, erreur: <x id="INTERPOLATION" equiv-text="{{ error }}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/>
+    </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/company/routed/company-create/company-create.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="companyNameRequired" datatype="html">
+        <source>
+          Company name is required
+        </source>
+        <target>
+          Le nom de l'entreprise est obligatoire
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/company/routed/company-create/company-create.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/company/routed/company-update/company-update.component.html</context>
+          <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="createButton" datatype="html">
-        <source>Create</source>
-        <target>Créer</target>
+        <source>
+            Create
+          </source>
+        <target>
+            Créer
+          </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/company/routed/company-create/company-create.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">40</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-create/computer-create.component.html</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="companyUpdate" datatype="html">
+        <source>Update Company</source>
+        <target>Mise à jour d'une entreprise</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/company/routed/company-update/company-update.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="companyNotUpdated" datatype="html">
+        <source>Company not updated, erreur: <x id="INTERPOLATION" equiv-text="{{ error }}"/> <x id="INTERPOLATION_1" equiv-text="{{ errorBody }}"/>
+    </source>
+        <target>Entreprise non mise à jour, erreur: <x id="INTERPOLATION" equiv-text="{{ error }}"/> <x id="INTERPOLATION_1" equiv-text="{{ errorBody }}"/>
+    </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/company/routed/company-update/company-update.component.html</context>
+          <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="updateButton" datatype="html">
         <source>
-      Update
-    </source>
+          Update
+        </source>
         <target>
-      Mettre à jour
-    </target>
+          Mettre à jour
+        </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/company/routed/company-update/company-update.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">36</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-update/computer-update.component.html</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">76</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="companyId" datatype="html">
-        <source>Company id</source>
-        <target>Id de l'entreprise</target>
+      <trans-unit id="updateComputer" datatype="html">
+        <source>Update Computer</source>
+        <target>Mise à jour d'un ordinateur</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-update/computer-update.component.html</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="computerNotUpdated" datatype="html">
+        <source>
+      Computer not updated, error: <x id="INTERPOLATION" equiv-text="{{erreur}}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/>
+    </source>
+        <target>
+      Ordinateur non mis à jour, erreur: <x id="INTERPOLATION" equiv-text="{{erreur}}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/>
+    </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/computer/routed/computer-update/computer-update.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="computerNameRequired" datatype="html">
+        <source>
+          Computer name is required
+        </source>
+        <target>
+          Le nom de l'ordinateur est obligatoire
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/computer/routed/computer-update/computer-update.component.html</context>
+          <context context-type="linenumber">22</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-create/computer-create.component.html</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="authenticationTitle" datatype="html">
-        <source>Authentication</source>
-        <target>Authentification</target>
+      <trans-unit id="companyId" datatype="html">
+        <source>Company  ID</source>
+        <target>Identifiant de l'entreprise</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/user/routed/user-login/user-login.component.html</context>
-          <context context-type="linenumber">1</context>
+          <context context-type="sourcefile">app/computer/routed/computer-update/computer-update.component.html</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/computer/routed/computer-create/computer-create.component.html</context>
+          <context context-type="linenumber">57</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="wrongUserErrorMessage" datatype="html">
-        <source>This user is a wrong user</source>
-        <target>Nom d'utilisateur incorrect</target>
+      <trans-unit id="createComputer" datatype="html">
+        <source>Create Computer</source>
+        <target>Création d'un ordinateur</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/user/routed/user-login/user-login.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="sourcefile">app/computer/routed/computer-create/computer-create.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="computerNotCreated" datatype="html">
+        <source>Computer not created, error: <x id="INTERPOLATION" equiv-text="{{erreur}}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/> </source>
+        <target>Ordinateur non créé, erreur: <x id="INTERPOLATION" equiv-text="{{erreur}}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/> </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/computer/routed/computer-create/computer-create.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userNotCreated" datatype="html">
+        <source>
+      User not created, error: <x id="INTERPOLATION" equiv-text="{{ erreur }}"/> <x id="INTERPOLATION_1" equiv-text="{{ errorBody }}"/>
+    </source>
+        <target>
+      Utilisateur non créé, erreur: <x id="INTERPOLATION" equiv-text="{{ erreur }}"/> <x id="INTERPOLATION_1" equiv-text="{{ errorBody }}"/>
+    </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/routed/user-registration/user-registration.component.html</context>
+          <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="username" datatype="html">
         <source>Username</source>
         <target>Nom d'utilisateur</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/user/routed/user-login/user-login.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="sourcefile">app/user/routed/user-registration/user-registration.component.html</context>
+          <context context-type="linenumber">21</context>
         </context-group>
-      </trans-unit>
-      <trans-unit id="password" datatype="html">
-        <source>Password</source>
-        <target>Mot de passe</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/routed/user-login/user-login.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="registerButton" datatype="html">
-        <source>Register</source>
-        <target>S'inscrire</target>
+      <trans-unit id="userNameRequired" datatype="html">
+        <source>
+          User name is required
+        </source>
+        <target>
+          Le nom d'utilisateur est obligatoire
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/routed/user-registration/user-registration.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/routed/user-login/user-login.component.html</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="passwordEnter" datatype="html">
@@ -287,39 +395,107 @@
         <target>Entrez votre mot de passe</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/routed/user-registration/user-registration.component.html</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="passwordRequired" datatype="html">
+        <source>
+          Password is required
+        </source>
+        <target>
+          Le mot de passe est obligatoire
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/routed/user-registration/user-registration.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/routed/user-login/user-login.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="passwordLengthError" datatype="html">
+        <source>
+          Password must be at least 8 characters long
+        </source>
+        <target>
+          Le mot de passe doit faire au moins 8 caractères
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/routed/user-registration/user-registration.component.html</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="passwordConfirm" datatype="html">
         <source>Confirm password</source>
-        <target>Confirmez votre mot de passe</target>
+        <target>Confirmation du mot de passe</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/routed/user-registration/user-registration.component.html</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="passwordNotMatching" datatype="html">
         <source>
-      Passwords do not match
-    </source>
+          Passwords do not match
+        </source>
         <target>
-      Les mots de passe ne correspondent pas
-    </target>
+          Les mots de passe ne correspondent pas
+        </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/routed/user-registration/user-registration.component.html</context>
-          <context context-type="linenumber">53</context>
+          <context context-type="linenumber">65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="submit" datatype="html">
         <source>
-    Submit
-  </source>
+          Submit
+        </source>
         <target>
-    Valider
-  </target>
+          Soumettre
+        </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/routed/user-registration/user-registration.component.html</context>
-          <context context-type="linenumber">65</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="authenticationTitle" datatype="html">
+        <source>Authentication</source>
+        <target>Authentification</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/routed/user-login/user-login.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="wrongUserErrorMessage" datatype="html">
+        <source>Incorrect password or username</source>
+        <target>Nom d'utilisateur ou mot de passe incorrect</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/routed/user-login/user-login.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/routed/user-login/user-login.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="password" datatype="html">
+        <source>Password</source>
+        <target>Mot de passe</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/routed/user-login/user-login.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="registerButton" datatype="html">
+        <source>
+            Register
+          </source>
+        <target>
+            S'enregistrer
+          </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/routed/user-login/user-login.component.html</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
     </body>

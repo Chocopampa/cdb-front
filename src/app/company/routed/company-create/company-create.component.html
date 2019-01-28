@@ -1,12 +1,12 @@
 <header class="docs-header-background">
   <div class="header-section">
-    <div class="header-headline"><h1 class="mat-h1">Create Company</h1></div>
+    <div class="header-headline"><h1 class="mat-h1" i18n="@@createCompany">Create Company</h1></div>
   </div>
 </header>
 
 <div class="form-section">
   <div class="myform-row">
-    <mat-card class="error-card" *ngIf="mode"
+    <mat-card class="error-card" *ngIf="mode" i18n="@@companyNotCreated"
       >Company not created, erreur: {{ error }} {{ errorBody }}
     </mat-card>
     <form
@@ -23,11 +23,11 @@
         />
         <mat-error
           *ngIf="createCompanyForm.get('companyName').hasError('required')"
+          i18n="@@companyNameRequired"
         >
           Company name is required
         </mat-error>
       </mat-form-field>
-      <mat-card-actions>
         <div class="button-onright">
           <button
             class="submit-btn"
@@ -40,7 +40,6 @@
             Create
           </button>
         </div>
-      </mat-card-actions>
     </form>
   </div>
 </div>

@@ -1,12 +1,12 @@
 <header class="docs-header-background">
   <div class="header-section">
-    <div class="header-headline"><h1 class="mat-h1">Update Computer</h1></div>
+    <div class="header-headline"><h1 class="mat-h1" i18n="@@updateComputer">Update Computer</h1></div>
   </div>
 </header>
 
 <div class="form-section">
   <div class="myform-row">
-    <mat-card class="error-card" *ngIf="mode">
+    <mat-card class="error-card" *ngIf="mode" i18n="@@computerNotUpdated">
       Computer not updated, error: {{erreur}} {{errorBody}}
     </mat-card>
     <form
@@ -19,7 +19,7 @@
           i18n-placeholder="@@name"
           placeholder="Name"
           formControlName="computerName"/>
-        <mat-error *ngIf="computerForm.get('computerName').hasError('required')">
+        <mat-error *ngIf="computerForm.get('computerName').hasError('required')" i18n="@@computerNameRequired">
           Computer name is required
         </mat-error>
       </mat-form-field>
@@ -64,7 +64,6 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-card-actions>
         <div class="button-onright">
           <button
             class="submit-btn"
@@ -77,7 +76,6 @@
             Update
           </button>
         </div>
-      </mat-card-actions>
     </form>
   </div>
 </div>
