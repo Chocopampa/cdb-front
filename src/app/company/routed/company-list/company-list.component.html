@@ -41,6 +41,15 @@
     </div>
   </ng-container>
 
+  <ng-container matColumnDef="computers">
+    <th mat-header-cell *matHeaderCellDef i18n="@@computerNumber">Computer Number</th>
+    <div *ngFor="let company of companies">
+      <td mat-cell *matCellDef="let company">
+        {{ company.computers_number }}
+      </td>
+    </div>
+  </ng-container>
+
   <ng-container matColumnDef="suppress">
     <th mat-header-cell *matHeaderCellDef>
       <button mat-raised-button color="primary" i18n="@@deleteButton" (click)="suppress()">
