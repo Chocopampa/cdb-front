@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { User } from './user.model';
 import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -8,19 +7,15 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class UserService {
-  SERVER_URL = 'http://10.0.1.200:8080/webapp';
+  SERVER_URL = 'http://localhost:8080/webapp';
   role: string;
 
   constructor(private _httpClient: HttpClient) {}
 
   postUser(user: User) {
-    return this._httpClient.post<any>(
-      `${this.SERVER_URL}/registration`,
-      user,
-      {
-        observe: 'response'
-      }
-    );
+    return this._httpClient.post<any>(`${this.SERVER_URL}/registration`, user, {
+      observe: 'response'
+    });
   }
 
   login(user: User) {
