@@ -28,7 +28,7 @@
     <ng-container matColumnDef="select">
       <th mat-header-cell *matHeaderCellDef>
         <mat-checkbox
-          (change)="$event ? masterToggle() : null"
+          (change)="$event ? masterToggle() : null;disabledButton()"
           [checked]="selection.hasValue() && isAllSelected()"
           [indeterminate]="selection.hasValue() && !isAllSelected()"
         ></mat-checkbox>
@@ -36,7 +36,7 @@
       <td mat-cell *matCellDef="let row">
         <mat-checkbox
           (click)="$event.stopPropagation()"
-          (change)="$event ? selection.toggle(row) : null"
+          (change)="$event ? selection.toggle(row) : null;disabledButton()"
           [checked]="selection.isSelected(row)"
         >
         </mat-checkbox>
@@ -81,6 +81,7 @@
           color="primary"
           i18n="@@deleteButton"
           (click)="suppress()"
+          [disabled]="!deleteButtonBool"
         >
           Delete selection
         </button>
@@ -94,7 +95,7 @@
     <tr
       mat-row
       *matRowDef="let row; columns: columnsNames"
-      (click)="selection.toggle(row)"
+      (click)="selection.toggle(row);disabledButton()"
     ></tr>
   </table>
 </div>
