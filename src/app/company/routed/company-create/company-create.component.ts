@@ -52,8 +52,15 @@ export class CompanyCreateComponent implements OnInit {
       err => {
         this.error = err.status;
         this.errorBody = err.error.error;
-        this.mode = true;
+        this.openErrorSnackBar();
       }
     );
+  }
+
+  openErrorSnackBar() {
+    this.snackBar.open(this.error + this.errorBody, null, {
+      duration: 1500,
+      panelClass: ['snackbar-error-color']
+    });
   }
 }

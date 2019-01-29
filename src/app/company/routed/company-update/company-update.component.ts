@@ -9,6 +9,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyService } from '../../shared/company.service';
 import { UserService } from 'src/app/user/shared/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-company-update',
@@ -28,7 +29,8 @@ export class CompanyUpdateComponent implements OnInit {
     private _companyService: CompanyService,
     private _fb: FormBuilder,
     private _router: Router,
-    private _userService: UserService
+    private _userService: UserService,
+    private snackBar: MatSnackBar
   ) {
     this.id = this._route.snapshot.paramMap.get('id');
   }
@@ -58,8 +60,15 @@ export class CompanyUpdateComponent implements OnInit {
       err => {
         this.error = err.status;
         this.errorBody = err.error.error;
-        this.mode = true;
+        this.openErrorSnackBar();
       }
     );
+  }
+
+  openErrorSnackBar() {
+    this.snackBar.open(this.error + this.errorBody, null, {
+      duration: 1500,
+      panelClass: ['snackbar-error-color']
+    });
   }
 }

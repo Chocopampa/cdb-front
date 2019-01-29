@@ -7,6 +7,7 @@ import { Company } from 'src/app/company/shared/company.model';
 import { CompanyService } from 'src/app/company/shared/company.service';
 import { UserService } from 'src/app/user/shared/user.service';
 import { MatInput } from '@angular/material/input';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-computer-update',
@@ -34,7 +35,8 @@ export class ComputerUpdateComponent implements OnInit {
     private _companyService: CompanyService,
     private _userService: UserService,
     private _router: Router,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -104,30 +106,37 @@ export class ComputerUpdateComponent implements OnInit {
     this.computer.name = this.computerForm.get('computerName').value;
     const date_introduced = new Date();
     if (this.isIntroDatePicked) {
-      date_introduced.setDate(this.computerForm
-          .get('introduced')
-          .value.getDate());
+      date_introduced.setDate(
+        this.computerForm.get('introduced').value.getDate()
+      );
       this.computer.introduced = (date_introduced as unknown) as string;
     } else {
       this.computer.introduced = null;
     }
     const date_discontinued = new Date();
     if (this.isDisconDatePicked) {
-      date_discontinued.setDate(this.computerForm
-          .get('discontinued')
-          .value.getDate());
+      date_discontinued.setDate(
+        this.computerForm.get('discontinued').value.getDate()
+      );
       this.computer.discontinued = (date_discontinued as unknown) as string;
     } else {
       this.computer.discontinued = null;
     }
     this.computer.companyId = this.computerForm.get('companyId').value;
     this._computerService.updateComputer(this.computer).subscribe(
-      respo   => this._router.navigate(['/computers']),
+      respo => this._router.navigate(['/computers']),
       err => {
         this.erreur = err.status;
         this.errorBody = err.error.error;
-        this.mode = true;
+        this.openErrorSnackBar();
       }
     );
+  }
+
+  openErrorSnackBar() {
+    this.snackBar.open(this.erreur + this.errorBody, null, {
+      duration: 1500,
+      panelClass: ['snackbar-error-color']
+    });
   }
 }

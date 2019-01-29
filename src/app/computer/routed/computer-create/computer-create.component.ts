@@ -94,18 +94,18 @@ export class ComputerCreateComponent implements OnInit {
     this.computer.name = this.createComputerForm.get('computerName').value;
     const date_introduced = new Date();
     if (this.isIntroDatePicked) {
-      date_introduced.setDate(this.createComputerForm
-          .get('introduced')
-          .value.getDate());
+      date_introduced.setDate(
+        this.createComputerForm.get('introduced').value.getDate()
+      );
       this.computer.introduced = (date_introduced as unknown) as string;
     } else {
       this.computer.introduced = null;
     }
     const date_discontinued = new Date();
     if (this.isDisconDatePicked) {
-      date_discontinued.setDate(this.createComputerForm
-        .get('discontinued')
-        .value.getDate());
+      date_discontinued.setDate(
+        this.createComputerForm.get('discontinued').value.getDate()
+      );
       this.computer.discontinued = (date_discontinued as unknown) as string;
     } else {
       this.computer.discontinued = null;
@@ -118,8 +118,15 @@ export class ComputerCreateComponent implements OnInit {
       err => {
         this.erreur = err.status;
         this.errorBody = err.error.error;
-        this.mode = true;
+        this.openErrorSnackBar();
       }
     );
+  }
+
+  openErrorSnackBar() {
+    this.snackBar.open(this.erreur + this.errorBody, null, {
+      duration: 1500,
+      panelClass: ['snackbar-error-color']
+    });
   }
 }

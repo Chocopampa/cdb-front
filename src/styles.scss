@@ -22,8 +22,8 @@ body {
 
 .header-section {
   text-align: center;
-  padding-top: 8%;
-  padding-bottom: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 
 .header-headline {
@@ -34,18 +34,21 @@ body {
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding-top: 2%;
+  padding-top: 1%;
 }
 
 .error-card {
   border: 2px solid #d93025;
   color: #d93025;
-  margin-bottom: 2%;
+  margin-bottom: 1%;
 }
 .button-onright {
   text-align: right;
 }
 
+.snackbar-error-color {
+  background: #c0392b;
+}
 
 .snackbar-color {
   background: #2ecc71;
