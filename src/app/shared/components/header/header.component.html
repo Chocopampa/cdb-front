@@ -18,13 +18,6 @@
     <a
       mat-button
       color="basic"
-      i18n="@@registrationButton"
-      [routerLink]="['/registration']"
-      >Registration</a
-    >
-    <a
-      mat-button
-      color="basic"
       *ngIf="userService.isAdmin()"
       i18n="@@createCompanyButton"
       [routerLink]="['/companies', 'create']"
