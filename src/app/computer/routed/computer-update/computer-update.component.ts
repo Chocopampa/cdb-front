@@ -51,8 +51,8 @@ export class ComputerUpdateComponent implements OnInit {
         this.computer = computer;
         this.computerForm.patchValue({
           computerName: computer.name,
-          introduced: computer.introduced,
-          discontinued: computer.discontinued,
+          introduced: new Date(computer.introduced),
+          discontinued: new Date(computer.discontinued),
           companyId: computer.companyId
         });
         if (this.computerForm.get('discontinued').value !== null) {
@@ -103,20 +103,26 @@ export class ComputerUpdateComponent implements OnInit {
   postChanges() {
     this.computer.name = this.computerForm.get('computerName').value;
     const date_introduced = new Date();
-    date_introduced.setDate(this.computerForm
-        .get('introduced')
-        .value.getDate());
-    this.computer.introduced = this.isIntroDatePicked
-      ? (date_introduced as unknown) as string : null;
+    if (this.isIntroDatePicked) {
+      date_introduced.setDate(this.computerForm
+          .get('introduced')
+          .value.getDate());
+      this.computer.introduced = (date_introduced as unknown) as string;
+    } else {
+      this.computer.introduced = null;
+    }
     const date_discontinued = new Date();
-    date_discontinued.setDate(this.computerForm
-        .get('discontinued')
-        .value.getDate());
-    this.computer.discontinued = this.isDisconDatePicked
-      ? (date_discontinued as unknown) as string : null;
+    if (this.isDisconDatePicked) {
+      date_discontinued.setDate(this.computerForm
+          .get('discontinued')
+          .value.getDate());
+      this.computer.discontinued = (date_discontinued as unknown) as string;
+    } else {
+      this.computer.discontinued = null;
+    }
     this.computer.companyId = this.computerForm.get('companyId').value;
     this._computerService.updateComputer(this.computer).subscribe(
-      () => this._router.navigate(['/computers']),
+      respo   => this._router.navigate(['/computers']),
       err => {
         this.erreur = err.status;
         this.errorBody = err.error.error;
