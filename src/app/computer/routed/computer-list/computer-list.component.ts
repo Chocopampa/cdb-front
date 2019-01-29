@@ -154,6 +154,8 @@ export class ComputerListComponent implements OnInit {
       offset = this.paginator.pageSize;
     }
     if (this.pageEvent.pageIndex) {
+      offset = this.paginator.pageSize;
+      this.offset = offset.toString();
       limit = offset * this.paginator._pageIndex;
       this.limit = limit.toString();
     } else {
