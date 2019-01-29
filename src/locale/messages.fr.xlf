@@ -168,7 +168,7 @@
       </trans-unit>
       <trans-unit id="createCompanyButton" datatype="html">
         <source>Create company</source>
-        <target>Créer l'entreprise</target>
+        <target>Créer une entreprise</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
           <context context-type="linenumber">31</context>
@@ -176,7 +176,7 @@
       </trans-unit>
       <trans-unit id="createComputerButton" datatype="html">
         <source>Create computer</source>
-        <target>Créer l'ordinateur</target>
+        <target>Créer un ordinateur</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
           <context context-type="linenumber">39</context>
@@ -213,7 +213,7 @@
       <trans-unit id="companyNotCreated" datatype="html">
         <source>Company not created, erreur: <x id="INTERPOLATION" equiv-text="{{ error }}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/>
         </source>
-        <target>Entreprise non créée, erreur: <x id="INTERPOLATION" equiv-text="{{ error }}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/>
+        <target>Entreprise non créée (Erreur: <x id="INTERPOLATION" equiv-text="{{ error }}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/>)
     </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/company/routed/company-create/company-create.component.html</context>
@@ -263,7 +263,7 @@
       <trans-unit id="companyNotUpdated" datatype="html">
         <source>Company not updated, erreur: <x id="INTERPOLATION" equiv-text="{{ error }}"/> <x id="INTERPOLATION_1" equiv-text="{{ errorBody }}"/>
     </source>
-        <target>Entreprise non mise à jour, erreur: <x id="INTERPOLATION" equiv-text="{{ error }}"/> <x id="INTERPOLATION_1" equiv-text="{{ errorBody }}"/>
+        <target>Entreprise non mise à jour (Erreur: <x id="INTERPOLATION" equiv-text="{{ error }}"/> <x id="INTERPOLATION_1" equiv-text="{{ errorBody }}"/>)
     </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/company/routed/company-update/company-update.component.html</context>
@@ -299,7 +299,7 @@
       Computer not updated, error: <x id="INTERPOLATION" equiv-text="{{erreur}}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/>
     </source>
         <target>
-      Ordinateur non mis à jour, erreur: <x id="INTERPOLATION" equiv-text="{{erreur}}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/>
+      Ordinateur non mis à jour (Erreur: <x id="INTERPOLATION" equiv-text="{{erreur}}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/>)
     </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-update/computer-update.component.html</context>
@@ -336,7 +336,7 @@
       </trans-unit>
       <trans-unit id="createComputer" datatype="html">
         <source>Create Computer</source>
-        <target>Création d'un ordinateur</target>
+        <target>Créer un ordinateur</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-create/computer-create.component.html</context>
           <context context-type="linenumber">3</context>
@@ -344,7 +344,7 @@
       </trans-unit>
       <trans-unit id="computerNotCreated" datatype="html">
         <source>Computer not created, error: <x id="INTERPOLATION" equiv-text="{{erreur}}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/> </source>
-        <target>Ordinateur non créé, erreur: <x id="INTERPOLATION" equiv-text="{{erreur}}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/> </target>
+        <target>Ordinateur non créé (Erreur: <x id="INTERPOLATION" equiv-text="{{erreur}}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/>) </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-create/computer-create.component.html</context>
           <context context-type="linenumber">9</context>
@@ -355,7 +355,7 @@
       User not created, error: <x id="INTERPOLATION" equiv-text="{{ erreur }}"/> <x id="INTERPOLATION_1" equiv-text="{{ errorBody }}"/>
     </source>
         <target>
-      Utilisateur non créé, erreur: <x id="INTERPOLATION" equiv-text="{{ erreur }}"/> <x id="INTERPOLATION_1" equiv-text="{{ errorBody }}"/>
+      Utilisateur non créé (Erreur: <x id="INTERPOLATION" equiv-text="{{ erreur }}"/> <x id="INTERPOLATION_1" equiv-text="{{ errorBody }}"/>)
     </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/routed/user-registration/user-registration.component.html</context>
@@ -497,6 +497,15 @@
           <context context-type="sourcefile">app/user/routed/user-login/user-login.component.html</context>
           <context context-type="linenumber">45</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="7d6573fb998f3a1cf1356623b85850d9d10edaa9" datatype="html">
+        <source>Registration</source>
+        <target>S'enregistrer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/routed/user-registration/user-registration.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">registrationButton</note>
       </trans-unit>
     </body>
   </file>
