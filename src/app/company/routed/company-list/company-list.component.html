@@ -1,4 +1,4 @@
-<form [formGroup]="companySearchForm" (submit)="searchCompanies()">
+<form [formGroup]="companySearchForm" (submit)="searchCompanies()" class="searchForm">
   <mat-form-field>
     <input
       matInput
@@ -12,6 +12,7 @@
       i18n="@@searchButton"
       color="primary"
       type="submit"
+      class="searchButton"
     >
       Search
     </button>

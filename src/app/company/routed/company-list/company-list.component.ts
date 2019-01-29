@@ -160,10 +160,12 @@ export class CompanyListComponent implements OnInit {
   changePage() {
     let limit = +this.limit;
     let offset = +this.offset;
-    if (!offset) {
+    if (offset === 0) {
       offset = this.paginator.pageSize;
     }
     if (this.pageEvent.pageIndex) {
+      offset = this.paginator.pageSize;
+      this.offset = offset.toString();
       limit = offset * this.paginator._pageIndex;
       this.limit = limit.toString();
     } else {
