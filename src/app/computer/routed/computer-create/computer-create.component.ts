@@ -12,6 +12,7 @@ import { CompanyService } from 'src/app/company/shared/company.service';
 import { UserService } from 'src/app/user/shared/user.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-computer-create',
@@ -29,6 +30,8 @@ export class ComputerCreateComponent implements OnInit {
   maxDate = new Date(Date.now());
   minDateDiscontinued: Date;
   discontinuedBool: boolean;
+  isIntroDatePicked: boolean;
+  isDisconDatePicked: boolean;
 
   constructor(
     private _computerService: ComputerService,
@@ -65,9 +68,26 @@ export class ComputerCreateComponent implements OnInit {
     });
   }
 
+  clearDatePicker(datePicker: MatInput, datePickerDiscon: MatInput) {
+    this.isIntroDatePicked = false;
+    this.isDisconDatePicked = false;
+    this.discontinuedBool = false;
+    datePicker.value = '';
+    datePickerDiscon.value = '';
+  }
+  clearDatePickerDiscon(datePicker: MatInput) {
+    this.isDisconDatePicked = false;
+    datePicker.value = '';
+  }
+
   enableDiscontinued() {
     this.discontinuedBool = true;
+    this.isIntroDatePicked = true;
     this.minDateDiscontinued = this.createComputerForm.get('introduced').value;
+  }
+
+  clearDiscon() {
+    this.isDisconDatePicked = true;
   }
 
   postComputer() {
@@ -76,12 +96,14 @@ export class ComputerCreateComponent implements OnInit {
     date_introduced.setDate(this.createComputerForm
         .get('introduced')
         .value.getDate());
-    this.computer.introduced = (date_introduced as unknown) as string;
+    this.computer.introduced = this.isIntroDatePicked
+      ? (date_introduced as unknown) as string : null;
     const date_discontinued = new Date();
     date_discontinued.setDate(this.createComputerForm
         .get('discontinued')
         .value.getDate());
-    this.computer.discontinued = (date_discontinued as unknown) as string;
+    this.computer.discontinued = this.isDisconDatePicked
+      ? (date_discontinued as unknown) as string : null;
     this.computer.companyId = this.createComputerForm.get('companyId').value;
     this._computerService.createComputer(this.computer).subscribe(
       response => {
