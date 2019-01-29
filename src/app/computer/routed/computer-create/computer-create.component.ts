@@ -24,8 +24,9 @@ export class ComputerCreateComponent implements OnInit {
   mode: boolean;
   erreur: string;
   errorBody: string;
-  minDate = new Date(2000, 0, 1);
+  minDate = new Date(1970, 0, 1);
   maxDate = new Date(Date.now());
+  minDateDiscontinued: Date;
   discontinuedBool: boolean;
 
   constructor(
@@ -57,7 +58,7 @@ export class ComputerCreateComponent implements OnInit {
 
   enableDiscontinued() {
     this.discontinuedBool = true;
-    this.minDate = this.createComputerForm.get('introduced').value;
+    this.minDateDiscontinued = this.createComputerForm.get('introduced').value;
   }
 
   postComputer() {
