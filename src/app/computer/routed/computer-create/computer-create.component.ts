@@ -25,6 +25,10 @@ export class ComputerCreateComponent implements OnInit {
   mode: boolean;
   erreur: string;
   errorBody: string;
+  minDate = new Date(1970, 0, 1);
+  maxDate = new Date(Date.now());
+  minDateDiscontinued: Date;
+  discontinuedBool: boolean;
 
   constructor(
     private _computerService: ComputerService,
@@ -37,6 +41,7 @@ export class ComputerCreateComponent implements OnInit {
 
   ngOnInit() {
     this.mode = false;
+    this.discontinuedBool = false;
     this._companyService.getAllCompany().subscribe(
       companyList => (this.companyList = companyList),
       () => {
@@ -58,6 +63,11 @@ export class ComputerCreateComponent implements OnInit {
       duration: 1500,
       panelClass: ['snackbar-color']
     });
+  }
+
+  enableDiscontinued() {
+    this.discontinuedBool = true;
+    this.minDateDiscontinued = this.createComputerForm.get('introduced').value;
   }
 
   postComputer() {

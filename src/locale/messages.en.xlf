@@ -177,7 +177,7 @@
       </trans-unit>
       <trans-unit id="createCompanyButton" datatype="html">
         <source>Create company</source>
-        <target>Create company</target>
+        <target>Create a company</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
           <context context-type="linenumber">31</context>
@@ -185,7 +185,7 @@
       </trans-unit>
       <trans-unit id="createComputerButton" datatype="html">
         <source>Create computer</source>
-        <target>Create computer</target>
+        <target>Create a computer</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/components/header/header.component.html</context>
           <context context-type="linenumber">39</context>
@@ -213,7 +213,7 @@
       </trans-unit>
       <trans-unit id="createCompany" datatype="html">
         <source>Create Company</source>
-        <target>Create Company</target>
+        <target>Create a Company</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/company/routed/company-create/company-create.component.html</context>
           <context context-type="linenumber">3</context>
@@ -345,7 +345,7 @@
       </trans-unit>
       <trans-unit id="createComputer" datatype="html">
         <source>Create Computer</source>
-        <target>Create Computer</target>
+        <target>Create a Computer</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-create/computer-create.component.html</context>
           <context context-type="linenumber">3</context>

@@ -30,6 +30,8 @@
           i18n-placeholder="@@introduced"
           placeholder="Introduced date"
           formControlName="introduced"
+          [min]="minDate" [max]="maxDate"
+          (dateInput)="enableDiscontinued()"
           disabled
         />
         <mat-datepicker-toggle
@@ -45,13 +47,14 @@
           i18n-placeholder="@@discontinued"
           placeholder="Discontinued date"
           formControlName="discontinued"
+          [min]="minDateDiscontinued" [max]="maxDate"
           disabled
         />
         <mat-datepicker-toggle
           matSuffix
           [for]="pickerDiscon"
         ></mat-datepicker-toggle>
-        <mat-datepicker #pickerDiscon disabled="false"></mat-datepicker>
+        <mat-datepicker #pickerDiscon [disabled]="!discontinuedBool"></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
         <mat-select

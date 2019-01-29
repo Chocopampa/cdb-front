@@ -37,6 +37,7 @@ export class CompanyListComponent implements OnInit {
   search: string;
   limit: string;
   offset: string;
+  deleteButtonBool: boolean;
 
   nb_companies: number;
 
@@ -68,6 +69,7 @@ export class CompanyListComponent implements OnInit {
     );
     this.selection = new SelectionModel<Company>(true, []);
     this.companySearchForm = this._fb.group({ name: [''] });
+    this.deleteButtonBool = false;
   }
 
   loadCompanyList() {
@@ -118,6 +120,14 @@ export class CompanyListComponent implements OnInit {
           this._router.navigate(['/login']);
         }
       );
+    }
+  }
+
+  disabledButton() {
+    if (this.selection.selected.length !== 0) {
+      this.deleteButtonBool = true;
+    } else {
+      this.deleteButtonBool = false;
     }
   }
 
