@@ -29,7 +29,7 @@
       <th mat-header-cell *matHeaderCellDef>
         <mat-checkbox
           *ngIf="userService.isAdmin()"
-          (change)="$event ? masterToggle() : null"
+          (change)="$event ? masterToggle() : null;disabledButton()"
           [checked]="selection.hasValue() && isAllSelected()"
           [indeterminate]="selection.hasValue() && !isAllSelected()"
         ></mat-checkbox>
@@ -38,7 +38,7 @@
         <mat-checkbox
           *ngIf="userService.isAdmin()"
           (click)="$event.stopPropagation()"
-          (change)="$event ? selection.toggle(row) : null"
+          (change)="$event ? selection.toggle(row) : null;disabledButton()"
           [checked]="selection.isSelected(row)"
         >
         </mat-checkbox>
@@ -115,6 +115,7 @@
           color="primary"
           (click)="suppress()"
           i18n="@@deleteButton"
+          [disabled]="!deleteButtonBool"
         >
           Delete selection
         </button>
@@ -128,7 +129,7 @@
     <tr
       mat-row
       *matRowDef="let row; columns: columnsNames"
-      (click)="selection.toggle(row)"
+      (click)="selection.toggle(row);disabledButton()"
     ></tr>
   </table>
 </div>

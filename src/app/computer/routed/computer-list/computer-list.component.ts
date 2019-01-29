@@ -41,6 +41,7 @@ export class ComputerListComponent implements OnInit {
   search: string;
   limit: string;
   offset: string;
+  deleteButtonBool: boolean;
 
   nb_computers: number;
 
@@ -73,6 +74,7 @@ export class ComputerListComponent implements OnInit {
     this.computerSearchForm = this._fb.group({
       name: ['']
     });
+    this.deleteButtonBool = false;
   }
 
   loadComputerList() {
@@ -108,6 +110,14 @@ export class ComputerListComponent implements OnInit {
           this._router.navigate(['/login']);
         }
       );
+    }
+  }
+
+  disabledButton() {
+    if (this.selection.selected.length !== 0) {
+      this.deleteButtonBool = true;
+    } else {
+      this.deleteButtonBool = false;
     }
   }
 
