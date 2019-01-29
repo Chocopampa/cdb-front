@@ -92,12 +92,18 @@ export class ComputerCreateComponent implements OnInit {
 
   postComputer() {
     this.computer.name = this.createComputerForm.get('computerName').value;
+    const date_introduced = new Date();
+    date_introduced.setDate(this.createComputerForm
+        .get('introduced')
+        .value.getDate());
     this.computer.introduced = this.isIntroDatePicked
-      ? this.createComputerForm.get('introduced').value
-      : null;
+      ? (date_introduced as unknown) as string : null;
+    const date_discontinued = new Date();
+    date_discontinued.setDate(this.createComputerForm
+        .get('discontinued')
+        .value.getDate());
     this.computer.discontinued = this.isDisconDatePicked
-      ? this.createComputerForm.get('discontinued').value
-      : null;
+      ? (date_discontinued as unknown) as string : null;
     this.computer.companyId = this.createComputerForm.get('companyId').value;
     this._computerService.createComputer(this.computer).subscribe(
       response => {

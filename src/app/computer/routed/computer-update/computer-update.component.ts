@@ -102,12 +102,18 @@ export class ComputerUpdateComponent implements OnInit {
 
   postChanges() {
     this.computer.name = this.computerForm.get('computerName').value;
+    const date_introduced = new Date();
+    date_introduced.setDate(this.computerForm
+        .get('introduced')
+        .value.getDate());
     this.computer.introduced = this.isIntroDatePicked
-      ? this.computerForm.get('introduced').value
-      : null;
+      ? (date_introduced as unknown) as string : null;
+    const date_discontinued = new Date();
+    date_discontinued.setDate(this.computerForm
+        .get('discontinued')
+        .value.getDate());
     this.computer.discontinued = this.isDisconDatePicked
-      ? this.computerForm.get('discontinued').value
-      : null;
+      ? (date_discontinued as unknown) as string : null;
     this.computer.companyId = this.computerForm.get('companyId').value;
     this._computerService.updateComputer(this.computer).subscribe(
       () => this._router.navigate(['/computers']),
