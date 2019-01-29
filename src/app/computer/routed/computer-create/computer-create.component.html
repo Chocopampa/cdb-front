@@ -1,12 +1,16 @@
 <header class="docs-header-background">
   <div class="header-section">
-    <div class="header-headline"><h1 class="mat-h1" i18n="@@createComputer">Create Computer</h1></div>
+    <div class="header-headline">
+      <h1 class="mat-h1" i18n="@@createComputer">Create Computer</h1>
+    </div>
   </div>
 </header>
 
 <div class="form-section">
   <div class="myform-row">
-    <mat-card class="error-card" *ngIf="mode" i18n="@@computerNotCreated">Computer not created, error: {{erreur}} {{errorBody}} </mat-card>
+    <mat-card class="error-card" *ngIf="mode" i18n="@@computerNotCreated"
+      >Computer not created, error: {{ erreur }} {{ errorBody }}
+    </mat-card>
     <form
       class="example-container"
       [formGroup]="createComputerForm"
@@ -19,21 +23,36 @@
           placeholder="Computer Name"
           formControlName="computerName"
         />
-        <mat-error *ngIf="createComputerForm.get('computerName').hasError('required')" i18n="@@computerNameRequired">
+        <mat-error
+          *ngIf="createComputerForm.get('computerName').hasError('required')"
+          i18n="@@computerNameRequired"
+        >
           Computer name is required
         </mat-error>
       </mat-form-field>
       <mat-form-field>
         <input
           matInput
+          #inputIntro
           [matDatepicker]="pickerIntro"
-          [min]="minDate" [max]="maxDate"
+          [min]="minDate"
+          [max]="maxDate"
           i18n-placeholder="@@introduced"
           placeholder="Introduced date"
           formControlName="introduced"
           (dateInput)="enableDiscontinued()"
           disabled
         />
+        <button
+          mat-button
+          *ngIf="isIntroDatePicked"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="clearDatePicker(inputIntro, inputDiscon)"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
         <mat-datepicker-toggle
           matSuffix
           [for]="pickerIntro"
@@ -43,38 +62,58 @@
       <mat-form-field>
         <input
           matInput
+          #inputDiscon
           [matDatepicker]="pickerDiscon"
-          [min]="minDateDiscontinued" [max]="maxDate"
+          [min]="minDateDiscontinued"
+          [max]="maxDate"
           i18n-placeholder="@@discontinued"
           placeholder="Discontinued date"
           formControlName="discontinued"
+          (dateInput)="clearDiscon()"
           disabled
         />
+        <button
+          mat-button
+          *ngIf="isDisconDatePicked"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="clearDatePickerDiscon(inputDiscon)"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
         <mat-datepicker-toggle
           matSuffix
           [for]="pickerDiscon"
         ></mat-datepicker-toggle>
-        <mat-datepicker #pickerDiscon [disabled]="!discontinuedBool"></mat-datepicker>
+        <mat-datepicker
+          #pickerDiscon
+          [disabled]="!discontinuedBool"
+        ></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
-        <mat-select i18n-placeholder="@@companyId" placeholder="Company  ID" formControlName="companyId">
+        <mat-select
+          i18n-placeholder="@@companyId"
+          placeholder="Company  ID"
+          formControlName="companyId"
+        >
           <mat-option *ngFor="let company of companyList" [value]="company.id">
-            {{ company.id }}. {{company.name}}
+            {{ company.id }}. {{ company.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
-        <div class="button-onright">
-          <button
-            class="submit-btn"
-            color="primary"
-            i18n="@@createButton"
-            mat-raised-button
-            type="submit"
-            [disabled]="!createComputerForm.valid"
-          >
-            Create
-          </button>
-        </div>
+      <div class="button-onright">
+        <button
+          class="submit-btn"
+          color="primary"
+          i18n="@@createButton"
+          mat-raised-button
+          type="submit"
+          [disabled]="!createComputerForm.valid"
+        >
+          Create
+        </button>
+      </div>
     </form>
   </div>
 </div>

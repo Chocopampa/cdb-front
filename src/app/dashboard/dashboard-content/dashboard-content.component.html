@@ -13,10 +13,18 @@
       >
       </button>
       <button
+        *ngIf="userService.isAdmin()"
         class="button button2"
         i18n="@@companiesButton"
         mat-button
         [routerLink]="['/companies']"
+      >
+      </button>
+      <button
+        *ngIf="!userService.isAdmin()"
+        class="button button2"
+        i18n="@@companiesButton"
+        mat-button
       >
       </button>
     </div>

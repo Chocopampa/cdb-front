@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Company } from 'src/app/company/shared/company.model';
 import { CompanyService } from 'src/app/company/shared/company.service';
 import { UserService } from 'src/app/user/shared/user.service';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-computer-update',
@@ -23,6 +24,9 @@ export class ComputerUpdateComponent implements OnInit {
   maxDate = new Date(Date.now());
   minDateDiscontinued: Date;
   discontinuedBool: boolean;
+  selected: string;
+  isIntroDatePicked: boolean;
+  isDisconDatePicked: boolean;
 
   constructor(
     private _fb: FormBuilder,
@@ -42,46 +46,76 @@ export class ComputerUpdateComponent implements OnInit {
       companyId: new FormControl('')
     });
     this._computerService
-    .getComputer(this._route.snapshot.paramMap.get('id'))
-    .subscribe(computer => {
-      this.computer = computer;
-      this.computerForm.patchValue({
+      .getComputer(this._route.snapshot.paramMap.get('id'))
+      .subscribe(computer => {
+        this.computer = computer;
+        this.computerForm.patchValue({
           computerName: computer.name,
           introduced: computer.introduced,
           discontinued: computer.discontinued,
           companyId: computer.companyId
         });
+        if (this.computerForm.get('discontinued').value !== null) {
+          this.isDisconDatePicked = true;
+        }
+        if (this.computerForm.get('introduced').value !== null) {
+          this.isIntroDatePicked = true;
+        }
+        if (
+          this.computerForm.get('discontinued').value !== null ||
+          this.computerForm.get('introduced').value !== null
+        ) {
+          this.discontinuedBool = true;
+        }
+        this.minDateDiscontinued = this.computerForm.get('introduced').value;
       });
-      this._companyService
-        .getAllCompany()
-        .subscribe(
-          companyList => (this.companyList = companyList),
-          () => {
-            this._userService.logout();
-            this._router.navigate(['/login']);
-          }
-        );
+    this._companyService.getAllCompany().subscribe(
+      companyList => (this.companyList = companyList),
+      () => {
+        this._userService.logout();
+        this._router.navigate(['/login']);
+      }
+    );
+  }
+
+  clearDatePicker(datePicker: MatInput, datePickerDiscon: MatInput) {
+    this.isIntroDatePicked = false;
+    this.isDisconDatePicked = false;
+    this.discontinuedBool = false;
+    datePicker.value = '';
+    datePickerDiscon.value = '';
+  }
+  clearDatePickerDiscon(datePicker: MatInput) {
+    this.isDisconDatePicked = false;
+    datePicker.value = '';
   }
 
   enableDiscontinued() {
     this.discontinuedBool = true;
+    this.isIntroDatePicked = true;
     this.minDateDiscontinued = this.computerForm.get('introduced').value;
+  }
+
+  clearDiscon() {
+    this.isDisconDatePicked = true;
   }
 
   postChanges() {
     this.computer.name = this.computerForm.get('computerName').value;
-    this.computer.introduced = this.computerForm.get('introduced').value;
-    this.computer.discontinued = this.computerForm.get('discontinued').value;
+    this.computer.introduced = this.isIntroDatePicked
+      ? this.computerForm.get('introduced').value
+      : null;
+    this.computer.discontinued = this.isDisconDatePicked
+      ? this.computerForm.get('discontinued').value
+      : null;
     this.computer.companyId = this.computerForm.get('companyId').value;
-    this._computerService
-      .updateComputer(this.computer)
-      .subscribe(
-        () => this._router.navigate(['/computers']),
-        err => {
-          this.erreur = err.status;
-          this.errorBody = err.error.error;
-          this.mode = true;
-        }
-      );
+    this._computerService.updateComputer(this.computer).subscribe(
+      () => this._router.navigate(['/computers']),
+      err => {
+        this.erreur = err.status;
+        this.errorBody = err.error.error;
+        this.mode = true;
+      }
+    );
   }
 }

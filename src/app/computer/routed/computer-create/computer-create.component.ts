@@ -12,6 +12,7 @@ import { CompanyService } from 'src/app/company/shared/company.service';
 import { UserService } from 'src/app/user/shared/user.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-computer-create',
@@ -29,6 +30,8 @@ export class ComputerCreateComponent implements OnInit {
   maxDate = new Date(Date.now());
   minDateDiscontinued: Date;
   discontinuedBool: boolean;
+  isIntroDatePicked: boolean;
+  isDisconDatePicked: boolean;
 
   constructor(
     private _computerService: ComputerService,
@@ -65,17 +68,36 @@ export class ComputerCreateComponent implements OnInit {
     });
   }
 
+  clearDatePicker(datePicker: MatInput, datePickerDiscon: MatInput) {
+    this.isIntroDatePicked = false;
+    this.isDisconDatePicked = false;
+    this.discontinuedBool = false;
+    datePicker.value = '';
+    datePickerDiscon.value = '';
+  }
+  clearDatePickerDiscon(datePicker: MatInput) {
+    this.isDisconDatePicked = false;
+    datePicker.value = '';
+  }
+
   enableDiscontinued() {
     this.discontinuedBool = true;
+    this.isIntroDatePicked = true;
     this.minDateDiscontinued = this.createComputerForm.get('introduced').value;
+  }
+
+  clearDiscon() {
+    this.isDisconDatePicked = true;
   }
 
   postComputer() {
     this.computer.name = this.createComputerForm.get('computerName').value;
-    this.computer.introduced = this.createComputerForm.get('introduced').value;
-    this.computer.discontinued = this.createComputerForm.get(
-      'discontinued'
-    ).value;
+    this.computer.introduced = this.isIntroDatePicked
+      ? this.createComputerForm.get('introduced').value
+      : null;
+    this.computer.discontinued = this.isDisconDatePicked
+      ? this.createComputerForm.get('discontinued').value
+      : null;
     this.computer.companyId = this.createComputerForm.get('companyId').value;
     this._computerService.createComputer(this.computer).subscribe(
       response => {
