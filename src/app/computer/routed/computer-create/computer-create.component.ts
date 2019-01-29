@@ -24,6 +24,9 @@ export class ComputerCreateComponent implements OnInit {
   mode: boolean;
   erreur: string;
   errorBody: string;
+  minDate = new Date(2000, 0, 1);
+  maxDate = new Date(Date.now());
+  discontinuedBool: boolean;
 
   constructor(
     private _computerService: ComputerService,
@@ -35,12 +38,14 @@ export class ComputerCreateComponent implements OnInit {
 
   ngOnInit() {
     this.mode = false;
-    this._companyService
-    .getAllCompany()
-    .subscribe(companyList => (this.companyList = companyList), () => {
+    this.discontinuedBool = false;
+    this._companyService.getAllCompany().subscribe(
+      companyList => (this.companyList = companyList),
+      () => {
         this._userService.logout();
         this._router.navigate(['/login']);
-      });
+      }
+    );
     this.computer = new Computer();
     this.createComputerForm = this._fb.group({
       computerName: new FormControl('', Validators.required),
@@ -48,6 +53,11 @@ export class ComputerCreateComponent implements OnInit {
       discontinued: new FormControl({ value: '', disabled: true }),
       companyId: new FormControl('')
     });
+  }
+
+  enableDiscontinued() {
+    this.discontinuedBool = true;
+    this.minDate = this.createComputerForm.get('introduced').value;
   }
 
   postComputer() {

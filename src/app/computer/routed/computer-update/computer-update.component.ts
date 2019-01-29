@@ -19,6 +19,9 @@ export class ComputerUpdateComponent implements OnInit {
   mode: boolean;
   erreur: string;
   errorBody: string;
+  minDate = new Date(2000, 0, 1);
+  maxDate = new Date(Date.now());
+  discontinuedBool: boolean;
 
   constructor(
     private _fb: FormBuilder,
@@ -57,6 +60,11 @@ export class ComputerUpdateComponent implements OnInit {
             this._router.navigate(['/login']);
           }
         );
+  }
+
+  enableDiscontinued() {
+    this.discontinuedBool = true;
+    this.minDate = this.computerForm.get('introduced').value;
   }
 
   postChanges() {

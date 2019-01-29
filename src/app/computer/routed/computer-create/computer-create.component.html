@@ -27,9 +27,11 @@
         <input
           matInput
           [matDatepicker]="pickerIntro"
+          [min]="minDate" [max]="maxDate"
           i18n-placeholder="@@introduced"
           placeholder="Introduced date"
           formControlName="introduced"
+          (dateInput)="enableDiscontinued()"
           disabled
         />
         <mat-datepicker-toggle
@@ -42,6 +44,7 @@
         <input
           matInput
           [matDatepicker]="pickerDiscon"
+          [min]="minDate" [max]="maxDate"
           i18n-placeholder="@@discontinued"
           placeholder="Discontinued date"
           formControlName="discontinued"
@@ -51,7 +54,7 @@
           matSuffix
           [for]="pickerDiscon"
         ></mat-datepicker-toggle>
-        <mat-datepicker #pickerDiscon disabled="false"></mat-datepicker>
+        <mat-datepicker #pickerDiscon [disabled]="!discontinuedBool"></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
         <mat-select i18n-placeholder="@@companyId" placeholder="Company  ID" formControlName="companyId">
