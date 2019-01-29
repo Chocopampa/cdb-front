@@ -166,6 +166,15 @@
           <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="7d6573fb998f3a1cf1356623b85850d9d10edaa9" datatype="html">
+        <source>Registration</source>
+        <target>Registration</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/user/routed/user-registration/user-registration.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">registrationButton</note>
+      </trans-unit>
       <trans-unit id="createCompanyButton" datatype="html">
         <source>Create company</source>
         <target>Create company</target>
@@ -213,7 +222,7 @@
       <trans-unit id="companyNotCreated" datatype="html">
         <source>Company not created, erreur: <x id="INTERPOLATION" equiv-text="{{ error }}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/>
         </source>
-        <target>Company not created, error: <x id="INTERPOLATION" equiv-text="{{ error }}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/>
+        <target>Company not created (Error: <x id="INTERPOLATION" equiv-text="{{ error }}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/>)
     </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/company/routed/company-create/company-create.component.html</context>
@@ -263,7 +272,7 @@
       <trans-unit id="companyNotUpdated" datatype="html">
         <source>Company not updated, erreur: <x id="INTERPOLATION" equiv-text="{{ error }}"/> <x id="INTERPOLATION_1" equiv-text="{{ errorBody }}"/>
     </source>
-        <target>Company not updated, error: <x id="INTERPOLATION" equiv-text="{{ error }}"/> <x id="INTERPOLATION_1" equiv-text="{{ errorBody }}"/>
+        <target>Company not updated (Error: <x id="INTERPOLATION" equiv-text="{{ error }}"/> <x id="INTERPOLATION_1" equiv-text="{{ errorBody }}"/>)
     </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/company/routed/company-update/company-update.component.html</context>
@@ -299,7 +308,7 @@
       Computer not updated, error: <x id="INTERPOLATION" equiv-text="{{erreur}}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/>
     </source>
         <target>
-      Computer not updated, error: <x id="INTERPOLATION" equiv-text="{{erreur}}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/>
+      Computer not updated (Error: <x id="INTERPOLATION" equiv-text="{{erreur}}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/>)
     </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-update/computer-update.component.html</context>
@@ -344,7 +353,7 @@
       </trans-unit>
       <trans-unit id="computerNotCreated" datatype="html">
         <source>Computer not created, error: <x id="INTERPOLATION" equiv-text="{{erreur}}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/> </source>
-        <target>Computer not created, error: <x id="INTERPOLATION" equiv-text="{{erreur}}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/> </target>
+        <target>Computer not created (Error: <x id="INTERPOLATION" equiv-text="{{erreur}}"/> <x id="INTERPOLATION_1" equiv-text="{{errorBody}}"/>) </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/computer/routed/computer-create/computer-create.component.html</context>
           <context context-type="linenumber">9</context>
@@ -355,7 +364,7 @@
       User not created, error: <x id="INTERPOLATION" equiv-text="{{ erreur }}"/> <x id="INTERPOLATION_1" equiv-text="{{ errorBody }}"/>
     </source>
         <target>
-      User not created, error: <x id="INTERPOLATION" equiv-text="{{ erreur }}"/> <x id="INTERPOLATION_1" equiv-text="{{ errorBody }}"/>
+      User not created (Error: <x id="INTERPOLATION" equiv-text="{{ erreur }}"/> <x id="INTERPOLATION_1" equiv-text="{{ errorBody }}"/>)
     </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/user/routed/user-registration/user-registration.component.html</context>

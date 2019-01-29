@@ -8,6 +8,7 @@ import {
   FormControl,
   Validators
 } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-company-create',
@@ -24,6 +25,7 @@ export class CompanyCreateComponent implements OnInit {
   constructor(
     private _companyService: CompanyService,
     private _fb: FormBuilder,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -34,10 +36,19 @@ export class CompanyCreateComponent implements OnInit {
     });
   }
 
+  openSnackBar() {
+    this.snackBar.open('OK', null, {
+      duration: 1500,
+      panelClass: ['snackbar-color']
+    });
+  }
+
   postCompany() {
     this.company.name = this.createCompanyForm.get('companyName').value;
     this._companyService.postCompany(this.company).subscribe(
-      () => {},
+      response => {
+        this.openSnackBar();
+      },
       err => {
         this.error = err.status;
         this.errorBody = err.error.error;
