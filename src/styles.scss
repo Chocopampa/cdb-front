@@ -1,1 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  margin: 0;
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  height: 100%;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.myform-row {
+  width: 25%;
+}
+
+.docs-header-background {
+  background: rgb(63, 81, 181);
+}
+
+.header-section {
+  text-align: center;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.header-headline {
+  color: white;
+}
+
+.form-section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1%;
+}
+
+.error-card {
+  border: 2px solid #d93025;
+  color: #d93025;
+  margin-bottom: 1%;
+}
+.button-onright {
+  text-align: right;
+}
+
+.snackbar-error-color {
+  background: #c0392b;
+}
+
+.snackbar-color {
+  background: #2ecc71;
+}

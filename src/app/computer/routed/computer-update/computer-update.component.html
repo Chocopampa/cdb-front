@@ -1,0 +1,120 @@
+<header class="docs-header-background">
+  <div class="header-section">
+    <div class="header-headline">
+      <h1 class="mat-h1" i18n="@@updateComputer">Update Computer</h1>
+    </div>
+  </div>
+</header>
+
+<div class="form-section">
+  <div class="myform-row">
+    <mat-card class="error-card" *ngIf="mode" i18n="@@computerNotUpdated">
+      Computer not updated, error: {{ erreur }} {{ errorBody }}
+    </mat-card>
+    <form
+      class="example-container"
+      [formGroup]="computerForm"
+      (submit)="postChanges()"
+    >
+      <mat-form-field>
+        <input
+          matInput
+          i18n-placeholder="@@name"
+          placeholder="Name"
+          formControlName="computerName"
+        />
+        <mat-error
+          *ngIf="computerForm.get('computerName').hasError('required')"
+          i18n="@@computerNameRequired"
+        >
+          Computer name is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          #inputIntro
+          [matDatepicker]="pickerIntro"
+          i18n-placeholder="@@introduced"
+          placeholder="Introduced date"
+          formControlName="introduced"
+          [min]="minDate"
+          [max]="maxDate"
+          (dateInput)="enableDiscontinued()"
+          disabled
+        />
+        <button
+          mat-button
+          *ngIf="isIntroDatePicked"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="clearDatePicker(inputIntro, inputDiscon)"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="pickerIntro"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #pickerIntro disabled="false"></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          #inputDiscon
+          [matDatepicker]="pickerDiscon"
+          i18n-placeholder="@@discontinued"
+          placeholder="Discontinued date"
+          formControlName="discontinued"
+          [min]="minDateDiscontinued"
+          [max]="maxDate"
+          (dateInput)="clearDiscon()"
+          disabled
+        />
+        <button
+          mat-button
+          *ngIf="isDisconDatePicked"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="clearDatePickerDiscon(inputDiscon)"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="pickerDiscon"
+        ></mat-datepicker-toggle>
+        <mat-datepicker
+          #pickerDiscon
+          [disabled]="!discontinuedBool"
+        ></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select
+          i18n-placeholder="@@companyId"
+          placeholder="Company  ID"
+          formControlName="companyId"
+        >
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let company of companyList" [value]="company.id">
+            {{ company.id }}. {{ company.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="button-onright">
+        <button
+          class="submit-btn"
+          color="primary"
+          i18n="@@updateButton"
+          mat-raised-button
+          type="submit"
+          [disabled]="!computerForm.valid"
+        >
+          Update
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

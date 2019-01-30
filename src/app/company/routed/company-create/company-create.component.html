@@ -1,0 +1,45 @@
+<header class="docs-header-background">
+  <div class="header-section">
+    <div class="header-headline"><h1 class="mat-h1" i18n="@@createCompany">Create Company</h1></div>
+  </div>
+</header>
+
+<div class="form-section">
+  <div class="myform-row">
+    <mat-card class="error-card" *ngIf="mode" i18n="@@companyNotCreated"
+      >Company not created, erreur: {{ error }} {{ errorBody }}
+    </mat-card>
+    <form
+      class="example-container"
+      [formGroup]="createCompanyForm"
+      (submit)="postCompany()"
+    >
+      <mat-form-field>
+        <input
+          matInput
+          i18n-placeholder="@@name"
+          placeholder="Name"
+          formControlName="companyName"
+        />
+        <mat-error
+          *ngIf="createCompanyForm.get('companyName').hasError('required')"
+          i18n="@@companyNameRequired"
+        >
+          Company name is required
+        </mat-error>
+      </mat-form-field>
+        <div class="button-onright">
+          <button
+            class="submit-btn"
+            i18n="@@createButton"
+            color="primary"
+            mat-raised-button
+            type="submit"
+            [disabled]="!createCompanyForm.valid"
+          >
+            Create
+          </button>
+        </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <div class="elements">
+    <div class="question">
+      <h1 i18n="@@welcomeSentence">Welcome to Computer DataBase!</h1>
+    </div>
+
+    <div class="buttons">
+      <button
+        class="button button1"
+        i18n="@@computersButton"
+        mat-button
+        [routerLink]="['/computers']"
+      >
+      </button>
+      <button
+        *ngIf="userService.isAdmin()"
+        class="button button2"
+        i18n="@@companiesButton"
+        mat-button
+        [routerLink]="['/companies']"
+      >
+      </button>
+      <button
+        *ngIf="!userService.isAdmin()"
+        class="button button2"
+        i18n="@@companiesButton"
+        mat-button
+      >
+      </button>
+    </div>
+  </div>
+</div>
