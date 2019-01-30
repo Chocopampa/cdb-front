@@ -37,7 +37,7 @@ export class CompanyCreateComponent implements OnInit {
   }
 
   openSnackBar() {
-    this.snackBar.open('OK', null, {
+    this.snackBar.open('Company created!', null, {
       duration: 1500,
       panelClass: ['snackbar-color']
     });
@@ -58,8 +58,8 @@ export class CompanyCreateComponent implements OnInit {
   }
 
   openErrorSnackBar() {
-    this.snackBar.open(this.error + this.errorBody, null, {
-      duration: 1500,
+    this.snackBar.open(this.errorBody, null, {
+      duration: 3500,
       panelClass: ['snackbar-error-color']
     });
   }

@@ -62,7 +62,7 @@ export class ComputerCreateComponent implements OnInit {
   }
 
   openSnackBar() {
-    this.snackBar.open('OK', null, {
+    this.snackBar.open('Computer created!', null, {
       duration: 1500,
       panelClass: ['snackbar-color']
     });
@@ -124,8 +124,8 @@ export class ComputerCreateComponent implements OnInit {
   }
 
   openErrorSnackBar() {
-    this.snackBar.open(this.erreur + this.errorBody, null, {
-      duration: 1500,
+    this.snackBar.open(this.errorBody, null, {
+      duration: 3500,
       panelClass: ['snackbar-error-color']
     });
   }
